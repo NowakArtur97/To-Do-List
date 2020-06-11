@@ -13,11 +13,16 @@
   <body>
     <main class="board">
       <div class="note">
-        <p class="note__text">
+        <p class="note__text draggable">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, sed
           sit, architecto hic omnis consequuntur eligendi laudantium.
         </p>
       </div>
     </main>
+    <script src="../js/dragAndDrop.js" type="module"></script>
+    <script type="module">
+      import DragAndDrop from "../js/dragAndDrop.js";
+      const noteTest = new DragAndDrop(document.querySelector(".draggable"));
+    </script>
   </body>
 </html>
