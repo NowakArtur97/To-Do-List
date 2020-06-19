@@ -1,10 +1,13 @@
+import Offset from "./model/offset.js";
+
 export default class DragAndDrop {
   #element = null;
+  #offset = null;
   #isDragged = false;
-  #offset = [0, 0];
 
   constructor(element) {
     this.#element = element;
+    this.#offset = new Offset(0, 0);
 
     this.#addEventListeners();
   }
@@ -18,22 +21,18 @@ export default class DragAndDrop {
 
   #startDragging = function (e) {
     this.#isDragged = true;
-    this.#offset = [
-      this.#element.offsetLeft - e.clientX,
-      this.#element.offsetTop - e.clientY,
-    ];
+    const { clientX: xPos, clientY: yPos } = e;
+    this.#offset.x = this.#element.offsetLeft - xPos;
+    this.#offset.y = this.#element.offsetTop - yPos;
   };
 
   #drag = function (e) {
     if (!this.#isDragged) {
       return;
     }
-    const mousePosition = {
-      x: e.clientX,
-      y: e.clientY,
-    };
-    this.#element.style.left = mousePosition.x + this.#offset[0] + "px";
-    this.#element.style.top = mousePosition.y + this.#offset[1] + "px";
+    const { clientX: xPos, clientY: yPos } = e;
+    this.#element.style.left = xPos + this.#offset.x + "px";
+    this.#element.style.top = yPos + this.#offset.y + "px";
   };
 
   #drop = function () {
