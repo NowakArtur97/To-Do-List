@@ -1,4 +1,5 @@
 .note {
+  position: absolute;
   width: 20vh;
   min-height: 20vh;
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -6,6 +7,11 @@
   background-color: #cbfafa;
 }
 
+.note:hover {
+  cursor: pointer;
+}
+
 .note__text {
   margin: 1em;
+  user-select: none;
 }
