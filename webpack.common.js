@@ -9,6 +9,20 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.html$/i,
+        use: ["html-loader"],
+      },
+      {
+        test: /\.(svg|jpg|png|gif)$/i,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "[name]-[hash].[ext]",
+            outputPath: "assets",
+          },
+        },
+      },
     ],
   },
   plugins: [
