@@ -1,0 +1,19 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "To Do List with Vanilla JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NowakArtur97/ToDo-List.git"
+  },
+  "author": "Nowak Artur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NowakArtur97/ToDo-List/issues"
+  },
+  "homepage": "https://github.com/NowakArtur97/ToDo-List#readme"
+}
