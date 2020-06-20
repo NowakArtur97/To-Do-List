@@ -1,0 +1,9 @@
+html {
+  font-family: "The Girl Next Door", cursive;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}

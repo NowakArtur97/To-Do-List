@@ -1,0 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=The+Girl+Next+Door&display=swap");
+
+@import "base/base.css";
+@import "base/normalize.css";
+
+@import "components/board.css";
+@import "components/note.css";
