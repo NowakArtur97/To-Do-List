@@ -2,7 +2,7 @@
   position: relative;
   height: 200vh;
   padding: 5vh 5vw;
-  background: url("../../../assets/img/pin-board-4301129_1280.png") no-repeat
-    center;
+  /* background: url("../../../assets/img/pin-board-4301129_1280.png") no-repeat */
+  /* center; */
   background-size: cover;
 }
