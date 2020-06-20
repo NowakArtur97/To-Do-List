@@ -1,5 +1,5 @@
-import DragAndDrop from "../app/js/logic/drag-and-drop";
+import DragAndDrop from "../app/js/logic/drag-and-drop.js";
 
-export default main = () => {
+export default function main() {
   const noteTest = new DragAndDrop(document.querySelector(".draggable"));
-};
+}
