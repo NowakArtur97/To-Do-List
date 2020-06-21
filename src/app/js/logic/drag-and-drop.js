@@ -1,10 +1,6 @@
 import Offset from "../model/offset.js";
 
 export default class DragAndDrop {
-  // element = null;
-  // offset = null;
-  // isDragged = false;
-
   constructor(element) {
     this.element = element;
     this.offset = new Offset(0, 0);
