@@ -8,6 +8,10 @@
     "start": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js"
   },
+  "browserslist": [
+    "last 1 version",
+    "> 1%"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NowakArtur97/ToDo-List.git"
@@ -19,6 +23,9 @@
   },
   "homepage": "https://github.com/NowakArtur97/ToDo-List#readme",
   "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
