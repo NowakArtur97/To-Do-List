@@ -1,8 +1,14 @@
 .note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: absolute;
+
   width: 20vh;
   min-height: 20vh;
   border: 1px solid rgba(0, 0, 0, 0.25);
+
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   background-color: #cbfafa;
 }
@@ -13,5 +19,27 @@
 
 .note__text {
   margin: 1em;
+
+  text-align: center;
   user-select: none;
+}
+
+.note--small {
+  width: 10vh;
+  height: 10vh;
+  min-height: 10vh;
+}
+
+.note--transparent {
+  opacity: 0.7;
+  transition: opacity 0.3s linear;
+}
+
+.note--transparent:hover {
+  opacity: 1;
+}
+
+.note--bottom-right {
+  right: 6%;
+  bottom: 6%;
 }
