@@ -1,4 +1,4 @@
-import Offset from "../model/offset.js";
+import Offset from "../model/Offset";
 
 export default class DragAndDrop {
   constructor(element) {

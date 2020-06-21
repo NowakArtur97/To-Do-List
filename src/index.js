@@ -1,4 +1,4 @@
-import main from "./app/to-do-app.js";
+import main from "./app/ToDoApp";
 import "./app/css/index.css";
 
 main();
