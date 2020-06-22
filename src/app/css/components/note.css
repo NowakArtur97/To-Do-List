@@ -24,26 +24,6 @@
   transform: rotate(10deg);
 }
 
-.note--small {
-  width: 10vh;
-  height: 10vh;
-  min-height: 10vh;
-}
-
-.note--transparent {
-  opacity: 0.7;
-  transition: transform 0.3s linear, opacity 0.3s linear;
-}
-
-.note--transparent:hover {
-  opacity: 1;
-}
-
-.note--bottom-right {
-  right: 6%;
-  bottom: 6%;
-}
-
 .note__text {
   margin: 1em;
 

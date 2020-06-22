@@ -1,3 +1,20 @@
+.note_form_popup_trigger {
+  position: absolute;
+  right: 6%;
+  top: 6%;
+
+  width: 10vh;
+  height: 10vh;
+  min-height: 10vh;
+
+  opacity: 0.7;
+  transition: transform 0.3s linear, opacity 0.3s linear;
+}
+
+.note_form_popup_trigger:hover {
+  opacity: 1;
+}
+
 .note_popup_container {
   position: relative;
 
@@ -10,11 +27,12 @@
 
   background-color: rgba(0, 0, 0, 0.65);
 
+  transform: scale(0);
   transition: transform 0.3s linear;
 }
 
-.note_popup_container--hidden {
-  transform: scale(0);
+.note_popup_container--active {
+  transform: scale(1);
 }
 
 .note_popup {
@@ -36,7 +54,6 @@
 
 .note_popup__close_btn {
   border: none;
-  border-radius: 50%;
 
   background-color: transparent;
 
@@ -48,4 +65,9 @@
 
 .note_popup__close_btn:hover {
   transform: scale(1.6);
+}
+
+.note_popup__close_btn:focus {
+  outline: none;
+  border: solid 1px black;
 }
