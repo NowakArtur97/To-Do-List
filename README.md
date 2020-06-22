@@ -5,8 +5,8 @@
 - [General info](#general-info)
 - [Built With](#built-with)
 - [Features](#features)
-- [Getting Started](#getting-started)
 - [To Do](#to-do)
+- [Getting Started](#getting-started)
 - [Status](#status)
 
 ## General info
@@ -23,6 +23,10 @@ Todo list app built in HTML, CSS and JavaScript. It has been designed in such a 
 ## Features
 
 - Drag and drop notes
+
+## To Do
+
+- Create/Update/Delete/Filter tasks
 
 ## Getting Started
 
@@ -53,10 +57,6 @@ npm run build
 ```
 
 Then go to the dist folder and open the index.html file in your browser.
-
-## To Do
-
-- Create/Update/Delete/Filter tasks
 
 ## Status
 
