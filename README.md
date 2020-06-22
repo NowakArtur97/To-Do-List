@@ -4,6 +4,7 @@
 
 - [General info](#general-info)
 - [Built With](#built-with)
+- [Features](#features)
 - [Getting Started](#getting-started)
 - [To Do](#to-do)
 - [Status](#status)
@@ -18,6 +19,10 @@ Todo list app built in HTML, CSS and JavaScript. It has been designed in such a 
 - CSS
 - Vanilla JS ES6+
 - Webpack
+
+## Features
+
+- Drag and drop notes
 
 ## Getting Started
 
@@ -35,7 +40,7 @@ git clone https://github.com/NowakArtur97/ToDo-List.git
 npm install
 ```
 
-3. Run project in development mode:
+3. Run project in development mode (the application will automatically open in the browser on port 8081):
 
 ```
 npm start
@@ -46,6 +51,8 @@ npm start
 ```
 npm run build
 ```
+
+Then go to the dist folder and open the index.html file in your browser.
 
 ## To Do
 

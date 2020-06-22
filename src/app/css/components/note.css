@@ -24,13 +24,6 @@
   transform: rotate(10deg);
 }
 
-.note__text {
-  margin: 1em;
-
-  text-align: center;
-  user-select: none;
-}
-
 .note--small {
   width: 10vh;
   height: 10vh;
@@ -49,4 +42,11 @@
 .note--bottom-right {
   right: 6%;
   bottom: 6%;
+}
+
+.note__text {
+  margin: 1em;
+
+  text-align: center;
+  user-select: none;
 }

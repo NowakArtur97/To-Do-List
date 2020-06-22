@@ -1,0 +1,51 @@
+.note_popup_container {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.65);
+
+  transition: transform 0.3s linear;
+}
+
+.note_popup_container--hidden {
+  transform: scale(0);
+}
+
+.note_popup {
+  position: relative;
+
+  width: 40vh;
+  height: 40vh;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  background-color: #7082be;
+}
+
+.note_popup__close_btn_container {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+
+.note_popup__close_btn {
+  border: none;
+  border-radius: 50%;
+
+  background-color: transparent;
+
+  font-size: 4rem;
+  color: rgb(175, 18, 18);
+
+  transition: transform 0.3s linear;
+}
+
+.note_popup__close_btn:hover {
+  transform: scale(1.6);
+}
