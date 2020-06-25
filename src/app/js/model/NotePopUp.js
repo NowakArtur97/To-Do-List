@@ -2,8 +2,9 @@ import DOMElements from "../dom/DOMElements";
 import DOMClasses from "../dom/DOMClasses";
 
 export default class NotePopUp {
-  constructor(taskService) {
+  constructor(taskService, noteService) {
     this.taskService = taskService;
+    this.noteService = noteService;
 
     this.addEventListeners();
   }
@@ -27,6 +28,7 @@ export default class NotePopUp {
 
   createTask(e) {
     e.preventDefault();
-    this.taskService.create(DOMElements.noteForm);
+    const task = this.taskService.create(DOMElements.noteForm);
+    this.noteService.create(task, true);
   }
 }

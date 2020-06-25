@@ -1,4 +1,4 @@
-import Note from "../model/Note";
+import Note from "./NoteService";
 
 export default class TaskService {
   constructor(formUtil) {
@@ -7,6 +7,7 @@ export default class TaskService {
 
   create(form) {
     const task = this.formUtil.extractData(form);
-    const note = new Note(task);
+
+    return task;
   }
 }

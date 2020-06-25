@@ -5,6 +5,7 @@ export default class DragAndDrop {
     this.element = element;
     this.offset = new Offset(0, 0);
     this.isDragged = false;
+    this.element.classList.add("draggable");
 
     this.addEventListeners();
   }

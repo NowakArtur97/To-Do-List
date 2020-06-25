@@ -1,4 +1,5 @@
 export default {
+  board: { main: "board" },
   note: { main: "note", text: "note__text" },
   noteFormPopUpTrigger: { main: "note_form_popup_trigger" },
   noteFormPopUp: {
