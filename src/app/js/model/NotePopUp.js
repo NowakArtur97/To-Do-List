@@ -2,7 +2,9 @@ import DOMElements from "../dom/DOMElements";
 import DOMClasses from "../dom/DOMClasses";
 
 export default class NotePopUp {
-  constructor() {
+  constructor(taskService) {
+    this.taskService = taskService;
+
     this.addEventListeners();
   }
 
@@ -12,6 +14,7 @@ export default class NotePopUp {
       "click",
       this.closePopUp
     );
+    DOMElements.noteForm.addEventListener("submit", this.createTask.bind(this));
   }
 
   showPopUp() {
@@ -20,5 +23,10 @@ export default class NotePopUp {
 
   closePopUp() {
     DOMElements.noteFormPopUp.classList.remove(DOMClasses.noteFormPopUp.active);
+  }
+
+  createTask(e) {
+    e.preventDefault();
+    this.taskService.createTask(e);
   }
 }

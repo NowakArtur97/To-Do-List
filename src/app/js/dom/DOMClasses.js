@@ -6,4 +6,7 @@ export default {
     active: "note_popup_container--active",
     closeBtn: "note_popup__close_btn",
   },
+  noteForm: {
+    main: "note_form",
+  },
 };
