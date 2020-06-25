@@ -1,7 +1,9 @@
 export default class TaskService {
-  constructor() {}
+  constructor(formUtil) {
+    this.formUtil = formUtil;
+  }
 
-  createTask(data) {
-    console.log(data);
+  create(form) {
+    console.log(this.formUtil.extractData(form));
   }
 }

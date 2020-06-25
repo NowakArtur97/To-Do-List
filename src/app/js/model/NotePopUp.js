@@ -27,6 +27,6 @@ export default class NotePopUp {
 
   createTask(e) {
     e.preventDefault();
-    this.taskService.createTask(e);
+    this.taskService.create(DOMElements.noteForm);
   }
 }
