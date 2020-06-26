@@ -17,8 +17,6 @@
 
 .note:hover {
   cursor: pointer;
-
-  transform: scale(1.3);
 }
 
 .note__text {
@@ -26,4 +24,23 @@
 
   text-align: center;
   user-select: none;
+}
+
+.note__delete_btn {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+
+  border: none;
+
+  background-color: transparent;
+
+  font-size: 2rem;
+  color: rgb(175, 18, 18);
+
+  transition: transform 0.3s linear;
+}
+
+.note__delete_btn:hover {
+  transform: scale(1.6);
 }

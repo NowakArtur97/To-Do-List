@@ -11,7 +11,6 @@ export default class TaskService {
     task.id = this.tasks.length > 0 ? this.tasks.length + 1 : 1;
 
     this.tasks.push(task);
-    console.log(this.tasks);
     this.localStorageService.save("tasks", this.tasks);
 
     return task;

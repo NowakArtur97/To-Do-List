@@ -12,4 +12,8 @@ export default class LocalStorageService {
       return JSON.parse(localStorage.getItem(name));
     }
   }
+
+  remove(name) {
+    localStorage.removeItem(name);
+  }
 }

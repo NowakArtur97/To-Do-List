@@ -28,9 +28,15 @@ export default class NoteService {
       new DragAndDrop(noteEl);
     }
 
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add(DOMClasses.note.deleteBtn);
+    deleteBtn.innerText = "X";
+
     this.addEventListeners(noteEl, randomRotation);
 
+    noteEl.appendChild(deleteBtn);
     noteEl.appendChild(descriptionEl);
+
     DOMElements.board.appendChild(noteEl);
   }
 
