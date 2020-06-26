@@ -14,5 +14,16 @@ export default function main() {
   const noteService = new NoteService(randomUtil);
   const notePopUp = new NotePopUp(taskService, noteService);
 
-  const noteTest = new DragAndDrop(document.querySelector(".draggable"));
+  createDummyNotes(noteService);
+}
+
+function createDummyNotes(noteService) {
+  noteService.create({
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, sed sit, architecto hic omnis consequuntur eligendi laudantium.",
+  });
+  noteService.create({
+    description:
+      "Donec sollicitudin molestie malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui",
+  });
 }

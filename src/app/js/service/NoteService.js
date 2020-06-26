@@ -1,6 +1,7 @@
 import DragAndDrop from "../logic/DragAndDrop";
 import DOMClasses from "../dom/DOMClasses";
 import DOMElements from "../dom/DOMElements";
+import Colors from "../state/Colors";
 
 export default class NoteService {
   constructor(randomUtil) {
@@ -15,21 +16,27 @@ export default class NoteService {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
 
+    this.setRandomColor(noteEl);
     this.setRandomPosition(noteEl);
     const randomRotation = this.setRandomRotation(noteEl);
 
     const descriptionEl = document.createElement("p");
     descriptionEl.classList.add(DOMClasses.note.description);
     descriptionEl.innerText = description;
-    noteEl.appendChild(descriptionEl);
 
     if (true) {
       new DragAndDrop(noteEl);
     }
 
-    this.setEventListeners(noteEl, randomRotation);
+    this.addEventListeners(noteEl, randomRotation);
 
+    noteEl.appendChild(descriptionEl);
     DOMElements.board.appendChild(noteEl);
+  }
+
+  setRandomColor(noteEl) {
+    const color = Colors[this.randomUtil.getRandomNumber(0, Colors.length)];
+    noteEl.style.backgroundColor = `#${color}`;
   }
 
   setRandomPosition(noteEl) {
@@ -49,7 +56,7 @@ export default class NoteService {
     )}deg)`);
   }
 
-  setEventListeners(noteEl, randomRotation) {
+  addEventListeners(noteEl, randomRotation) {
     noteEl.addEventListener(
       "mouseover",
       () => (noteEl.style.transform = this.NOTE_HOVER_SCALE)
