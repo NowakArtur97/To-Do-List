@@ -7,7 +7,8 @@ export default class NoteService {
     this.randomUtil = randomUtil;
 
     this.MAX_NOTE_ROTATION = 15;
-    this.NOTE_HOVER_SCALE = "scale(1.3)";
+    this.NOTE_HOVER_SCALE_VALUE = 1.3;
+    this.NOTE_HOVER_SCALE = `scale(${this.NOTE_HOVER_SCALE_VALUE})`;
   }
 
   create({ description }) {
