@@ -1,6 +1,10 @@
 export default {
   board: { main: "board" },
-  note: { main: "note", description: "note__text", rotated: "note--rotated" },
+  note: {
+    main: "note",
+    description: "note__text",
+    container: "note_container",
+  },
   noteFormPopUpTrigger: { main: "note_form_popup_trigger" },
   noteFormPopUp: {
     main: "note_popup_container",

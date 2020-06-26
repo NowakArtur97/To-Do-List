@@ -23,6 +23,7 @@ Todo list app built in HTML, CSS and JavaScript. It has been designed in such a 
 ## Features
 
 - Drag and drop notes
+- Create Note
 
 ## To Do
 
