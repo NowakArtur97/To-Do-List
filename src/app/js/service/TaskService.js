@@ -3,7 +3,7 @@ export default class TaskService {
     this.formUtil = formUtil;
     this.localStorageService = localStorageService;
 
-    this.tasks = [];
+    this.tasks = localStorageService.get("tasks") || [];
   }
 
   create(form) {
@@ -12,6 +12,12 @@ export default class TaskService {
 
     this.tasks.push(task);
     console.log(this.tasks);
+    this.localStorageService.save("tasks", this.tasks);
+
     return task;
+  }
+
+  getAll() {
+    return this.localStorageService.get("tasks") || [];
   }
 }

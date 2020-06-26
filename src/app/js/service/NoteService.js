@@ -34,6 +34,10 @@ export default class NoteService {
     DOMElements.board.appendChild(noteEl);
   }
 
+  createAll(tasks = []) {
+    tasks.forEach((task) => this.create(task));
+  }
+
   setRandomColor(noteEl) {
     const color = Colors[this.randomUtil.getRandomNumber(0, Colors.length)];
     noteEl.style.backgroundColor = `#${color}`;

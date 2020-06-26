@@ -13,18 +13,9 @@ export default function main() {
   const localStorageService = new LocalStorageService();
   const taskService = new TaskService(formUtil, localStorageService);
   const noteService = new NoteService(randomUtil);
+
+  const tasks = taskService.getAll();
+  noteService.createAll(tasks);
+
   const notePopUp = new NotePopUp(taskService, noteService);
-
-  createDummyNotes(noteService);
-}
-
-function createDummyNotes(noteService) {
-  noteService.create({
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, sed sit, architecto hic omnis consequuntur eligendi laudantium.",
-  });
-  noteService.create({
-    description:
-      "Donec sollicitudin molestie malesuada. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui",
-  });
 }
