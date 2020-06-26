@@ -45,8 +45,11 @@ export default class NoteService {
       width: boardWidth,
     } = DOMElements.board.getBoundingClientRect();
 
-    noteEl.style.top = `${this.randomUtil.getRandomNumber(0, boardHeight)}px`;
-    noteEl.style.left = `${this.randomUtil.getRandomNumber(0, boardWidth)}px`;
+    const randomHeight = this.randomUtil.getRandomNumber(0, boardHeight * 0.8);
+    const randomWidth = this.randomUtil.getRandomNumber(0, boardWidth * 0.8);
+
+    noteEl.style.top = `${randomHeight}px`;
+    noteEl.style.left = `${randomWidth}px`;
   }
 
   setRandomRotation(noteEl) {

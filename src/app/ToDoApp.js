@@ -3,7 +3,6 @@ import RandomUtil from "./js/util/RandomUtil";
 import TaskService from "./js/service/TaskService";
 import NoteService from "./js/service/NoteService";
 
-import DragAndDrop from "./js/logic/DragAndDrop";
 import NotePopUp from "./js/model/NotePopUp";
 
 export default function main() {
