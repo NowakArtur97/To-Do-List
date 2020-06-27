@@ -42,5 +42,5 @@
 }
 
 .note__delete_btn:hover {
-  transform: scale(1.6);
+  cursor: pointer;
 }

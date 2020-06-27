@@ -1,6 +1,6 @@
-import Offset from "../model/Offset";
+import Offset from "./Offset";
 
-export default class DragAndDrop {
+export default class DraggableElement {
   constructor(element) {
     this.element = element;
     this.offset = new Offset(0, 0);

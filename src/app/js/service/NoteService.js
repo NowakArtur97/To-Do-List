@@ -1,4 +1,4 @@
-import DragAndDrop from "../logic/DragAndDrop";
+import DraggableElement from "../model/DraggableElement";
 import DOMClasses from "../dom/DOMClasses";
 import DOMElements from "../dom/DOMElements";
 import Colors from "../state/Colors";
@@ -8,8 +8,9 @@ export default class NoteService {
     this.randomUtil = randomUtil;
 
     this.MAX_NOTE_ROTATION = 15;
-    this.NOTE_HOVER_SCALE_VALUE = 1.3;
-    this.NOTE_HOVER_SCALE = `scale(${this.NOTE_HOVER_SCALE_VALUE})`;
+
+    const NOTE_HOVER_SCALE_VALUE = 1.3;
+    this.NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
   }
 
   create({ id, description }) {
@@ -26,7 +27,7 @@ export default class NoteService {
     descriptionEl.innerText = description;
 
     if (true) {
-      new DragAndDrop(noteEl);
+      new DraggableElement(noteEl);
     }
 
     const deleteBtn = document.createElement("button");
@@ -86,14 +87,15 @@ export default class NoteService {
     );
   }
 
-  addDeleteBtnEventListeners(noteEl, randomRotation) {
-    noteEl.addEventListener(
+  addDeleteBtnEventListeners(deleteBtnEl, randomRotation) {
+    console.log();
+    deleteBtnEl.addEventListener(
       "mouseover",
-      () => (noteEl.style.transform = this.NOTE_HOVER_SCALE)
+      () => (deleteBtnEl.style.transform = this.NOTE_HOVER_SCALE)
     );
-    noteEl.addEventListener(
+    deleteBtnEl.addEventListener(
       "mouseleave",
-      () => (noteEl.style.transform = randomRotation)
+      () => (deleteBtnEl.style.transform = `scale(1)`)
     );
   }
 }
