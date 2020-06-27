@@ -8,6 +8,7 @@
 - [To Do](#to-do)
 - [Getting Started](#getting-started)
 - [Status](#status)
+- [Screenshots](#screenshots)
 
 ## General info
 
@@ -15,20 +16,23 @@ Todo list app built in HTML, CSS and JavaScript. It has been designed in such a 
 
 ## Built With
 
+Stack:
+
 - HTML
 - CSS
 - Vanilla JS ES6+
 - Webpack
+- Design patterns: Observer
 
 ## Features
 
 - Drag and drop notes
-- Create note
-- Save and load tasks from local storage
+- Create and delete notes
+- Get, save and delete tasks from local storage
 
 ## To Do
 
-- Create/Update/Delete/Filter tasks
+- Update/Filter/Delete all tasks
 
 ## Getting Started
 
@@ -63,3 +67,9 @@ Then go to the dist folder and open the index.html file in your browser.
 ## Status
 
 Project is: in progess
+
+## Screenshots
+
+![ToDo List](./screenshots/main-view.jpg)
+
+<p style="text-align: center">ToDo List</p>
