@@ -17,4 +17,8 @@ export default class TaskService {
   getAll() {
     return this.localStorageService.get("tasks") || [];
   }
+
+  getNextIndex() {
+    return this.tatsks.length > 0 ? this.tasks.length + 1 : 1;
+  }
 }
