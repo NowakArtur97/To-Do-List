@@ -12,9 +12,10 @@ export default class NoteService {
     this.NOTE_HOVER_SCALE = `scale(${this.NOTE_HOVER_SCALE_VALUE})`;
   }
 
-  create({ description }) {
+  create({ id, description }) {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
+    noteEl.dataset.id = id;
 
     this.setRandomColor(noteEl);
     this.setRandomPosition(noteEl);
@@ -43,6 +44,10 @@ export default class NoteService {
 
   createAll(tasks = []) {
     tasks.forEach((task) => this.create(task));
+  }
+
+  delete(note) {
+    note.remove();
   }
 
   setRandomColor(noteEl) {

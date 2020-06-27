@@ -6,12 +6,9 @@ import NoteService from "./js/service/NoteService";
 import LocalStorageService from "./js/service/LocalStorageService";
 
 import NotePopUp from "./js/model/NotePopUp";
-
-import ObserverManager from "./js/observer/ObserverManager";
+import CorkBoard from "./js/model/CorkBoard";
 
 export default function main() {
-  const observerManager = new ObserverManager("create");
-
   const formUtil = new FormUtil();
   const randomUtil = new RandomUtil();
 
@@ -22,8 +19,12 @@ export default function main() {
   const tasks = taskService.getAll();
   noteService.createAll(tasks);
 
-  observerManager.subscribe("create", taskService);
-  observerManager.subscribe("create", noteService);
-
   const notePopUp = new NotePopUp(formUtil, taskService, noteService);
+  const corkBoard = new CorkBoard();
+
+  notePopUp.events.subscribe("create", noteService);
+  notePopUp.events.subscribe("create", taskService);
+
+  corkBoard.events.subscribe("delete", noteService);
+  corkBoard.events.subscribe("delete", taskService);
 }

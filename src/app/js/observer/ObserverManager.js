@@ -1,21 +1,22 @@
 export default class ObserverManager {
-  constructor(...operations) {
+  constructor(...events) {
     this.observers = new Map();
 
-    operations.forEach((operation) => this.observers.set(operation, []));
+    events.forEach((event) => this.observers.set(event, []));
   }
 
-  subscribe(operation, observer) {
-    this.observers.get(operation).push(observer);
+  subscribe(event, observer) {
+    this.observers.get(event).push(observer);
   }
 
-  unsubscribe(operation, observer) {
-    const eventObservers = this.observers.get(operation);
+  unsubscribe(event, observer) {
+    const eventObservers = this.observers.get(event);
     const indexToRemove = eventObservers.indexOf(observer);
     eventObservers.splice(indexToRemove, 1);
   }
 
-  notify(operation, data) {
-    this.observers.forEach((observer) => observer[operation](data));
+  notify(event, data) {
+    const eventObservers = this.observers.get(event);
+    eventObservers.forEach((observer) => observer[event](data));
   }
 }
