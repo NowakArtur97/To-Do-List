@@ -1,13 +1,11 @@
 export default class TaskService {
-  constructor(formUtil, localStorageService) {
-    this.formUtil = formUtil;
+  constructor(localStorageService) {
     this.localStorageService = localStorageService;
 
     this.tasks = localStorageService.get("tasks") || [];
   }
 
-  create(form) {
-    const task = this.formUtil.extractData(form);
+  create(task) {
     task.id = this.tasks.length > 0 ? this.tasks.length + 1 : 1;
 
     this.tasks.push(task);

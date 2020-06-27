@@ -12,11 +12,11 @@ export default function main() {
   const randomUtil = new RandomUtil();
 
   const localStorageService = new LocalStorageService();
-  const taskService = new TaskService(formUtil, localStorageService);
+  const taskService = new TaskService(localStorageService);
   const noteService = new NoteService(randomUtil);
 
   const tasks = taskService.getAll();
   noteService.createAll(tasks);
 
-  const notePopUp = new NotePopUp(taskService, noteService);
+  const notePopUp = new NotePopUp(formUtil, taskService, noteService);
 }

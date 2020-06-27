@@ -32,7 +32,8 @@ export default class NoteService {
     deleteBtn.classList.add(DOMClasses.note.deleteBtn);
     deleteBtn.innerText = "X";
 
-    this.addEventListeners(noteEl, randomRotation);
+    this.addNoteEventListeners(noteEl, randomRotation);
+    this.addDeleteBtnEventListeners(deleteBtn);
 
     noteEl.appendChild(deleteBtn);
     noteEl.appendChild(descriptionEl);
@@ -69,7 +70,18 @@ export default class NoteService {
     )}deg)`);
   }
 
-  addEventListeners(noteEl, randomRotation) {
+  addNoteEventListeners(noteEl, randomRotation) {
+    noteEl.addEventListener(
+      "mouseover",
+      () => (noteEl.style.transform = this.NOTE_HOVER_SCALE)
+    );
+    noteEl.addEventListener(
+      "mouseleave",
+      () => (noteEl.style.transform = randomRotation)
+    );
+  }
+
+  addDeleteBtnEventListeners(noteEl, randomRotation) {
     noteEl.addEventListener(
       "mouseover",
       () => (noteEl.style.transform = this.NOTE_HOVER_SCALE)
