@@ -16,9 +16,7 @@ export default class TaskService {
 
   update(updatedTask) {
     let taskToUpdate = this.tasks.find((task) => task.id == updatedTask.id);
-    console.table(updatedTask);
-    console.table(taskToUpdate);
-    taskToUpdate = Object.assign(taskToUpdate, updatedTask);
+    Object.assign(taskToUpdate, updatedTask);
     this.localStorageService.save("tasks", this.tasks);
   }
 

@@ -3,8 +3,6 @@ import DOMClasses from "./DOMClasses";
 export default {
   board: document.querySelector(`.${DOMClasses.board.main}`),
 
-  notes: document.querySelectorAll(`.${DOMClasses.note.main}`),
-
   noteFormPopUpTrigger: document.querySelector(
     `.${DOMClasses.noteFormPopUpTrigger.main}`
   ),

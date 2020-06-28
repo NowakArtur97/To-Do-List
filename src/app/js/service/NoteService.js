@@ -44,8 +44,19 @@ export default class NoteService {
     DOMElements.board.appendChild(noteEl);
   }
 
-  update(task) {
-    console.log("NOTE SERVICE " + task);
+  update(updatedTask) {
+    const noteToUpdate = [
+      ...document.querySelectorAll(`.${DOMClasses.note.main}`),
+    ].find((note) => note.dataset.id == updatedTask.id);
+
+    noteToUpdate.dataset.id = updatedTask.id;
+
+    noteToUpdate.childNodes.forEach((element) => {
+      const property = element.dataset.field;
+      if (property) {
+        element.innerText = updatedTask[property];
+      }
+    });
   }
 
   createAll(tasks = []) {
