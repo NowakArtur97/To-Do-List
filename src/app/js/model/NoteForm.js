@@ -24,4 +24,22 @@ export default class NoteForm {
 
     this.events.notify("create", task);
   }
+
+  populateForm(note) {
+    const task = this.getTaskFromNote(note);
+    this.formUtil.populateData(DOMElements.noteForm, task);
+  }
+
+  getTaskFromNote(note) {
+    const task = {};
+
+    note.childNodes.forEach((element) => {
+      const property = element.dataset.field;
+      if (property) {
+        task[property] = element.innerText;
+      }
+    });
+
+    return task;
+  }
 }

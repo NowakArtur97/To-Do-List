@@ -25,6 +25,7 @@ export default class NoteService {
     const descriptionEl = document.createElement("p");
     descriptionEl.classList.add(DOMClasses.note.description);
     descriptionEl.innerText = description;
+    descriptionEl.dataset.field = "description";
 
     if (true) {
       new DraggableElement(noteEl);

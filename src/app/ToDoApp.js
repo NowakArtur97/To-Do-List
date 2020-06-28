@@ -22,7 +22,7 @@ export default function main() {
 
   const notePopUp = new NotePopUp();
   const noteForm = new NoteForm(formUtil, taskService, noteService);
-  const corkBoard = new CorkBoard();
+  const corkBoard = new CorkBoard(notePopUp, noteForm);
 
   noteForm.events.subscribe("create", noteService);
   noteForm.events.subscribe("create", taskService);
