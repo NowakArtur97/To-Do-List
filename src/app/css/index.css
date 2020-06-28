@@ -2,6 +2,7 @@
 
 @import "base/base.css";
 @import "base/normalize.css";
+@import "base/common.css";
 
 @import "components/board.css";
 @import "components/note.css";

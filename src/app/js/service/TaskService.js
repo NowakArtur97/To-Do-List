@@ -14,6 +14,10 @@ export default class TaskService {
     return task;
   }
 
+  update(task) {
+    const taskToUpdate = this.tasks.find(task.id === id);
+  }
+
   delete({ dataset }) {
     const id = dataset.id;
     const taskToDelete = this.tasks.filter((task) => task.id === id);

@@ -44,6 +44,10 @@ export default class NoteService {
     DOMElements.board.appendChild(noteEl);
   }
 
+  update(task) {
+    console.log("NOTE SERVICE " + task);
+  }
+
   createAll(tasks = []) {
     tasks.forEach((task) => this.create(task));
   }

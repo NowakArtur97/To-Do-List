@@ -8,7 +8,7 @@ export default class NoteForm {
     this.noteService = noteService;
     this.formUtil = formUtil;
 
-    this.events = new ObserverManager("create");
+    this.events = new ObserverManager("create", "update");
 
     this.addEventListeners();
   }
@@ -20,9 +20,14 @@ export default class NoteForm {
   createTask(e) {
     e.preventDefault();
     const task = this.formUtil.extractData(DOMElements.noteForm);
-    task.id = this.taskService.getNextIndex();
+    if (task.id) {
+      this.events.notify("update", task);
+    } else {
+      task.id = task.id || this.taskService.getNextIndex();
+      this.events.notify("create", task);
+    }
 
-    this.events.notify("create", task);
+    this.formUtil.resetForm(DOMElements.noteForm);
   }
 
   populateForm(note) {

@@ -11,10 +11,19 @@ export default class FormUtil {
   populateData(form, data) {
     const elements = [...form.elements];
     for (let key of Object.keys(data)) {
-      const element = elements.filter((el) => el.name === key)[0];
+      const element = elements.find((el) => el.name === key);
       if (element) {
         element.value = data[key];
       }
     }
+  }
+
+  resetForm(form) {
+    form.reset();
+    [...form.elements].forEach((element) => {
+      if (element.type === "hidden") {
+        element.value = "";
+      }
+    });
   }
 }

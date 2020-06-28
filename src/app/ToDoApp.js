@@ -29,4 +29,7 @@ export default function main() {
 
   corkBoard.events.subscribe("delete", noteService);
   corkBoard.events.subscribe("delete", taskService);
+
+  noteForm.events.subscribe("update", noteService);
+  noteForm.events.subscribe("update", taskService);
 }
