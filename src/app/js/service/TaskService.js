@@ -14,8 +14,12 @@ export default class TaskService {
     return task;
   }
 
-  update(task) {
-    const taskToUpdate = this.tasks.find(task.id === id);
+  update(updatedTask) {
+    let taskToUpdate = this.tasks.find((task) => task.id == updatedTask.id);
+    console.table(updatedTask);
+    console.table(taskToUpdate);
+    taskToUpdate = Object.assign(taskToUpdate, updatedTask);
+    this.localStorageService.save("tasks", this.tasks);
   }
 
   delete({ dataset }) {
