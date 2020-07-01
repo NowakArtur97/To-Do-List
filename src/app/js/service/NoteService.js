@@ -1,26 +1,19 @@
 import DraggableElement from "../model/DraggableElement";
 import DOMClasses from "../dom/DOMClasses";
 import DOMElements from "../dom/DOMElements";
-import Colors from "../state/Colors";
 
 export default class NoteService {
-  constructor(randomUtil) {
-    this.randomUtil = randomUtil;
+  constructor() {}
 
-    this.MAX_NOTE_ROTATION = 15;
-
-    const NOTE_HOVER_SCALE_VALUE = 1.3;
-    this.NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
-  }
-
-  create({ id, description }) {
+  create({ id, description, color, randomHeight, randomWidth, rotation }) {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
 
-    this.setRandomColor(noteEl);
-    this.setRandomPosition(noteEl);
-    const randomRotation = this.setRandomRotation(noteEl);
+    noteEl.style.backgroundColor = `#${color}`;
+    noteEl.style.top = `${randomHeight}px`;
+    noteEl.style.left = `${randomWidth}px`;
+    noteEl.style.transform = `rotate(${rotation}deg)`;
 
     const descriptionEl = document.createElement("p");
     descriptionEl.classList.add(DOMClasses.note.description);
@@ -35,7 +28,7 @@ export default class NoteService {
     deleteBtn.classList.add(DOMClasses.note.deleteBtn);
     deleteBtn.innerText = "X";
 
-    this.addNoteEventListeners(noteEl, randomRotation);
+    this.addNoteEventListeners(noteEl, rotation);
     this.addDeleteBtnEventListeners(deleteBtn);
 
     noteEl.appendChild(deleteBtn);
@@ -67,31 +60,6 @@ export default class NoteService {
     note.remove();
   }
 
-  setRandomColor(noteEl) {
-    const color = Colors[this.randomUtil.getRandomNumber(0, Colors.length)];
-    noteEl.style.backgroundColor = `#${color}`;
-  }
-
-  setRandomPosition(noteEl) {
-    const {
-      height: boardHeight,
-      width: boardWidth,
-    } = DOMElements.board.getBoundingClientRect();
-
-    const randomHeight = this.randomUtil.getRandomNumber(0, boardHeight * 0.8);
-    const randomWidth = this.randomUtil.getRandomNumber(0, boardWidth * 0.8);
-
-    noteEl.style.top = `${randomHeight}px`;
-    noteEl.style.left = `${randomWidth}px`;
-  }
-
-  setRandomRotation(noteEl) {
-    return (noteEl.style.transform = `rotate(${this.randomUtil.getRandomNumber(
-      -this.MAX_NOTE_ROTATION,
-      this.MAX_NOTE_ROTATION
-    )}deg)`);
-  }
-
   addNoteEventListeners(noteEl, randomRotation) {
     noteEl.addEventListener(
       "mouseover",
@@ -103,7 +71,7 @@ export default class NoteService {
     );
   }
 
-  addDeleteBtnEventListeners(deleteBtnEl, randomRotation) {
+  addDeleteBtnEventListeners(deleteBtnEl) {
     console.log();
     deleteBtnEl.addEventListener(
       "mouseover",
