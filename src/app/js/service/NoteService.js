@@ -3,7 +3,10 @@ import DOMClasses from "../dom/DOMClasses";
 import DOMElements from "../dom/DOMElements";
 
 export default class NoteService {
-  constructor() {}
+  constructor() {
+    const NOTE_HOVER_SCALE_VALUE = 1.3;
+    this.NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
+  }
 
   create({ id, description, color, randomHeight, randomWidth, rotation }) {
     const noteEl = document.createElement("div");
@@ -67,7 +70,7 @@ export default class NoteService {
     );
     noteEl.addEventListener(
       "mouseleave",
-      () => (noteEl.style.transform = randomRotation)
+      () => (noteEl.style.transform = `rotate(${randomRotation}deg)`)
     );
   }
 

@@ -6,9 +6,6 @@ export default class NotePropertiesUtil {
     this.randomUtil = randomUtil;
 
     this.MAX_NOTE_ROTATION = 15;
-
-    const NOTE_HOVER_SCALE_VALUE = 1.3;
-    this.NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
   }
 
   getRandomColor() {

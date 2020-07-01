@@ -28,9 +28,11 @@ export default class DraggableElement {
     if (!this.isDragged) {
       return;
     }
-    const { clientX: xPos, clientY: yPos } = e;
-    this.element.style.left = xPos + this.offset.x + "px";
-    this.element.style.top = yPos + this.offset.y + "px";
+    const { clientX, clientY } = e;
+    const xPos = clientX + this.offset.x;
+    const yPos = clientY + this.offset.y;
+    this.element.style.left = xPos + "px";
+    this.element.style.top = yPos + "px";
   }
 
   drop() {
