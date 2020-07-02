@@ -36,18 +36,4 @@ export default class TaskService {
   getNextIndex() {
     return this.tasks.length > 0 ? this.tasks.length + 1 : 1;
   }
-
-  getTaskFromNote(note) {
-    const task = {};
-    task.id = note.dataset.id;
-
-    note.childNodes.forEach((element) => {
-      const property = element.dataset.field;
-      if (property) {
-        task[property] = element.innerText;
-      }
-    });
-
-    return task;
-  }
 }

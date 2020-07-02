@@ -15,6 +15,7 @@ export default class NotePopUp {
   }
 
   showPopUp() {
+    DOMElements.noteFormSubmitBtn.innerText = "Create note";
     DOMElements.noteFormPopUp.classList.add(DOMClasses.noteFormPopUp.active);
   }
 

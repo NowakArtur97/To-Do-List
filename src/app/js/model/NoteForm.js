@@ -41,7 +41,7 @@ export default class NoteForm {
   }
 
   populateForm(note) {
-    const task = this.taskService.getTaskFromNote(note);
+    const task = this.notePropertiesUtil.getTaskFromNote(note);
     this.formUtil.populateData(DOMElements.noteForm, task);
   }
 }

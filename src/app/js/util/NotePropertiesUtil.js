@@ -30,4 +30,18 @@ export default class NotePropertiesUtil {
       this.MAX_NOTE_ROTATION
     );
   }
+
+  getTaskFromNote(note) {
+    const task = {};
+    task.id = note.dataset.id;
+
+    note.childNodes.forEach((element) => {
+      const property = element.dataset.field;
+      if (property) {
+        task[property] = element.innerText;
+      }
+    });
+
+    return task;
+  }
 }

@@ -12,4 +12,7 @@ export default {
   ),
 
   noteForm: document.querySelector(`.${DOMClasses.noteForm.main}`),
+  noteFormSubmitBtn: document.querySelector(
+    `.${DOMClasses.noteForm.submitBtn}`
+  ),
 };

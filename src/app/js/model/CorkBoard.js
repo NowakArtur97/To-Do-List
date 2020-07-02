@@ -14,13 +14,21 @@ export default class CorkBoard {
   }
 
   addEventListeners() {
-    DOMElements.board.addEventListener("dblclick", this.updateTask.bind(this));
+    DOMElements.board.addEventListener(
+      "dblclick",
+      this.showFormForUpdate.bind(this)
+    );
     DOMElements.board.addEventListener("click", this.deleteTask.bind(this));
   }
 
-  updateTask(e) {
-    if (e.target.classList.contains(DOMClasses.note.main)) {
+  showFormForUpdate(e) {
+    noteFormPopUpTrigger;
+    if (
+      e.target.classList.contains(DOMClasses.note.main) &&
+      !e.target.classList.contains(DOMClasses.noteFormPopUpTrigger.main)
+    ) {
       this.notePopUp.showPopUp();
+      DOMElements.noteFormSubmitBtn.innerText = "Update note";
       this.noteForm.populateForm(e.target);
     }
   }

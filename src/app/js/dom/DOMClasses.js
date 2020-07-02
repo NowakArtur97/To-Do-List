@@ -14,5 +14,6 @@ export default {
   },
   noteForm: {
     main: "note_form",
+    submitBtn: "note_form__btn",
   },
 };
