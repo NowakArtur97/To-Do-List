@@ -22,7 +22,6 @@ export default class CorkBoard {
   }
 
   showFormForUpdate(e) {
-    noteFormPopUpTrigger;
     if (
       e.target.classList.contains(DOMClasses.note.main) &&
       !e.target.classList.contains(DOMClasses.noteFormPopUpTrigger.main)

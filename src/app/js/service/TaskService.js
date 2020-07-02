@@ -8,7 +8,6 @@ export default class TaskService {
 
     this.tasks = localStorageService.get("tasks") || [];
 
-    Object.freeze(this.tasks);
     Object.freeze(this);
 
     TaskService.instance = this;

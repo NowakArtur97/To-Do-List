@@ -52,7 +52,6 @@ export default class DraggableElement {
         randomHeight: this.lastY,
         randomWidth: this.lastX,
       };
-      console.log(task);
       TaskService.getInstance().update(task);
     }
   }
