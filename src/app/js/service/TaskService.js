@@ -1,8 +1,21 @@
 export default class TaskService {
   constructor(localStorageService) {
+    if (TaskService.instance instanceof TaskService) {
+      return TaskService.instance;
+    }
+
     this.localStorageService = localStorageService;
 
     this.tasks = localStorageService.get("tasks") || [];
+
+    Object.freeze(this.tasks);
+    Object.freeze(this);
+
+    TaskService.instance = this;
+  }
+
+  static getInstance() {
+    return TaskService.instance;
   }
 
   create(task) {
@@ -33,7 +46,7 @@ export default class TaskService {
     return this.localStorageService.get("tasks") || [];
   }
 
-  getNextIndex() {
+  getNextAvailableIndex() {
     return this.tasks.length > 0 ? this.tasks.length + 1 : 1;
   }
 }

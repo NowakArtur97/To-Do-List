@@ -33,7 +33,7 @@ export default class NoteForm {
     if (task.id) {
       this.events.notify("update", task);
     } else {
-      task.id = task.id || this.taskService.getNextIndex();
+      task.id = task.id || this.taskService.getNextAvailableIndex();
       this.events.notify("create", task);
     }
 
