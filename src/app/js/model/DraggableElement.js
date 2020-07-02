@@ -1,9 +1,14 @@
+import DOMClasses from "../dom/DOMClasses";
+
 import Offset from "./Offset";
+import TaskService from "../service/TaskService";
 
 export default class DraggableElement {
   constructor(element) {
     this.element = element;
     this.offset = new Offset(0, 0);
+    this.lastX = null;
+    this.lastY = null;
     this.isDragged = false;
     this.element.classList.add("draggable");
 
@@ -33,9 +38,22 @@ export default class DraggableElement {
     const yPos = clientY + this.offset.y;
     this.element.style.left = xPos + "px";
     this.element.style.top = yPos + "px";
+
+    this.lastX = xPos;
+    this.lastY = yPos;
   }
 
   drop() {
     this.isDragged = false;
+
+    if (this.element.classList.contains(DOMClasses.note.main)) {
+      const task = {
+        id: this.element.dataset.id,
+        randomHeight: this.lastY,
+        randomWidth: this.lastX,
+      };
+      console.log(task);
+      TaskService.getInstance().update(task);
+    }
   }
 }
