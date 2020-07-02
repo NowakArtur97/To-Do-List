@@ -49,8 +49,8 @@ export default class DraggableElement {
     if (this.element.classList.contains(DOMClasses.note.main)) {
       const task = {
         id: this.element.dataset.id,
-        randomHeight: this.lastY,
-        randomWidth: this.lastX,
+        xPosition: this.lastX,
+        yPosition: this.lastY,
       };
       TaskService.getInstance().update(task);
     }

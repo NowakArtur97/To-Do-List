@@ -18,10 +18,10 @@ export default class NotePropertiesUtil {
       width: boardWidth,
     } = DOMElements.board.getBoundingClientRect();
 
-    const randomHeight = this.randomUtil.getRandomNumber(0, boardHeight * 0.8);
-    const randomWidth = this.randomUtil.getRandomNumber(0, boardWidth * 0.8);
+    const xPosition = this.randomUtil.getRandomNumber(0, boardWidth * 0.8);
+    const yPosition = this.randomUtil.getRandomNumber(0, boardHeight * 0.8);
 
-    return { randomHeight, randomWidth };
+    return { xPosition, yPosition };
   }
 
   getRandomRotation() {

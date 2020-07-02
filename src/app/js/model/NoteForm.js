@@ -21,19 +21,10 @@ export default class NoteForm {
   createTask(e) {
     e.preventDefault();
     const task = this.formUtil.extractData(DOMElements.noteForm);
-    task.color = this.notePropertiesUtil.getRandomColor();
-    task.rotation = this.notePropertiesUtil.getRandomRotation();
-    const {
-      randomHeight,
-      randomWidth,
-    } = this.notePropertiesUtil.getRandomPosition();
-    task.randomHeight = randomHeight;
-    task.randomWidth = randomWidth;
-
     if (task.id) {
       this.events.notify("update", task);
     } else {
-      task.id = task.id || this.taskService.getNextAvailableIndex();
+      this.setTaskProperties(task);
       this.events.notify("create", task);
     }
 
@@ -43,5 +34,17 @@ export default class NoteForm {
   populateForm(note) {
     const task = this.notePropertiesUtil.getTaskFromNote(note);
     this.formUtil.populateData(DOMElements.noteForm, task);
+  }
+
+  setTaskProperties(task) {
+    task.id = task.id || this.taskService.getNextAvailableIndex();
+    task.color = this.notePropertiesUtil.getRandomColor();
+    task.rotation = this.notePropertiesUtil.getRandomRotation();
+    const {
+      xPosition,
+      yPosition,
+    } = this.notePropertiesUtil.getRandomPosition();
+    task.xPosition = xPosition;
+    task.yPosition = yPosition;
   }
 }

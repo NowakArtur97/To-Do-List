@@ -8,14 +8,14 @@ export default class NoteService {
     this.NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
   }
 
-  create({ id, description, color, randomHeight, randomWidth, rotation }) {
+  create({ id, description, color, xPosition, yPosition, rotation }) {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
 
     noteEl.style.backgroundColor = `#${color}`;
-    noteEl.style.top = `${randomHeight}px`;
-    noteEl.style.left = `${randomWidth}px`;
+    noteEl.style.top = `${yPosition}px`;
+    noteEl.style.left = `${xPosition}px`;
     noteEl.style.transform = `rotate(${rotation}deg)`;
 
     const descriptionEl = document.createElement("p");

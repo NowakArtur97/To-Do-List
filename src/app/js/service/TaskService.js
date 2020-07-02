@@ -18,8 +18,6 @@ export default class TaskService {
   }
 
   create(task) {
-    task.id = this.tasks.length > 0 ? this.tasks.length + 1 : 1;
-
     this.tasks.push(task);
     this.localStorageService.save("tasks", this.tasks);
 
@@ -28,7 +26,10 @@ export default class TaskService {
 
   update(updatedTask) {
     let taskToUpdate = this.tasks.find((task) => task.id == updatedTask.id);
-    Object.assign(taskToUpdate, updatedTask);
+    for (let property in updatedTask) {
+      taskToUpdate[property] = updatedTask[property];
+    }
+
     this.localStorageService.save("tasks", this.tasks);
   }
 
