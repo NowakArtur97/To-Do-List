@@ -81,7 +81,6 @@ export default class NoteService {
   }
 
   addDeleteBtnEventListeners(deleteBtnEl) {
-    console.log();
     deleteBtnEl.addEventListener(
       "mouseover",
       () => (deleteBtnEl.style.transform = this.NOTE_HOVER_SCALE)

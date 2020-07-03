@@ -16,19 +16,22 @@ export default class CorkBoard {
   addEventListeners() {
     DOMElements.board.addEventListener(
       "dblclick",
-      this.showFormForUpdate.bind(this)
+      this.showFormForUpdate.bind(this),
+      {
+        capture: true,
+      }
     );
     DOMElements.board.addEventListener("click", this.deleteTask.bind(this));
   }
 
   showFormForUpdate(e) {
-    if (
-      e.target.classList.contains(DOMClasses.note.main) &&
-      !e.target.classList.contains(DOMClasses.noteFormPopUpTrigger.main)
-    ) {
+    const isNote = this.isNote(e.target);
+    const hasParentNote = this.isNote(e.target.parentElement);
+
+    if (isNote || hasParentNote) {
       this.notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
-      this.noteForm.populateForm(e.target);
+      this.noteForm.populateForm(isNote ? e.target : e.target.parentElement);
     }
   }
 
@@ -38,5 +41,12 @@ export default class CorkBoard {
 
       this.events.notify("delete", noteEl);
     }
+  }
+
+  isNote(element) {
+    return (
+      element.classList.contains(DOMClasses.note.main) &&
+      !element.classList.contains(DOMClasses.noteFormPopUpTrigger.main)
+    );
   }
 }
