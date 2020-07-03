@@ -7,6 +7,7 @@ export default {
     deleteBtn: "note__delete_btn",
   },
   noteFormPopUpTrigger: { main: "note_form_popup_trigger" },
+  noteDeleteAllTrigger: { main: "note_delete_trigger" },
   noteFormPopUp: {
     main: "note_popup_container",
     active: "note_popup_container--active",
