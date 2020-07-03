@@ -22,17 +22,18 @@ Stack:
 - CSS
 - Vanilla JS ES6+
 - Webpack
-- Design patterns: Observer
+- Design patterns: Observer, Singleton
 
 ## Features
 
 - Drag and drop notes
-- Create, update and delete notes
-- Get, save, update and delete tasks in local storage
+- Create/update/delete notes
+- Delete all notes
+- Get, save, update and delete tasks from local storage
 
 ## To Do
 
-- Filter/Delete all tasks
+- Filter tasks
 
 ## Getting Started
 
