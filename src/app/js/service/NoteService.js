@@ -55,12 +55,16 @@ export default class NoteService {
     });
   }
 
+  delete(note) {
+    note.remove();
+  }
+
   createAll(tasks = []) {
     tasks.forEach((task) => this.create(task));
   }
 
-  delete(note) {
-    note.remove();
+  deleteAll(tasks = []) {
+    tasks.forEach((task) => this.delete(task));
   }
 
   addNoteEventListeners(noteEl, randomRotation) {

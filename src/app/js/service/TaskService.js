@@ -46,6 +46,10 @@ export default class TaskService {
     return this.localStorageService.get("tasks") || [];
   }
 
+  deleteAll() {
+    this.localStorageService.remove("tasks");
+  }
+
   getNextAvailableIndex() {
     return this.tasks.length > 0 ? this.tasks.length + 1 : 1;
   }
