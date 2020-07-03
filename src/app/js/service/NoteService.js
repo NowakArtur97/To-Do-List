@@ -63,8 +63,10 @@ export default class NoteService {
     tasks.forEach((task) => this.create(task));
   }
 
-  deleteAll(tasks = []) {
-    tasks.forEach((task) => this.delete(task));
+  deleteAll() {
+    [...document.querySelectorAll(`.${DOMClasses.note.main}`)]
+      .filter((note) => !note.classList.contains(DOMClasses.noteOption.main))
+      .forEach((task) => this.delete(task));
   }
 
   addNoteEventListeners(noteEl, randomRotation) {

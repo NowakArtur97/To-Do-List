@@ -6,9 +6,10 @@ import TaskService from "./js/service/TaskService";
 import NoteService from "./js/service/NoteService";
 import LocalStorageService from "./js/service/LocalStorageService";
 
+import CorkBoard from "./js/model/CorkBoard";
 import NotePopUp from "./js/model/NotePopUp";
 import NoteForm from "./js/model/NoteForm";
-import CorkBoard from "./js/model/CorkBoard";
+import NoteCleaner from "./js/model/NoteCleaner";
 
 export default function main() {
   const formUtil = new FormUtil();
@@ -22,6 +23,7 @@ export default function main() {
   const tasks = taskService.getAll();
   noteService.createAll(tasks);
 
+  const noteCleaner = new NoteCleaner();
   const notePopUp = new NotePopUp();
   const noteForm = new NoteForm(
     formUtil,
@@ -39,4 +41,7 @@ export default function main() {
 
   noteForm.events.subscribe("update", noteService);
   noteForm.events.subscribe("update", taskService);
+
+  noteCleaner.events.subscribe("deleteAll", noteService);
+  noteCleaner.events.subscribe("deleteAll", taskService);
 }
