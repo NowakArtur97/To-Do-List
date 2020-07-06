@@ -26,7 +26,7 @@ export default function main() {
 
   const noteCleaner = new NoteCleaner();
   const noteSearch = new NoteSearch(taskService, noteService);
-  const notePopUp = new NotePopUp();
+  const notePopUp = new NotePopUp(formUtil);
   const noteForm = new NoteForm(
     formUtil,
     taskService,
