@@ -18,4 +18,8 @@ export default {
     main: "note_form",
     submitBtn: "note_form__btn",
   },
+  noteSearch: {
+    main: "note_search",
+    searchInput: "note_search__input",
+  },
 };
