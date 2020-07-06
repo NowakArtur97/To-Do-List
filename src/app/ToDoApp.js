@@ -10,6 +10,7 @@ import CorkBoard from "./js/model/CorkBoard";
 import NotePopUp from "./js/model/NotePopUp";
 import NoteForm from "./js/model/NoteForm";
 import NoteCleaner from "./js/model/NoteCleaner";
+import NoteSearch from "./js/model/NoteSearch";
 
 export default function main() {
   const formUtil = new FormUtil();
@@ -24,6 +25,7 @@ export default function main() {
   noteService.createAll(tasks);
 
   const noteCleaner = new NoteCleaner();
+  const noteSearch = new NoteSearch(taskService, noteService);
   const notePopUp = new NotePopUp();
   const noteForm = new NoteForm(
     formUtil,

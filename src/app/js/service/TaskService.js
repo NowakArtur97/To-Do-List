@@ -53,4 +53,10 @@ export default class TaskService {
   getNextAvailableIndex() {
     return this.tasks.length > 0 ? this.tasks.length + 1 : 1;
   }
+
+  filter(toFind) {
+    return this.tasks.filter((task) =>
+      task.description.match(new RegExp(toFind, "gi"))
+    );
+  }
 }

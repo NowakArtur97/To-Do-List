@@ -19,4 +19,8 @@ export default {
   noteFormSubmitBtn: document.querySelector(
     `.${DOMClasses.noteForm.submitBtn}`
   ),
+
+  noteSearchInput: document.querySelector(
+    `.${DOMClasses.noteSearch.searchInput}`
+  ),
 };
