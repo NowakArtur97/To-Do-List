@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [General info](#general-info)
+- [Demo](#demo)
 - [Built With](#built-with)
 - [Features](#features)
 - [To Do](#to-do)
@@ -13,6 +14,10 @@
 ## General info
 
 Todo list app built in HTML, CSS and JavaScript. It has been designed in such a way that it resembles a cork board.
+
+## Demo
+
+The application is available on Github Pages at: https://nowakartur97.github.io/ToDo-List/
 
 ## Built With
 
