@@ -65,7 +65,11 @@ export default class NoteService {
 
   deleteAll() {
     [...document.querySelectorAll(`.${DOMClasses.note.main}`)]
-      .filter((note) => !note.classList.contains(DOMClasses.noteOption.main))
+      .filter(
+        (note) =>
+          !note.classList.contains(DOMClasses.noteOption.main) &&
+          !note.classList.contains(DOMClasses.noteSearch.main)
+      )
       .forEach((task) => this.delete(task));
   }
 

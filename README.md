@@ -27,13 +27,13 @@ Stack:
 ## Features
 
 - Drag and drop notes
-- Create/update/delete notes
+- Create/update/filter/delete notes
 - Delete all notes
 - Get, save, update and delete tasks from local storage
 
 ## To Do
 
-- Filter tasks
+- More task properties
 
 ## Getting Started
 

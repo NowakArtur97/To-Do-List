@@ -22,7 +22,13 @@ export default class NoteForm {
   filterTask(e) {
     const toFind = e.target.value;
 
-    const tasks = this.taskService.filter(toFind);
-    console.log(tasks);
+    let tasks;
+    if (e.target.value.length === 0) {
+      tasks = this.taskService.getAll();
+    } else {
+      tasks = this.taskService.filter(toFind);
+    }
+    this.noteService.deleteAll();
+    this.noteService.createAll(tasks);
   }
 }
