@@ -25,7 +25,9 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: "[name]-[contentHash].css",
     }),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ["**/*", "!.git/**"],
+    }),
     new HtmlWebpackPlugin({
       template: "./src/app/html/index.html",
       minify: {
