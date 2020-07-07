@@ -41,7 +41,7 @@ export default class NoteService {
 
     const pinEl = document.createElement("div");
     pinEl.classList.add(DOMClasses.note.pin);
-    pinEl.style.backgroundColor = `#${pinColor}`;
+    pinEl.style.backgroundImage = `${pinColor}`;
 
     this.addNoteEventListeners(noteEl, rotation);
     this.addDeleteBtnEventListeners(deleteBtn);

@@ -1,4 +1,4 @@
-import Colors from "../state/Colors";
+import { colors, colorsForGradients } from "../state/Colors";
 import DOMElements from "../dom/DOMElements";
 
 export default class NotePropertiesUtil {
@@ -6,10 +6,23 @@ export default class NotePropertiesUtil {
     this.randomUtil = randomUtil;
 
     this.MAX_NOTE_ROTATION = 15;
+    this.RADIAL_MIN_SIZE = 50;
+    this.RADIAL_MAX_SIZE = 70;
   }
 
   getRandomColor() {
-    return Colors[this.randomUtil.getRandomNumber(0, Colors.length)];
+    return colors[this.randomUtil.getRandomNumber(0, colors.length - 1)];
+  }
+
+  getRandomGradient() {
+    return `radial-gradient(#${
+      colorsForGradients[
+        this.randomUtil.getRandomNumber(0, colorsForGradients.length - 1)
+      ]
+    } ${this.randomUtil.getRandomNumber(
+      this.RADIAL_MIN_SIZE,
+      this.RADIAL_MAX_SIZE
+    )}%, black 50%)`;
   }
 
   getRandomPosition() {
