@@ -1,11 +1,32 @@
 .note_form {
   height: 100%;
+  padding: 5%;
 
   font-size: 2rem;
 }
 
 .note_form__group {
   width: 100%;
+  margin-bottom: 10px;
+}
+
+.note_form__types {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note_form__type {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  width: 20%;
+}
+
+.note_form__group--large {
+  height: 60%;
 }
 
 .note_form__group--submit {
@@ -37,4 +58,8 @@
   border: none;
   resize: none;
   overflow: auto;
+}
+
+.note_form__label {
+  margin-left: 10px;
 }
