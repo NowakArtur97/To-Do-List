@@ -21,7 +21,7 @@ export default class NoteForm {
   createTask(e) {
     e.preventDefault();
     const task = this.formUtil.extractData(DOMElements.noteForm);
-    if (!task.desciption) return;
+    if (!task.description) return;
 
     if (task.id) {
       this.events.notify("update", task);
@@ -42,7 +42,6 @@ export default class NoteForm {
     task.id = task.id || this.taskService.getNextAvailableIndex();
     task.noteColor = this.notePropertiesUtil.getRandomColor();
     task.pinColor = this.notePropertiesUtil.getRandomGradient();
-    console.log(task.pinColor);
     task.rotation = this.notePropertiesUtil.getRandomRotation();
     const {
       xPosition,
