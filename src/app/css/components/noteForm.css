@@ -8,10 +8,6 @@
   width: 100%;
 }
 
-.note_form__group--main {
-  height: 70%;
-}
-
 .note_form__group--submit {
   display: flex;
   justify-content: center;
