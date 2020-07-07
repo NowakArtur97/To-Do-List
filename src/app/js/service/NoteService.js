@@ -8,12 +8,20 @@ export default class NoteService {
     this.NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
   }
 
-  create({ id, description, color, xPosition, yPosition, rotation }) {
+  create({
+    id,
+    description,
+    noteColor,
+    pinColor,
+    xPosition,
+    yPosition,
+    rotation,
+  }) {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
 
-    noteEl.style.backgroundColor = `#${color}`;
+    noteEl.style.backgroundColor = `#${noteColor}`;
     noteEl.style.top = `${yPosition}px`;
     noteEl.style.left = `${xPosition}px`;
     noteEl.style.transform = `rotate(${rotation}deg)`;
@@ -33,7 +41,7 @@ export default class NoteService {
 
     const pinEl = document.createElement("div");
     pinEl.classList.add(DOMClasses.note.pin);
-    pinEl.style.backgroundColor = `#${color}`;
+    pinEl.style.backgroundColor = `#${pinColor}`;
 
     this.addNoteEventListeners(noteEl, rotation);
     this.addDeleteBtnEventListeners(deleteBtn);

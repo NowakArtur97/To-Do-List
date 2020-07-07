@@ -38,7 +38,8 @@ export default class NoteForm {
 
   setTaskProperties(task) {
     task.id = task.id || this.taskService.getNextAvailableIndex();
-    task.color = this.notePropertiesUtil.getRandomColor();
+    task.noteColor = this.notePropertiesUtil.getRandomColor();
+    task.pinColor = this.notePropertiesUtil.getRandomColor();
     task.rotation = this.notePropertiesUtil.getRandomRotation();
     const {
       xPosition,
