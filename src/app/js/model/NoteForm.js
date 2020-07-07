@@ -21,6 +21,8 @@ export default class NoteForm {
   createTask(e) {
     e.preventDefault();
     const task = this.formUtil.extractData(DOMElements.noteForm);
+    if (!task.desciption) return;
+
     if (task.id) {
       this.events.notify("update", task);
     } else {
