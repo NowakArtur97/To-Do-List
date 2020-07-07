@@ -10,6 +10,7 @@ export default class NoteService {
 
   create({
     id,
+    type,
     description,
     noteColor,
     pinColor,
@@ -43,10 +44,15 @@ export default class NoteService {
     pinEl.classList.add(DOMClasses.note.pin);
     pinEl.style.backgroundImage = `${pinColor}`;
 
+    const typeEl = document.createElement("i");
+    typeEl.classList.add(DOMClasses.icon.main);
+    typeEl.classList.add(`${DOMClasses.icon.detailed}${type}`);
+
     this.addNoteEventListeners(noteEl, rotation);
     this.addDeleteBtnEventListeners(deleteBtn);
 
     noteEl.appendChild(pinEl);
+    noteEl.appendChild(typeEl);
     noteEl.appendChild(deleteBtn);
     noteEl.appendChild(descriptionEl);
 

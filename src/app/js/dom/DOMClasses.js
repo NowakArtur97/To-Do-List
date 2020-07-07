@@ -23,4 +23,8 @@ export default {
     main: "note_search",
     searchInput: "note_search__input",
   },
+  icon: {
+    main: "fas",
+    detailed: "fa-",
+  },
 };
