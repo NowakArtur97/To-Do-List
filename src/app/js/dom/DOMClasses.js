@@ -5,6 +5,7 @@ export default {
     description: "note__text",
     container: "note_container",
     deleteBtn: "note__delete_btn",
+    pin: "note__pin",
   },
   noteOption: { main: "note_option" },
   noteFormPopUpTrigger: { main: "note_form_popup_trigger" },

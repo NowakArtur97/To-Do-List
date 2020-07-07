@@ -31,9 +31,14 @@ export default class NoteService {
     deleteBtn.classList.add(DOMClasses.note.deleteBtn);
     deleteBtn.innerText = "X";
 
+    const pinEl = document.createElement("div");
+    pinEl.classList.add(DOMClasses.note.pin);
+    pinEl.style.backgroundColor = `#${color}`;
+
     this.addNoteEventListeners(noteEl, rotation);
     this.addDeleteBtnEventListeners(deleteBtn);
 
+    noteEl.appendChild(pinEl);
     noteEl.appendChild(deleteBtn);
     noteEl.appendChild(descriptionEl);
 
