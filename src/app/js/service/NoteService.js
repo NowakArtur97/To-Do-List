@@ -47,6 +47,7 @@ export default class NoteService {
     const typeEl = document.createElement("i");
     typeEl.classList.add(DOMClasses.icon.main);
     typeEl.classList.add(`${DOMClasses.icon.detailed}${type}`);
+    typeEl.dataset.field = "type";
 
     this.addNoteEventListeners(noteEl, rotation);
     this.addDeleteBtnEventListeners(deleteBtn);
@@ -68,7 +69,13 @@ export default class NoteService {
 
     noteToUpdate.childNodes.forEach((element) => {
       const property = element.dataset.field;
-      if (property) {
+      if (property === "type") {
+        element.className = "";
+        element.classList.add(DOMClasses.icon.main);
+        element.classList.add(
+          `${DOMClasses.icon.detailed}${updatedTask[property]}`
+        );
+      } else if (property) {
         element.innerText = updatedTask[property];
       }
     });
