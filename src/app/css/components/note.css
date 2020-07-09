@@ -1,7 +1,11 @@
 .note {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr;
+  grid-template-areas:
+    "i p x"
+    "d d d";
+  justify-items: center;
   align-items: center;
 
   position: absolute;
@@ -26,7 +30,9 @@
   overflow-x: hidden;
 }
 
-.note__text {
+.note__description {
+  grid-area: d;
+
   max-height: 20vh;
   width: 100%;
   padding: 1em;
@@ -42,9 +48,7 @@
 }
 
 .note__delete_btn {
-  position: fixed;
-  top: 0;
-  right: 0;
+  grid-area: x;
 
   border: none;
 
@@ -61,18 +65,14 @@
 }
 
 .note__pin {
-  position: absolute;
-  top: 5%;
-  left: 50%;
+  grid-area: p;
 
-  width: 10%;
-  height: 10%;
+  width: 34%;
+  height: 45%;
 
   border-radius: 50%;
 
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.55);
-
-  transform: translate(-50%, 0);
 }
 
 .note__pin--red {
@@ -81,4 +81,8 @@
 
 .note__pin--blue {
   background-image: radial-gradient(blue 50%, black 100%);
+}
+
+.note__icon {
+  grid-area: i;
 }

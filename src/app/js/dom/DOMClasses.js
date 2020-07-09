@@ -2,10 +2,11 @@ export default {
   board: { main: "board" },
   note: {
     main: "note",
-    description: "note__text",
+    description: "note__description",
     container: "note_container",
     deleteBtn: "note__delete_btn",
     pin: "note__pin",
+    icon: "note__icon",
   },
   noteOption: { main: "note_option" },
   noteFormPopUpTrigger: { main: "note_form_popup_trigger" },

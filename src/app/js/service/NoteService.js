@@ -47,6 +47,7 @@ export default class NoteService {
     const typeEl = document.createElement("i");
     typeEl.classList.add(DOMClasses.icon.main);
     typeEl.classList.add(`${DOMClasses.icon.detailed}${type}`);
+    typeEl.classList.add(DOMClasses.note.icon);
     typeEl.dataset.field = "type";
 
     this.addNoteEventListeners(noteEl, rotation);
@@ -75,6 +76,7 @@ export default class NoteService {
         element.classList.add(
           `${DOMClasses.icon.detailed}${updatedTask[property]}`
         );
+        element.classList.add(DOMClasses.note.icon);
       } else if (property) {
         element.innerText = updatedTask[property];
       }
