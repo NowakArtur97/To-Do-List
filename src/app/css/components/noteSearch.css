@@ -3,15 +3,18 @@
   bottom: 0%;
   left: 50%;
 
-  width: 40vh;
-  min-height: 10vh;
-  max-height: 10vh;
-  padding: 2%;
+  width: 300px;
+  height: 90px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
 
   display: flex;
   flex-direction: column;
 
   transform: translate(-50%, 50%);
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  background-color: #cbfafa;
 
   transition: transform 0.3s linear;
 }
