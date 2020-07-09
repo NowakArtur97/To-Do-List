@@ -28,9 +28,8 @@ export default class NoteForm {
     } else {
       this.setTaskProperties(task);
       this.events.notify("create", task);
+      this.formUtil.resetForm(DOMElements.noteForm);
     }
-
-    this.formUtil.resetForm(DOMElements.noteForm);
   }
 
   populateForm(note) {

@@ -49,6 +49,7 @@ export default class NoteService {
     typeEl.classList.add(`${DOMClasses.icon.detailed}${type}`);
     typeEl.classList.add(DOMClasses.note.icon);
     typeEl.dataset.field = "type";
+    typeEl.dataset.value = type;
 
     this.addNoteEventListeners(noteEl, rotation);
     this.addDeleteBtnEventListeners(deleteBtn);
@@ -77,6 +78,7 @@ export default class NoteService {
           `${DOMClasses.icon.detailed}${updatedTask[property]}`
         );
         element.classList.add(DOMClasses.note.icon);
+        element.dataset.value = updatedTask[property];
       } else if (property) {
         element.innerText = updatedTask[property];
       }

@@ -13,10 +13,22 @@ export default class FormUtil {
 
   populateData(form, data) {
     const elements = [...form.elements];
+
+    const isRadioWithSameValue = (el, value) =>
+      el.type === "radio" && el.value === value;
+
     for (let key of Object.keys(data)) {
-      const element = elements.find((el) => el.name === key);
+      const element = elements.find(
+        (el) =>
+          isRadioWithSameValue(el, data[key]) ||
+          (el.name === key && el.type !== "radio")
+      );
       if (element) {
-        element.value = data[key];
+        if (element.type === "radio") {
+          element.checked = true;
+        } else {
+          element.value = data[key];
+        }
       }
     }
   }

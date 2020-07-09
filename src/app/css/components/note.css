@@ -32,6 +32,7 @@
 
 .note__description {
   grid-area: d;
+  align-self: start;
 
   max-height: 20vh;
   width: 100%;

@@ -50,11 +50,15 @@ export default class NotePropertiesUtil {
 
     note.childNodes.forEach((element) => {
       const property = element.dataset.field;
-      if (property) {
-        task[property] = element.innerText;
-      }
-    });
+      let value;
 
+      if (property === "type") {
+        value = element.dataset.value;
+      } else if (property) {
+        value = element.innerText;
+      }
+      task[property] = value;
+    });
     return task;
   }
 }
