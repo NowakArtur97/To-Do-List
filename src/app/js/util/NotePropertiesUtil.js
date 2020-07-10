@@ -1,4 +1,4 @@
-import { colors, colorsForGradients } from "../state/Colors";
+import colorsForGradients from "../state/Colors";
 import DOMElements from "../dom/DOMElements";
 
 export default class NotePropertiesUtil {
@@ -8,10 +8,6 @@ export default class NotePropertiesUtil {
     this.MAX_NOTE_ROTATION = 15;
     this.RADIAL_MIN_SIZE = 50;
     this.RADIAL_MAX_SIZE = 70;
-  }
-
-  getRandomColor() {
-    return colors[this.randomUtil.getRandomNumber(0, colors.length - 1)];
   }
 
   getRandomGradient() {
