@@ -46,7 +46,8 @@ export default class CorkBoard {
   isNote(element) {
     return (
       element.classList.contains(DOMClasses.note.main) &&
-      !element.classList.contains(DOMClasses.noteFormPopUpTrigger.main)
+      !element.classList.contains(DOMClasses.noteFormPopUpTrigger.main) &&
+      !element.classList.contains(DOMClasses.noteDeleteAllTrigger.main)
     );
   }
 }
