@@ -32,6 +32,9 @@
           <form class="note_form">
             <input class="hidden" type="hidden" name="id" />
             <div class="note_form__group note_form__group--large">
+              <label class="note_form__label" for="description">
+                Description
+              </label>
               <textarea
                 class="note_form__textarea"
                 name="description"
@@ -39,6 +42,24 @@
               ></textarea>
             </div>
             <div class="note_form__group note_form__group-center">
+              <label class="note_form__label" for="description">
+                Note color
+              </label>
+              <input
+                class="note_form__color_input"
+                name="noteColor"
+                id="noteColor"
+                type="color"
+                value="#cbfafa"
+              />
+            </div>
+            <div class="note_form__group note_form__group-center">
+              <label
+                class="note_form__label note_form__label--row"
+                for="description"
+              >
+                Note icon
+              </label>
               <div class="note_form__type">
                 <input
                   class="note_form__radio"
@@ -99,15 +120,6 @@
                   <i class="fas fa-shopping-cart"></i>
                 </label>
               </div>
-            </div>
-            <div class="note_form__group note_form__group-center">
-              <input
-                class="note_form__color_input"
-                name="noteColor"
-                id="noteColor"
-                type="color"
-                value="#cbfafa"
-              />
             </div>
             <div class="note_form__group note_form__group--submit">
               <button class="note_form__btn" type="submit">
