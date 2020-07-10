@@ -21,6 +21,7 @@ export default class NoteService {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
+    noteEl.dataset.field = "noteColor";
 
     noteEl.style.backgroundColor = `${noteColor}`;
     noteEl.style.top = `${yPosition}px`;
