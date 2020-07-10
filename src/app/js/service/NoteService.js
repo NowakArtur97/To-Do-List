@@ -67,11 +67,13 @@ export default class NoteService {
     const noteToUpdate = [
       ...document.querySelectorAll(`.${DOMClasses.note.main}`),
     ].find((note) => note.dataset.id == updatedTask.id);
-
+    console.log(updatedTask);
     noteToUpdate.dataset.id = updatedTask.id;
 
-    noteToUpdate.childNodes.forEach((element) => {
-      const property = element.dataset.field;
+    const elements = [noteToUpdate, ...noteToUpdate.childNodes];
+
+    elements.forEach((element) => {
+      const property = element.dataset?.field;
       if (property === "type") {
         element.className = "";
         element.classList.add(DOMClasses.icon.main);
@@ -81,7 +83,11 @@ export default class NoteService {
         element.classList.add(DOMClasses.note.icon);
         element.dataset.value = updatedTask[property];
       } else if (property) {
-        element.innerText = updatedTask[property];
+        if (property === "noteColor") {
+          noteToUpdate.style.backgroundColor = updatedTask[property];
+        } else {
+          element.innerText = updatedTask[property];
+        }
       }
     });
   }
