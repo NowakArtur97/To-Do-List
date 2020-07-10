@@ -17,10 +17,6 @@ export default class NoteForm {
   addEventListeners() {
     DOMElements.noteForm.addEventListener("submit", this.createTask.bind(this));
     DOMElements.noteFormColorPicker.addEventListener(
-      "change",
-      this.changeFormColor.bind(this)
-    );
-    DOMElements.noteFormColorPicker.addEventListener(
       "input",
       this.changeFormColor.bind(this)
     );
@@ -29,6 +25,7 @@ export default class NoteForm {
   createTask(e) {
     e.preventDefault();
     const task = this.formUtil.extractData(DOMElements.noteForm);
+
     if (!task.description) return;
 
     if (task.id) {
@@ -47,7 +44,6 @@ export default class NoteForm {
 
   setTaskProperties(task) {
     task.id = task.id || this.taskService.getNextAvailableIndex();
-    task.noteColor = this.notePropertiesUtil.getRandomColor();
     task.pinColor = this.notePropertiesUtil.getRandomGradient();
     task.rotation = this.notePropertiesUtil.getRandomRotation();
     const {
@@ -59,7 +55,6 @@ export default class NoteForm {
   }
 
   changeFormColor() {
-    console.dir(DOMElements.noteFormColorPicker);
     DOMElements.noteForm.style.backgroundColor =
       DOMElements.noteFormColorPicker.value;
   }

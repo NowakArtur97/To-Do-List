@@ -22,7 +22,7 @@ export default class NoteService {
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
 
-    noteEl.style.backgroundColor = `#${noteColor}`;
+    noteEl.style.backgroundColor = `${noteColor}`;
     noteEl.style.top = `${yPosition}px`;
     noteEl.style.left = `${xPosition}px`;
     noteEl.style.transform = `rotate(${rotation}deg)`;
