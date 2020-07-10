@@ -8,7 +8,7 @@ export default class CorkBoard {
     this.notePopUp = notePopUp;
     this.noteForm = noteForm;
 
-    this.events = new ObserverManager("delete");
+    this.events = new ObserverManager("delete", "changeStatus");
 
     this.addEventListeners();
   }
@@ -21,7 +21,7 @@ export default class CorkBoard {
         capture: true,
       }
     );
-    DOMElements.board.addEventListener("click", this.deleteTask.bind(this));
+    DOMElements.board.addEventListener("click", this.triggerAction.bind(this));
   }
 
   showFormForUpdate(e) {
@@ -35,11 +35,17 @@ export default class CorkBoard {
     }
   }
 
-  deleteTask(e) {
-    if (e.target.classList.contains(DOMClasses.note.deleteBtn)) {
-      const noteEl = e.target.parentElement;
+  triggerAction(e) {
+    const targetClasslit = e.target.classList;
+    const isChangeStatusBtn = targetClasslit.contains(
+      DOMClasses.note.changeStatusBtn
+    );
+    const isDeleteBtn = targetClasslit.contains(DOMClasses.note.deleteBtn);
 
-      this.events.notify("delete", noteEl);
+    if (isChangeStatusBtn || isDeleteBtn) {
+      const noteEl = e.target.parentElement;
+      const event = isDeleteBtn ? "delete" : "changeStatus";
+      this.events.notify(event, noteEl);
     }
   }
 

@@ -73,7 +73,6 @@ export default class NoteService {
     const noteToUpdate = [
       ...document.querySelectorAll(`.${DOMClasses.note.main}`),
     ].find((note) => note.dataset.id == updatedTask.id);
-    console.log(updatedTask);
     noteToUpdate.dataset.id = updatedTask.id;
 
     const elements = [noteToUpdate, ...noteToUpdate.childNodes];
@@ -96,6 +95,10 @@ export default class NoteService {
         }
       }
     });
+  }
+
+  changeStatus(note) {
+    note.style.backgroundColor = "#999999";
   }
 
   delete(note) {
