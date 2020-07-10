@@ -38,8 +38,14 @@ export default class NoteService {
     }
 
     const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add(DOMClasses.note.btn);
     deleteBtn.classList.add(DOMClasses.note.deleteBtn);
     deleteBtn.innerText = "X";
+
+    const changeStatusBtn = document.createElement("button");
+    changeStatusBtn.classList.add(DOMClasses.note.btn);
+    changeStatusBtn.classList.add(DOMClasses.note.changeStatusBtn);
+    changeStatusBtn.innerText = "✓";
 
     const pinEl = document.createElement("div");
     pinEl.classList.add(DOMClasses.note.pin);
@@ -53,10 +59,10 @@ export default class NoteService {
     typeEl.dataset.value = type;
 
     this.addNoteEventListeners(noteEl, rotation);
-    this.addDeleteBtnEventListeners(deleteBtn);
 
     noteEl.appendChild(pinEl);
     noteEl.appendChild(typeEl);
+    noteEl.appendChild(changeStatusBtn);
     noteEl.appendChild(deleteBtn);
     noteEl.appendChild(descriptionEl);
 
@@ -118,17 +124,6 @@ export default class NoteService {
     noteEl.addEventListener(
       "mouseleave",
       () => (noteEl.style.transform = `rotate(${randomRotation}deg)`)
-    );
-  }
-
-  addDeleteBtnEventListeners(deleteBtnEl) {
-    deleteBtnEl.addEventListener(
-      "mouseover",
-      () => (deleteBtnEl.style.transform = this.NOTE_HOVER_SCALE)
-    );
-    deleteBtnEl.addEventListener(
-      "mouseleave",
-      () => (deleteBtnEl.style.transform = `scale(1)`)
     );
   }
 }

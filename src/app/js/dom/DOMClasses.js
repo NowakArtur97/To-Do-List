@@ -4,6 +4,8 @@ export default {
     main: "note",
     description: "note__description",
     container: "note_container",
+    btn: "note__btn",
+    changeStatusBtn: "note__change_status_btn",
     deleteBtn: "note__delete_btn",
     pin: "note__pin",
     icon: "note__icon",

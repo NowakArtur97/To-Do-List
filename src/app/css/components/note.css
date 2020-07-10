@@ -3,8 +3,8 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 3fr;
   grid-template-areas:
-    "i p x"
-    "d d d";
+    "i p sb x"
+    "d d d d";
   justify-items: center;
   align-items: center;
 
@@ -48,9 +48,7 @@
   background: transparent;
 }
 
-.note__delete_btn {
-  grid-area: x;
-
+.note__btn {
   border: none;
 
   background-color: transparent;
@@ -61,7 +59,19 @@
   transition: transform 0.3s linear;
 }
 
-.note__delete_btn:hover {
+.note__delete_btn {
+  grid-area: x;
+  color: rgb(175, 18, 18);
+}
+
+.note__change_status_btn {
+  grid-area: sb;
+  color: rgb(53, 170, 88);
+}
+
+.note__btn:hover {
+  transform: scale(1.35);
+
   cursor: pointer;
 }
 
