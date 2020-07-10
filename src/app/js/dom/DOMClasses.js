@@ -19,6 +19,7 @@ export default {
   noteForm: {
     main: "note_form",
     submitBtn: "note_form__btn",
+    notecolorInput: "note_form__color_input",
   },
   noteSearch: {
     main: "note_search",

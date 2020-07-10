@@ -19,6 +19,9 @@ export default {
   noteFormSubmitBtn: document.querySelector(
     `.${DOMClasses.noteForm.submitBtn}`
   ),
+  noteFormColorPicker: document.querySelector(
+    `.${DOMClasses.noteForm.notecolorInput}`
+  ),
 
   noteSearchInput: document.querySelector(
     `.${DOMClasses.noteSearch.searchInput}`

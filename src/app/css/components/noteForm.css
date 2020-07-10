@@ -7,10 +7,11 @@
 
 .note_form__group {
   width: 100%;
+  height: 10%;
   margin-bottom: 10px;
 }
 
-.note_form__types {
+.note_form__group-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +27,7 @@
 }
 
 .note_form__group--large {
-  height: 60%;
+  height: 50%;
 }
 
 .note_form__group--submit {
