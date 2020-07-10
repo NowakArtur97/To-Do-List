@@ -28,6 +28,10 @@ export default class FormUtil {
           element.checked = true;
         } else {
           element.value = data[key];
+
+          if (element.type === "color") {
+            form.style.backgroundColor = data[key];
+          }
         }
       }
     }
