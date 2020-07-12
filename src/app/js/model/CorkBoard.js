@@ -27,10 +27,10 @@ export default class CorkBoard {
 
   showFormForUpdate(e) {
     const note = e.target;
-    const isNote = this.isNote(note);
-    const hasParentNote = this.isNote(note.parentElement);
+    const isNote = this.isActiveNote(note);
+    const hasParentNote = this.isActiveNote(note.parentElement);
 
-    if ((isNote || hasParentNote) && note.dataset.status === Status.active) {
+    if (isNote || hasParentNote) {
       this.notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
       this.noteForm.populateForm(isNote ? e.target : e.target.parentElement);
@@ -38,11 +38,11 @@ export default class CorkBoard {
   }
 
   triggerAction(e) {
-    const targetClasslit = e.target.classList;
-    const isChangeStatusBtn = targetClasslit.contains(
+    const targetClassList = e.target.classList;
+    const isChangeStatusBtn = targetClassList.contains(
       DOMClasses.note.changeStatusBtn
     );
-    const isDeleteBtn = targetClasslit.contains(DOMClasses.note.deleteBtn);
+    const isDeleteBtn = targetClassList.contains(DOMClasses.note.deleteBtn);
 
     if (isChangeStatusBtn || isDeleteBtn) {
       const noteEl = e.target.parentElement;
@@ -51,11 +51,10 @@ export default class CorkBoard {
     }
   }
 
-  isNote(element) {
+  isActiveNote(element) {
     return (
       element.classList.contains(DOMClasses.note.main) &&
-      !element.classList.contains(DOMClasses.noteFormPopUpTrigger.main) &&
-      !element.classList.contains(DOMClasses.noteDeleteAllTrigger.main)
+      element.dataset.status === Status.ACTIVE
     );
   }
 }

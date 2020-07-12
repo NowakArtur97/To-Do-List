@@ -19,25 +19,30 @@ export default class NoteService {
     xPosition,
     yPosition,
     rotation,
+    status,
   }) {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
     noteEl.dataset.field = "noteColor";
-    noteEl.dataset.status = Status.ACTIVE;
+    noteEl.dataset.status = status ? status : Status.ACTIVE;
 
     noteEl.style.backgroundColor = `${noteColor}`;
     noteEl.style.top = `${yPosition}px`;
     noteEl.style.left = `${xPosition}px`;
-    noteEl.style.transform = `rotate(${rotation}deg)`;
+    noteEl.style.transform =
+      status === Status.ACTIVE ? `rotate(${rotation}deg)` : "";
 
     const descriptionEl = document.createElement("p");
     descriptionEl.classList.add(DOMClasses.note.description);
     descriptionEl.innerText = description;
     descriptionEl.dataset.field = "description";
 
-    if (true) {
+    if (noteEl.dataset.status === Status.ACTIVE) {
       new DraggableElement(noteEl);
+      this.addNoteEventListeners(noteEl, rotation);
+    } else {
+      noteEl.style.backgroundColor = "#999999";
     }
 
     const deleteBtn = document.createElement("button");
@@ -60,8 +65,6 @@ export default class NoteService {
     typeEl.classList.add(DOMClasses.note.icon);
     typeEl.dataset.field = "type";
     typeEl.dataset.value = type;
-
-    this.addNoteEventListeners(noteEl, rotation);
 
     noteEl.appendChild(pinEl);
     noteEl.appendChild(typeEl);
@@ -105,6 +108,8 @@ export default class NoteService {
     note.style.backgroundColor = "#999999";
     note.style.transform = "";
     this.removeNoteEventListeners(note);
+    const inActiveNote = note.cloneNode(true);
+    note.parentNode.replaceChild(inActiveNote, note);
   }
 
   delete(note) {
