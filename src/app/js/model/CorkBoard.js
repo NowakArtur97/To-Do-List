@@ -1,5 +1,6 @@
 import DOMClasses from "../dom/DOMClasses";
 import DOMElements from "../dom/DOMElements";
+import Status from "../state/Status";
 
 import ObserverManager from "../observer/ObserverManager";
 
@@ -29,7 +30,7 @@ export default class CorkBoard {
     const isNote = this.isNote(note);
     const hasParentNote = this.isNote(note.parentElement);
 
-    if ((isNote || hasParentNote) && note.dataset.status === "active") {
+    if ((isNote || hasParentNote) && note.dataset.status === Status.active) {
       this.notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
       this.noteForm.populateForm(isNote ? e.target : e.target.parentElement);

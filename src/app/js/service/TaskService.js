@@ -1,3 +1,5 @@
+import Status from "../state/Status";
+
 export default class TaskService {
   constructor(localStorageService) {
     if (TaskService.instance instanceof TaskService) {
@@ -18,7 +20,7 @@ export default class TaskService {
   }
 
   create(task) {
-    task.status = "active";
+    task.status = Status.ACTIVE;
     this.tasks.push(task);
     this.localStorageService.save("tasks", this.tasks);
 
@@ -36,7 +38,7 @@ export default class TaskService {
 
   changeStatus(note) {
     let task = this.tasks.find((task) => task.id == note.dataset.id);
-    task.status = "inactive";
+    task.status = Status.INACTIVE;
     task.noteColor = "#999999";
     this.localStorageService.save("tasks", this.tasks);
   }

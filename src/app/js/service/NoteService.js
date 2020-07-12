@@ -1,6 +1,7 @@
 import DraggableElement from "../model/DraggableElement";
 import DOMClasses from "../dom/DOMClasses";
 import DOMElements from "../dom/DOMElements";
+import Status from "../state/Status";
 
 export default class NoteService {
   constructor() {
@@ -23,7 +24,7 @@ export default class NoteService {
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
     noteEl.dataset.field = "noteColor";
-    noteEl.dataset.status = "active";
+    noteEl.dataset.status = Status.ACTIVE;
 
     noteEl.style.backgroundColor = `${noteColor}`;
     noteEl.style.top = `${yPosition}px`;
@@ -100,7 +101,7 @@ export default class NoteService {
   }
 
   changeStatus(note) {
-    note.dataset.status = "inactive";
+    note.dataset.status = Status.INACTIVE;
     note.style.backgroundColor = "#999999";
     note.style.transform = "";
     this.removeNoteEventListeners(note);
