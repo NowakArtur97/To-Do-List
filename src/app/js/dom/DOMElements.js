@@ -20,7 +20,7 @@ export default {
     `.${DOMClasses.noteForm.submitBtn}`
   ),
   noteFormColorPicker: document.querySelector(
-    `.${DOMClasses.noteForm.notecolorInput}`
+    `.${DOMClasses.noteForm.noteColorInput}`
   ),
 
   noteSearchInput: document.querySelector(

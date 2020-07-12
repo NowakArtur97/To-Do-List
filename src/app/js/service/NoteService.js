@@ -13,8 +13,6 @@ export default class NoteService {
   create(task) {
     const noteEl = this.createNote(task);
 
-    const descriptionEl = this.createDescription(task);
-
     if (noteEl.dataset.status === Status.ACTIVE) {
       new DraggableElement(noteEl);
       this.addNoteEventListeners(noteEl, task.rotation);
@@ -22,21 +20,22 @@ export default class NoteService {
       noteEl.style.backgroundColor = "#999999";
     }
 
+    const descriptionEl = this.createDescription(task);
     const deleteBtn = this.createBtn("X", DOMClasses.note.deleteBtn);
     const changeStatusBtn = this.createBtn(
       "✓",
       DOMClasses.note.changeStatusBtn
     );
-
     const pinEl = this.createPin(task);
-
     const typeEl = this.createTypeIcon(task);
+    const statusEl = this.createStatusEl(task);
 
     noteEl.appendChild(pinEl);
     noteEl.appendChild(typeEl);
     noteEl.appendChild(changeStatusBtn);
     noteEl.appendChild(deleteBtn);
     noteEl.appendChild(descriptionEl);
+    noteEl.appendChild(statusEl);
 
     DOMElements.board.appendChild(noteEl);
   }
@@ -93,6 +92,14 @@ export default class NoteService {
     return typeEl;
   }
 
+  createStatusEl({ status }) {
+    const statusEl = document.createElement("p");
+    statusEl.classList.add(DOMClasses.note.status);
+    statusEl.innerText = status;
+
+    return statusEl;
+  }
+
   update(updatedTask) {
     const noteToUpdate = [
       ...document.querySelectorAll(`.${DOMClasses.note.main}`),
@@ -140,11 +147,7 @@ export default class NoteService {
 
   deleteAll() {
     [...document.querySelectorAll(`.${DOMClasses.note.main}`)]
-      .filter(
-        (note) =>
-          !note.classList.contains(DOMClasses.noteOption.main) &&
-          !note.classList.contains(DOMClasses.noteSearch.main)
-      )
+      .filter((note) => !note.classList.contains(DOMClasses.noteOption.main))
       .forEach((task) => this.delete(task));
   }
 
