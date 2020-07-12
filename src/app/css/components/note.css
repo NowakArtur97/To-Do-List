@@ -1,10 +1,10 @@
 .note {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 3fr;
   grid-template-areas:
-    "i p sb x"
-    "d d d d";
+    "i i p sb x"
+    "d d d d d";
   justify-items: center;
   align-items: center;
 
@@ -78,8 +78,8 @@
 .note__pin {
   grid-area: p;
 
-  width: 34%;
-  height: 45%;
+  width: 50%;
+  height: 50%;
 
   border-radius: 50%;
 
@@ -96,4 +96,8 @@
 
 .note__icon {
   grid-area: i;
+
+  justify-self: start;
+
+  margin-left: 25%;
 }
