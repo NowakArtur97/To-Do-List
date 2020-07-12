@@ -10,61 +10,27 @@ export default class NoteService {
     this.listeners = {};
   }
 
-  create({
-    id,
-    type,
-    description,
-    noteColor,
-    pinColor,
-    xPosition,
-    yPosition,
-    rotation,
-    status,
-  }) {
-    const noteEl = document.createElement("div");
-    noteEl.classList.add(DOMClasses.note.main);
-    noteEl.dataset.id = id;
-    noteEl.dataset.field = "noteColor";
-    noteEl.dataset.status = status ? status : Status.ACTIVE;
+  create(task) {
+    const noteEl = this.createNote(task);
 
-    noteEl.style.backgroundColor = `${noteColor}`;
-    noteEl.style.top = `${yPosition}px`;
-    noteEl.style.left = `${xPosition}px`;
-    noteEl.style.transform =
-      status === Status.ACTIVE ? `rotate(${rotation}deg)` : "";
-
-    const descriptionEl = document.createElement("p");
-    descriptionEl.classList.add(DOMClasses.note.description);
-    descriptionEl.innerText = description;
-    descriptionEl.dataset.field = "description";
+    const descriptionEl = this.createDescription(task);
 
     if (noteEl.dataset.status === Status.ACTIVE) {
       new DraggableElement(noteEl);
-      this.addNoteEventListeners(noteEl, rotation);
+      this.addNoteEventListeners(noteEl, task.rotation);
     } else {
       noteEl.style.backgroundColor = "#999999";
     }
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add(DOMClasses.note.btn);
-    deleteBtn.classList.add(DOMClasses.note.deleteBtn);
-    deleteBtn.innerText = "X";
+    const deleteBtn = this.createBtn("X", DOMClasses.note.deleteBtn);
+    const changeStatusBtn = this.createBtn(
+      "✓",
+      DOMClasses.note.changeStatusBtn
+    );
 
-    const changeStatusBtn = document.createElement("button");
-    changeStatusBtn.classList.add(DOMClasses.note.btn);
-    changeStatusBtn.classList.add(DOMClasses.note.changeStatusBtn);
-    changeStatusBtn.innerText = "✓";
+    const pinEl = this.createPin(task);
 
-    const pinEl = document.createElement("div");
-    pinEl.classList.add(DOMClasses.note.pin);
-    pinEl.style.backgroundImage = `${pinColor}`;
-
-    const typeEl = document.createElement("i");
-    typeEl.classList.add(DOMClasses.icon.main);
-    typeEl.classList.add(`${DOMClasses.icon.detailed}${type}`);
-    typeEl.classList.add(DOMClasses.note.icon);
-    typeEl.dataset.field = "type";
-    typeEl.dataset.value = type;
+    const typeEl = this.createTypeIcon(task);
 
     noteEl.appendChild(pinEl);
     noteEl.appendChild(typeEl);
@@ -73,6 +39,58 @@ export default class NoteService {
     noteEl.appendChild(descriptionEl);
 
     DOMElements.board.appendChild(noteEl);
+  }
+
+  createNote({ id, status, noteColor, yPosition, xPosition, rotation }) {
+    const noteEl = document.createElement("div");
+    noteEl.classList.add(DOMClasses.note.main);
+    noteEl.dataset.id = id;
+    noteEl.dataset.field = "noteColor";
+    noteEl.dataset.status = status ? status : Status.ACTIVE;
+    noteEl.style.backgroundColor = `${noteColor}`;
+    noteEl.style.top = `${yPosition}px`;
+    noteEl.style.left = `${xPosition}px`;
+    noteEl.style.transform =
+      status === Status.ACTIVE ? `rotate(${rotation}deg)` : "";
+
+    return noteEl;
+  }
+
+  createDescription({ description }) {
+    const descriptionEl = document.createElement("p");
+    descriptionEl.classList.add(DOMClasses.note.description);
+    descriptionEl.innerText = description;
+    descriptionEl.dataset.field = "description";
+
+    return descriptionEl;
+  }
+
+  createBtn(text = "", additionalClass) {
+    const btn = document.createElement("button");
+    btn.classList.add(DOMClasses.note.btn);
+    btn.classList.add(additionalClass);
+    btn.innerText = text;
+
+    return btn;
+  }
+
+  createPin({ pinColor }) {
+    const pinEl = document.createElement("div");
+    pinEl.classList.add(DOMClasses.note.pin);
+    pinEl.style.backgroundImage = `${pinColor}`;
+
+    return pinEl;
+  }
+
+  createTypeIcon({ type }) {
+    const typeEl = document.createElement("i");
+    typeEl.classList.add(DOMClasses.icon.main);
+    typeEl.classList.add(`${DOMClasses.icon.detailed}${type}`);
+    typeEl.classList.add(DOMClasses.note.icon);
+    typeEl.dataset.field = "type";
+    typeEl.dataset.value = type;
+
+    return typeEl;
   }
 
   update(updatedTask) {

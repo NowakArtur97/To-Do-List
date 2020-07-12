@@ -1,4 +1,5 @@
 import DOMElements from "../dom/DOMElements";
+import Status from "../state/Status";
 
 import ObserverManager from "../observer/ObserverManager";
 
@@ -52,6 +53,7 @@ export default class NoteForm {
     } = this.notePropertiesUtil.getRandomPosition();
     task.xPosition = xPosition;
     task.yPosition = yPosition;
+    task.status = Status.ACTIVE;
   }
 
   changeFormColor() {
