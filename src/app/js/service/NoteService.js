@@ -128,7 +128,7 @@ export default class NoteService {
     });
   }
 
-  changeStatus(note) {
+  disable(note) {
     note.dataset.status = Status.INACTIVE;
     note.style.backgroundColor = "#999999";
     note.style.transform = "";

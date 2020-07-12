@@ -36,7 +36,7 @@ export default class TaskService {
     this.localStorageService.save("tasks", this.tasks);
   }
 
-  changeStatus(note) {
+  disable(note) {
     let task = this.tasks.find((task) => task.id == note.dataset.id);
     task.status = Status.INACTIVE;
     task.noteColor = "#999999";

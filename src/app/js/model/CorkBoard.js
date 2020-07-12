@@ -9,7 +9,7 @@ export default class CorkBoard {
     this.notePopUp = notePopUp;
     this.noteForm = noteForm;
 
-    this.events = new ObserverManager("delete", "changeStatus");
+    this.events = new ObserverManager("delete", "disable");
 
     this.addEventListeners();
   }
@@ -46,7 +46,7 @@ export default class CorkBoard {
 
     if (isChangeStatusBtn || isDeleteBtn) {
       const noteEl = e.target.parentElement;
-      const event = isDeleteBtn ? "delete" : "changeStatus";
+      const event = isDeleteBtn ? "delete" : "disable";
       this.events.notify(event, noteEl);
     }
   }
