@@ -18,7 +18,7 @@ export default class TaskService {
   }
 
   create(task) {
-    task.status = "toDo";
+    task.status = "active";
     this.tasks.push(task);
     this.localStorageService.save("tasks", this.tasks);
 
@@ -36,7 +36,7 @@ export default class TaskService {
 
   changeStatus(note) {
     let task = this.tasks.find((task) => task.id == note.dataset.id);
-    task.status = "completed";
+    task.status = "inactive";
     task.noteColor = "#999999";
     this.localStorageService.save("tasks", this.tasks);
   }
