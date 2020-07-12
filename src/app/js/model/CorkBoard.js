@@ -25,10 +25,11 @@ export default class CorkBoard {
   }
 
   showFormForUpdate(e) {
-    const isNote = this.isNote(e.target);
-    const hasParentNote = this.isNote(e.target.parentElement);
+    const note = e.target;
+    const isNote = this.isNote(note);
+    const hasParentNote = this.isNote(note.parentElement);
 
-    if (isNote || hasParentNote) {
+    if ((isNote || hasParentNote) && note.dataset.status === "active") {
       this.notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
       this.noteForm.populateForm(isNote ? e.target : e.target.parentElement);
