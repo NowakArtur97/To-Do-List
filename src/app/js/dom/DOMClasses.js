@@ -9,6 +9,7 @@ export default {
     deleteBtn: "note__delete_btn",
     pin: "note__pin",
     icon: "note__icon",
+    status: "note__status",
   },
   noteOption: { main: "note_option" },
   noteFormPopUpTrigger: { main: "note_form_popup_trigger" },
