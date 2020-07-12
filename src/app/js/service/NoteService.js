@@ -7,7 +7,6 @@ export default class NoteService {
   constructor() {
     const NOTE_HOVER_SCALE_VALUE = 1.3;
     this.NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
-    this.listeners = {};
   }
 
   create(task) {
@@ -128,11 +127,13 @@ export default class NoteService {
     });
   }
 
-  disable(note) {
+  changeStatus(note) {
     note.dataset.status = Status.INACTIVE;
     note.style.backgroundColor = "#999999";
     note.style.transform = "";
-    this.removeNoteEventListeners(note);
+    note.querySelector(`.${DOMClasses.note.status}`).innerText =
+      Status.INACTIVE;
+    note.querySelector(`.${DOMClasses.note.changeStatusBtn}`).remove();
     const inActiveNote = note.cloneNode(true);
     note.parentNode.replaceChild(inActiveNote, note);
   }
@@ -152,18 +153,12 @@ export default class NoteService {
   }
 
   addNoteEventListeners(noteEl, randomRotation) {
-    this.listeners.mouseover = () =>
-      this.setNoteTransform(noteEl, this.NOTE_HOVER_SCALE);
-    this.listeners.mouseleave = () =>
-      this.setNoteTransform(noteEl, `rotate(${randomRotation}deg)`);
-
-    noteEl.addEventListener("mouseover", this.listeners.mouseover);
-    noteEl.addEventListener("mouseleave", this.listeners.mouseleave);
-  }
-
-  removeNoteEventListeners(noteEl) {
-    noteEl.removeEventListener("mouseover", this.listeners.mouseover);
-    noteEl.removeEventListener("mouseleave", this.listeners.mouseleave);
+    noteEl.addEventListener("mouseover", () =>
+      this.setNoteTransform(noteEl, this.NOTE_HOVER_SCALE)
+    );
+    noteEl.addEventListener("mouseleave", () =>
+      this.setNoteTransform(noteEl, `rotate(${randomRotation}deg)`)
+    );
   }
 
   setNoteTransform(noteEl, transform) {
