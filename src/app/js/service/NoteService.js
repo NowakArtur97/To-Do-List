@@ -20,10 +20,11 @@ export default class NoteService {
     }
 
     const descriptionEl = this.createDescription(task);
-    const deleteBtn = this.createBtn("X", DOMClasses.note.deleteBtn);
+    const deleteBtn = this.createBtn(DOMClasses.note.deleteBtn);
+    const deleteBtnIconEl = this.createIcon([DOMClasses.icon.delete]);
     const changeStatusBtn = this.createBtn(
-      "✓",
-      DOMClasses.note.changeStatusBtn
+      DOMClasses.note.changeStatusBtn,
+      "✓"
     );
     const pinEl = this.createPin(task);
     const typeEl = this.createTypeIcon(task);
@@ -32,6 +33,7 @@ export default class NoteService {
     noteEl.appendChild(pinEl);
     noteEl.appendChild(typeEl);
     noteEl.appendChild(changeStatusBtn);
+    deleteBtn.appendChild(deleteBtnIconEl);
     noteEl.appendChild(deleteBtn);
     noteEl.appendChild(descriptionEl);
     noteEl.appendChild(statusEl);
@@ -63,7 +65,7 @@ export default class NoteService {
     return descriptionEl;
   }
 
-  createBtn(text = "", additionalClass) {
+  createBtn(additionalClass, text = "") {
     const btn = document.createElement("button");
     btn.classList.add(DOMClasses.note.btn);
     btn.classList.add(additionalClass);
@@ -80,11 +82,20 @@ export default class NoteService {
     return pinEl;
   }
 
+  createIcon(additionalClasses = []) {
+    const iconEl = document.createElement("i");
+    const classList = [
+      DOMClasses.icon.main,
+      DOMClasses.note.icon,
+      ...additionalClasses,
+    ];
+    classList.forEach((className) => iconEl.classList.add(className));
+
+    return iconEl;
+  }
+
   createTypeIcon({ type }) {
-    const typeEl = document.createElement("i");
-    typeEl.classList.add(DOMClasses.icon.main);
-    typeEl.classList.add(`${DOMClasses.icon.detailed}${type}`);
-    typeEl.classList.add(DOMClasses.note.icon);
+    const typeEl = this.createIcon([`${DOMClasses.icon.detailed}${type}`]);
     typeEl.dataset.field = "type";
     typeEl.dataset.value = type;
 
@@ -128,14 +139,24 @@ export default class NoteService {
   }
 
   changeStatus(note) {
-    note.dataset.status = Status.INACTIVE;
-    note.style.backgroundColor = "#999999";
-    note.style.transform = "";
-    note.querySelector(`.${DOMClasses.note.status}`).innerText =
-      Status.INACTIVE;
-    note.querySelector(`.${DOMClasses.note.changeStatusBtn}`).remove();
-    const inActiveNote = note.cloneNode(true);
-    note.parentNode.replaceChild(inActiveNote, note);
+    switch (note.dataset.status) {
+      case Status.ACTIVE:
+        note.dataset.status = Status.INACTIVE;
+        note.style.backgroundColor = "#999999";
+        note.style.transform = "";
+        note.querySelector(`.${DOMClasses.note.status}`).innerText =
+          Status.INACTIVE;
+        note.querySelector(`.${DOMClasses.note.changeStatusBtn}`).remove();
+        const inActiveNote = note.cloneNode(true);
+        note.parentNode.replaceChild(inActiveNote, note);
+
+        break;
+
+      case Status.INACTIVE:
+        note.dataset.status = Status.ACTIVE;
+
+        break;
+    }
   }
 
   delete(note) {

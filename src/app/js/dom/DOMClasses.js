@@ -30,5 +30,6 @@ export default {
   icon: {
     main: "fas",
     detailed: "fa-",
+    delete: "fa-trash",
   },
 };

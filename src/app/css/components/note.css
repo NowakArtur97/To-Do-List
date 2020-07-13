@@ -63,7 +63,7 @@
 
 .note__delete_btn {
   grid-area: x;
-  color: rgb(175, 18, 18);
+  color: rgb(212, 42, 42);
 }
 
 .note__change_status_btn {
@@ -72,7 +72,7 @@
 }
 
 .note__btn:hover {
-  transform: scale(1.35);
+  transform: scale(1.25);
 
   cursor: pointer;
 }
@@ -81,7 +81,7 @@
   grid-area: p;
 
   width: 50%;
-  height: 45%;
+  height: 40%;
 
   border-radius: 50%;
 
@@ -101,9 +101,11 @@
 
   justify-self: start;
 
-  margin-left: 25%;
+  margin-left: 10%;
 }
 
 .note__status {
   grid-area: s;
+
+  margin-left: 5%;
 }
