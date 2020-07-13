@@ -22,9 +22,9 @@ export default class NoteService {
     const descriptionEl = this.createDescription(task);
     const deleteBtnEl = this.createBtn(DOMClasses.note.deleteBtn);
     const deleteBtnIconEl = this.createIcon([DOMClasses.icon.delete]);
-    const changeStatusBtn = this.createBtn(
+    const changeStatusBtnEl = this.createBtn(
       DOMClasses.note.changeStatusBtn,
-      "✓"
+      task.status === Status.ACTIVE ? "X" : "✓"
     );
     const pinEl = this.createPin(task);
     const typeEl = this.createTypeIcon(task);
@@ -32,7 +32,7 @@ export default class NoteService {
 
     noteEl.appendChild(pinEl);
     noteEl.appendChild(typeEl);
-    noteEl.appendChild(changeStatusBtn);
+    noteEl.appendChild(changeStatusBtnEl);
     deleteBtnEl.appendChild(deleteBtnIconEl);
     noteEl.appendChild(deleteBtnEl);
     noteEl.appendChild(descriptionEl);
@@ -141,29 +141,34 @@ export default class NoteService {
 
   changeStatus(note) {
     switch (note.dataset.status) {
-      case Status.ACTIVE:
+      case Status.ACTIVE: {
         note.dataset.status = Status.INACTIVE;
         note.style.backgroundColor = "#999999";
         note.style.transform = "";
         note.querySelector(`.${DOMClasses.note.status}`).innerText =
           Status.INACTIVE;
-        note.querySelector(`.${DOMClasses.note.changeStatusBtn}`).innerText =
-          "✓";
+        const changeStatusBtn = note.querySelector(
+          `.${DOMClasses.note.changeStatusBtn}`
+        );
+        changeStatusBtn.innerText = "✓";
         const inActiveNote = note.cloneNode(true);
         note.parentNode.replaceChild(inActiveNote, note);
 
         break;
-
-      case Status.INACTIVE:
+      }
+      case Status.INACTIVE: {
         note.dataset.status = Status.ACTIVE;
         note.style.backgroundColor = note.dataset.noteColor;
         note.querySelector(`.${DOMClasses.note.status}`).innerText =
           Status.ACTIVE;
-        note.querySelector(`.${DOMClasses.note.changeStatusBtn}`).innerText =
-          "X";
+        const changeStatusBtn = note.querySelector(
+          `.${DOMClasses.note.changeStatusBtn}`
+        );
+        changeStatusBtn.innerText = "X";
         this.addNoteEventListeners(note, note.dataset.rotation);
         new DraggableElement(note);
         break;
+      }
     }
   }
 

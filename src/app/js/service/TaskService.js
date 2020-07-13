@@ -38,7 +38,16 @@ export default class TaskService {
 
   changeStatus(note) {
     let task = this.tasks.find((task) => task.id == note.dataset.id);
-    task.status = Status.INACTIVE;
+
+    switch (task.status) {
+      case Status.ACTIVE:
+        task.status = Status.INACTIVE;
+        break;
+
+      case Status.INACTIVE:
+        task.status = Status.ACTIVE;
+        break;
+    }
     this.localStorageService.save("tasks", this.tasks);
   }
 

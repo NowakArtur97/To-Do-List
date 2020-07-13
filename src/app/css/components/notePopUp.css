@@ -15,7 +15,7 @@
   transform: scale(0);
   transition: transform 0.3s linear;
 
-  z-index: 1;
+  z-index: 3;
 }
 
 .note_popup_container--active {
