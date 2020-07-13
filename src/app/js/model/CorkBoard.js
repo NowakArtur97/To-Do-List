@@ -26,35 +26,29 @@ export default class CorkBoard {
   }
 
   showFormForUpdate(e) {
-    const note = e.target;
-    const isNote = this.isActiveNote(note);
-    const hasParentNote = this.isActiveNote(note.parentElement);
+    const note = e.target.closest(`.${DOMClasses.note.main}`);
 
-    if (isNote || hasParentNote) {
+    if (note) {
       this.notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
-      this.noteForm.populateForm(isNote ? e.target : e.target.parentElement);
+      this.noteForm.populateForm(note);
     }
   }
 
   triggerAction(e) {
     const targetClassList = e.target.classList;
+    const parentTargetClassList = e.target.parentElement.classList;
     const isChangeStatusBtn = targetClassList.contains(
       DOMClasses.note.changeStatusBtn
     );
-    const isDeleteBtn = targetClassList.contains(DOMClasses.note.deleteBtn);
+    const isDeleteBtn =
+      targetClassList.contains(DOMClasses.note.deleteBtn) ||
+      parentTargetClassList.contains(DOMClasses.note.deleteBtn);
 
     if (isChangeStatusBtn || isDeleteBtn) {
-      const noteEl = e.target.parentElement;
+      const noteEl = e.target.closest(`.${DOMClasses.note.main}`);
       const event = isDeleteBtn ? "delete" : "changeStatus";
       this.events.notify(event, noteEl);
     }
-  }
-
-  isActiveNote(element) {
-    return (
-      element.classList.contains(DOMClasses.note.main) &&
-      element.dataset.status === Status.ACTIVE
-    );
   }
 }
