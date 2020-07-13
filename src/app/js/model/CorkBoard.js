@@ -1,6 +1,5 @@
 import DOMClasses from "../dom/DOMClasses";
 import DOMElements from "../dom/DOMElements";
-import Status from "../state/Status";
 
 import ObserverManager from "../observer/ObserverManager";
 

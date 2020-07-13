@@ -20,7 +20,7 @@ export default class NoteService {
     }
 
     const descriptionEl = this.createDescription(task);
-    const deleteBtn = this.createBtn(DOMClasses.note.deleteBtn);
+    const deleteBtnEl = this.createBtn(DOMClasses.note.deleteBtn);
     const deleteBtnIconEl = this.createIcon([DOMClasses.icon.delete]);
     const changeStatusBtn = this.createBtn(
       DOMClasses.note.changeStatusBtn,
@@ -33,8 +33,8 @@ export default class NoteService {
     noteEl.appendChild(pinEl);
     noteEl.appendChild(typeEl);
     noteEl.appendChild(changeStatusBtn);
-    deleteBtn.appendChild(deleteBtnIconEl);
-    noteEl.appendChild(deleteBtn);
+    deleteBtnEl.appendChild(deleteBtnIconEl);
+    noteEl.appendChild(deleteBtnEl);
     noteEl.appendChild(descriptionEl);
     noteEl.appendChild(statusEl);
 
@@ -45,7 +45,8 @@ export default class NoteService {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
-    noteEl.dataset.field = "noteColor";
+    noteEl.dataset.noteColor = noteColor;
+    noteEl.dataset.rotation = rotation;
     noteEl.dataset.status = status ? status : Status.ACTIVE;
     noteEl.style.backgroundColor = `${noteColor}`;
     noteEl.style.top = `${yPosition}px`;
@@ -146,7 +147,8 @@ export default class NoteService {
         note.style.transform = "";
         note.querySelector(`.${DOMClasses.note.status}`).innerText =
           Status.INACTIVE;
-        note.querySelector(`.${DOMClasses.note.changeStatusBtn}`).remove();
+        note.querySelector(`.${DOMClasses.note.changeStatusBtn}`).innerText =
+          "✓";
         const inActiveNote = note.cloneNode(true);
         note.parentNode.replaceChild(inActiveNote, note);
 
@@ -154,7 +156,13 @@ export default class NoteService {
 
       case Status.INACTIVE:
         note.dataset.status = Status.ACTIVE;
-
+        note.style.backgroundColor = note.dataset.noteColor;
+        note.querySelector(`.${DOMClasses.note.status}`).innerText =
+          Status.ACTIVE;
+        note.querySelector(`.${DOMClasses.note.changeStatusBtn}`).innerText =
+          "X";
+        this.addNoteEventListeners(note, note.dataset.rotation);
+        new DraggableElement(note);
         break;
     }
   }
