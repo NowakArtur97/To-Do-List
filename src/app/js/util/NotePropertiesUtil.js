@@ -43,9 +43,7 @@ export default class NotePropertiesUtil {
   getTaskFromNote(note) {
     const task = {};
     this.getPropertiesFromNote(note, task);
-
-    this.getPropertiesFromNoteChildElements(note, task);
-    console.log(task);
+    this.getPropertiesFromNoteChildElements([...note.childNodes], task);
     return task;
   }
 
@@ -59,8 +57,7 @@ export default class NotePropertiesUtil {
     }
   }
 
-  getPropertiesFromNoteChildElements(note, task) {
-    const elements = [...note.childNodes];
+  getPropertiesFromNoteChildElements(elements, task) {
     elements.forEach((element) => {
       if (!element.dataset.field) return;
       const property = element.dataset.field;

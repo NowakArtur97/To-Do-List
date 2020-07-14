@@ -29,7 +29,6 @@ export default class NoteForm {
   createOrUpdateTask(e) {
     e.preventDefault();
     const task = this.formUtil.extractData(DOMElements.noteForm);
-
     if (!task.description) return;
 
     if (task.id) {
