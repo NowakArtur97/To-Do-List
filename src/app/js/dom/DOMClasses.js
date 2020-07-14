@@ -28,6 +28,7 @@ export default {
   },
   noteSearch: {
     searchInput: "note_search__input",
+    icon: "note_search__icon",
   },
   icon: {
     main: "fas",

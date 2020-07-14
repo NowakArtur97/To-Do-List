@@ -57,7 +57,10 @@ export default class CorkBoard {
   filterByType(e) {
     const statusIconEl = e.target;
     const iconClassList = statusIconEl.classList;
-    if (iconClassList.contains(DOMClasses.note.icon)) {
+    if (
+      iconClassList.contains(DOMClasses.note.icon) ||
+      iconClassList.contains(DOMClasses.noteSearch.icon)
+    ) {
       const type = e.target.dataset.value;
       this.noteFilterService.filterTask(type, "type");
     }
