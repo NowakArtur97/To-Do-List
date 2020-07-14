@@ -20,7 +20,7 @@ export default class NoteService {
     }
 
     const descriptionEl = this.createDescription(task);
-    const deleteBtnEl = this.createBtn(DOMClasses.note.deleteBtn);
+    const deleteBtnEl = this.createBtn([DOMClasses.note.deleteBtn]);
     const deleteBtnIconEl = this.createIcon([DOMClasses.icon.delete]);
     const taskStatusBtnClasses =
       task.status === Status.ACTIVE
