@@ -52,7 +52,9 @@ export default class DraggableElement {
         xPosition: this.lastX,
         yPosition: this.lastY,
       };
-      TaskService.getInstance().update(task);
+      if (task.xPosition && task.yPosition) {
+        TaskService.getInstance().update(task);
+      }
     }
   }
 }
