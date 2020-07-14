@@ -24,6 +24,7 @@ export default class CorkBoard {
       }
     );
     DOMElements.board.addEventListener("click", this.triggerAction.bind(this));
+    DOMElements.board.addEventListener("click", this.filterByType.bind(this));
   }
 
   showFormForUpdate(e) {
@@ -50,6 +51,15 @@ export default class CorkBoard {
       const noteEl = e.target.closest(`.${DOMClasses.note.main}`);
       const event = isDeleteBtn ? "delete" : "changeStatus";
       this.events.notify(event, noteEl);
+    }
+  }
+
+  filterByType(e) {
+    const statusIconEl = e.target;
+    const iconClassList = statusIconEl.classList;
+    if (iconClassList.contains(DOMClasses.note.icon)) {
+      const type = e.target.dataset.value;
+      this.noteFilterService.filterTask(type, "type");
     }
   }
 }

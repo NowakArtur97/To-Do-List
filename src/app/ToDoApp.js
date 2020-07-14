@@ -35,7 +35,7 @@ export default function main() {
     noteService,
     notePropertiesUtil
   );
-  const corkBoard = new CorkBoard(notePopUp, noteForm);
+  const corkBoard = new CorkBoard(notePopUp, noteForm, noteFilterService);
 
   noteForm.events.subscribe("create", noteService);
   noteForm.events.subscribe("create", taskService);
