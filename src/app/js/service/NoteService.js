@@ -31,11 +31,16 @@ export default class NoteService {
       task.status === Status.ACTIVE ? "X" : "✓"
     );
     const pinEl = this.createPin(task);
-    const typeEl = this.createTypeIcon(task);
+    let typeEl;
+    if (task.type) {
+      typeEl = this.createTypeIcon(task);
+    }
     const statusEl = this.createStatusEl(task);
 
     noteEl.appendChild(pinEl);
-    noteEl.appendChild(typeEl);
+    if (typeEl) {
+      noteEl.appendChild(typeEl);
+    }
     noteEl.appendChild(changeStatusBtnEl);
     deleteBtnEl.appendChild(deleteBtnIconEl);
     noteEl.appendChild(deleteBtnEl);

@@ -71,9 +71,9 @@ export default class TaskService {
     return this.tasks.length > 0 ? this.tasks.length + 1 : 1;
   }
 
-  filter(toFind) {
+  filter(toFind, property) {
     return this.tasks.filter((task) =>
-      task.description.match(new RegExp(toFind, "gi"))
+      task[property].match(new RegExp(toFind, "gi"))
     );
   }
 }

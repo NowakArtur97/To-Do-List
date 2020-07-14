@@ -1,9 +1,8 @@
 import DOMElements from "../dom/DOMElements";
 
 export default class NoteForm {
-  constructor(taskService, noteService) {
-    this.taskService = taskService;
-    this.noteService = noteService;
+  constructor(noteFilterService) {
+    this.noteFilterService = noteFilterService;
 
     this.addEventListeners();
   }
@@ -20,15 +19,6 @@ export default class NoteForm {
   }
 
   filterTask(e) {
-    const toFind = e.target.value;
-
-    let tasks = [];
-    if (e.target.value.length === 0) {
-      tasks = this.taskService.getAll();
-    } else {
-      tasks = this.taskService.filter(toFind);
-    }
-    this.noteService.deleteAll();
-    this.noteService.createAll(tasks);
+    this.noteFilterService.filterTask(e.target.value, "description");
   }
 }

@@ -5,9 +5,10 @@ import Status from "../state/Status";
 import ObserverManager from "../observer/ObserverManager";
 
 export default class CorkBoard {
-  constructor(notePopUp, noteForm) {
+  constructor(notePopUp, noteForm, noteFilterService) {
     this.notePopUp = notePopUp;
     this.noteForm = noteForm;
+    this.noteFilterService = noteFilterService;
 
     this.events = new ObserverManager("delete", "changeStatus");
 
@@ -26,12 +27,12 @@ export default class CorkBoard {
   }
 
   showFormForUpdate(e) {
-    const note = e.target.closest(`.${DOMClasses.note.main}`);
+    const noteEl = e.target.closest(`.${DOMClasses.note.main}`);
 
-    if (note && note.dataset.status === Status.ACTIVE) {
+    if (noteEl && noteEl.dataset.status === Status.ACTIVE) {
       this.notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
-      this.noteForm.populateForm(note);
+      this.noteForm.populateForm(noteEl);
     }
   }
 
