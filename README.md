@@ -81,4 +81,8 @@ Project is: in progess
 
 ![ToDo List](./screenshots/main-view.jpg)
 
-<p style="text-align: center">ToDo List</p>
+ToDo List
+
+![Note Form](./screenshots/note-form.jpg)
+
+Task Form
