@@ -32,7 +32,6 @@ export default class TaskService {
     for (let property in updatedTask) {
       taskToUpdate[property] = updatedTask[property];
     }
-
     this.localStorageService.save("tasks", this.tasks);
   }
 

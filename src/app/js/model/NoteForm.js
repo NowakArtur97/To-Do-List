@@ -16,14 +16,17 @@ export default class NoteForm {
   }
 
   addEventListeners() {
-    DOMElements.noteForm.addEventListener("submit", this.createTask.bind(this));
+    DOMElements.noteForm.addEventListener(
+      "submit",
+      this.createOrUpdateTask.bind(this)
+    );
     DOMElements.noteFormColorPicker.addEventListener(
       "input",
       this.changeFormColor.bind(this)
     );
   }
 
-  createTask(e) {
+  createOrUpdateTask(e) {
     e.preventDefault();
     const task = this.formUtil.extractData(DOMElements.noteForm);
 

@@ -42,23 +42,36 @@ export default class NotePropertiesUtil {
 
   getTaskFromNote(note) {
     const task = {};
-    task.id = note.dataset.id;
+    this.getPropertiesFromNote(note, task);
 
-    const elements = [note, ...note.childNodes];
+    this.getPropertiesFromNoteChildElements(note, task);
+    console.log(task);
+    return task;
+  }
+
+  getPropertiesFromNote(note, task) {
+    for (const property in note.dataset) {
+      if (property === "noteColor") {
+        task[property] = this.rgb2hex(note.style.backgroundColor);
+      } else {
+        task[property] = note.dataset[property];
+      }
+    }
+  }
+
+  getPropertiesFromNoteChildElements(note, task) {
+    const elements = [...note.childNodes];
     elements.forEach((element) => {
+      if (!element.dataset.field) return;
       const property = element.dataset.field;
       let value;
       if (property === "type") {
         value = element.dataset.value;
-      } else if (property === "noteColor") {
-        value = this.rgb2hex(element.style.backgroundColor);
       } else if (property) {
         value = element.innerText;
       }
       task[property] = value;
     });
-
-    return task;
   }
 
   rgb2hex(backgroundColor) {
