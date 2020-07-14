@@ -6,6 +6,8 @@ export default {
     container: "note_container",
     btn: "note__btn",
     changeStatusBtn: "note__change_status_btn",
+    activateStatusBtn: "note__change_status_btn--activate",
+    deactivateStatusBtn: "note__change_status_btn--deactivate",
     deleteBtn: "note__delete_btn",
     pin: "note__pin",
     icon: "note__icon",

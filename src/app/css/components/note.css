@@ -68,7 +68,14 @@
 
 .note__change_status_btn {
   grid-area: sb;
+}
+
+.note__change_status_btn--activate {
   color: rgb(53, 170, 88);
+}
+
+.note__change_status_btn--deactivate {
+  color: rgb(212, 42, 42);
 }
 
 .note__btn:hover {

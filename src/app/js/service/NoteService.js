@@ -22,8 +22,12 @@ export default class NoteService {
     const descriptionEl = this.createDescription(task);
     const deleteBtnEl = this.createBtn(DOMClasses.note.deleteBtn);
     const deleteBtnIconEl = this.createIcon([DOMClasses.icon.delete]);
+    const taskStatusBtnClasses =
+      task.status === Status.ACTIVE
+        ? DOMClasses.note.deactivateStatusBtn
+        : DOMClasses.note.activateStatusBtn;
     const changeStatusBtnEl = this.createBtn(
-      DOMClasses.note.changeStatusBtn,
+      [DOMClasses.note.changeStatusBtn, taskStatusBtnClasses],
       task.status === Status.ACTIVE ? "X" : "✓"
     );
     const pinEl = this.createPin(task);
@@ -66,13 +70,14 @@ export default class NoteService {
     return descriptionEl;
   }
 
-  createBtn(additionalClass, text = "") {
-    const btn = document.createElement("button");
-    btn.classList.add(DOMClasses.note.btn);
-    btn.classList.add(additionalClass);
-    btn.innerText = text;
+  createBtn(additionalClasses = [], text = "") {
+    const btnEl = document.createElement("button");
+    const classList = [DOMClasses.note.btn, ...additionalClasses];
+    classList.forEach((className) => btnEl.classList.add(className));
 
-    return btn;
+    btnEl.innerText = text;
+
+    return btnEl;
   }
 
   createPin({ pinColor }) {
@@ -154,6 +159,8 @@ export default class NoteService {
           `.${DOMClasses.note.changeStatusBtn}`
         );
         changeStatusBtn.innerText = "✓";
+        changeStatusBtn.classList.add(DOMClasses.note.activateStatusBtn);
+        changeStatusBtn.classList.remove(DOMClasses.note.deactivateStatusBtn);
         const inActiveNote = note.cloneNode(true);
         note.parentNode.replaceChild(inActiveNote, note);
 
@@ -168,6 +175,8 @@ export default class NoteService {
           `.${DOMClasses.note.changeStatusBtn}`
         );
         changeStatusBtn.innerText = "X";
+        changeStatusBtn.classList.add(DOMClasses.note.deactivateStatusBtn);
+        changeStatusBtn.classList.remove(DOMClasses.note.activateStatusBtn);
         this.addNoteEventListeners(note, note.dataset.rotation);
         new DraggableElement(note);
         break;

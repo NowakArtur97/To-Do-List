@@ -41,6 +41,7 @@ Stack:
 
 - Refactoring
 - Filter notes by types
+- Loader
 
 ## Getting Started
 
