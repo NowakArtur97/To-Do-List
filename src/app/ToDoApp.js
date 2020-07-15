@@ -37,8 +37,6 @@ export default function main() {
     notePropertiesUtil
   );
 
-  const loader = new Loader();
-  loader.init();
   const corkBoard = new CorkBoard(notePopUp, noteForm, noteFilterService);
 
   noteForm.events.subscribe("create", noteService);
@@ -55,4 +53,7 @@ export default function main() {
 
   noteCleaner.events.subscribe("deleteAll", noteService);
   noteCleaner.events.subscribe("deleteAll", taskService);
+
+  const loader = new Loader();
+  loader.init();
 }
