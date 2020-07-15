@@ -37,11 +37,11 @@ Stack:
 - Search note
 - Delete all notes
 - Get, save, update and delete tasks from local storage
+- Custom loader
 
 ## To Do
 
 - Refactoring
-- Loader
 
 ## Getting Started
 
