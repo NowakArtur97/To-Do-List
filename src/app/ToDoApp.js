@@ -12,6 +12,7 @@ import NotePopUp from "./js/model/NotePopUp";
 import NoteForm from "./js/model/NoteForm";
 import NoteCleaner from "./js/model/NoteCleaner";
 import NoteSearch from "./js/model/NoteSearch";
+import Loader from "./js/model/Loader";
 
 export default function main() {
   const formUtil = new FormUtil();
@@ -35,6 +36,9 @@ export default function main() {
     noteService,
     notePropertiesUtil
   );
+
+  const loader = new Loader();
+  loader.init();
   const corkBoard = new CorkBoard(notePopUp, noteForm, noteFilterService);
 
   noteForm.events.subscribe("create", noteService);

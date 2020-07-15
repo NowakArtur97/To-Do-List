@@ -36,4 +36,14 @@ export default {
     detailed: "fa-",
     delete: "fa-trash",
   },
+  loader: {
+    container: "loader_container",
+    main: "loader",
+    item: "loader__item",
+    blueItem: "loader__item--blue",
+    purpleItem: "loader__item--purple",
+    yellowItem: "loader__item--yellow",
+    redItem: "loader__item--red",
+    text: "loader__text",
+  },
 };
