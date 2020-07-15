@@ -34,13 +34,13 @@ Stack:
 - Drag and drop notes
 - Create/update/filter/delete notes
 - Change note status
+- Search note
 - Delete all notes
 - Get, save, update and delete tasks from local storage
 
 ## To Do
 
 - Refactoring
-- Filter notes by types
 - Loader
 
 ## Getting Started
