@@ -62,7 +62,7 @@ export default class CorkBoard {
       iconClassList.contains(DOMClasses.noteSearch.icon)
     ) {
       const type = e.target.dataset.value;
-      this.noteFilterService.filterTask(type, "type");
+      this.noteFilterService.filterTasks(type, "type");
     }
   }
 }

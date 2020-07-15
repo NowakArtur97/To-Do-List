@@ -4,7 +4,7 @@ export default class NoteFilterService {
     this.noteService = noteService;
   }
 
-  filterTask(value, property) {
+  filterTasks(value, property) {
     let tasks = [];
     if (value) {
       tasks = this.taskService.filter(value, property);

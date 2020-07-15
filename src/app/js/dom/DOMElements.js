@@ -26,4 +26,7 @@ export default {
   noteSearchInput: document.querySelector(
     `.${DOMClasses.noteSearch.searchInput}`
   ),
+  noteSearchCancelBtn: document.querySelector(
+    `.${DOMClasses.noteSearch.cancelBtn}`
+  ),
 };

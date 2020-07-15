@@ -10,15 +10,25 @@ export default class NoteForm {
   addEventListeners() {
     DOMElements.noteSearchInput.addEventListener(
       "keyup",
-      this.filterTask.bind(this)
+      this.filterTasks.bind(this)
     );
     DOMElements.noteSearchInput.addEventListener(
       "change",
-      this.filterTask.bind(this)
+      this.filterTasks.bind(this)
+    );
+    DOMElements.noteSearchCancelBtn.addEventListener(
+      "click",
+      this.cancelFilteringTask.bind(this)
     );
   }
 
-  filterTask(e) {
-    this.noteFilterService.filterTask(e.target.value, "description");
+  filterTasks(e) {
+    this.noteFilterService.filterTasks(e.target.value, "description");
+  }
+
+  cancelFilteringTask(e) {
+    e.preventDefault();
+    this.noteFilterService.filterTasks();
+    DOMElements.noteSearchInput.value = "";
   }
 }
