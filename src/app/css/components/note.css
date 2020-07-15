@@ -56,7 +56,6 @@
   background-color: transparent;
 
   font-size: 2rem;
-  color: rgb(175, 18, 18);
 
   transition: transform 0.3s linear;
 }
@@ -80,7 +79,6 @@
 
 .note__btn:hover {
   transform: scale(1.25);
-
   cursor: pointer;
 }
 
