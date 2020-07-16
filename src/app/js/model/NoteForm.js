@@ -1,14 +1,15 @@
 import DOMElements from "../dom/DOMElements";
 import Status from "../state/Status";
 
+import FormUtil from "../util/FormUtil";
+import NotePropertiesUtil from "../util/NotePropertiesUtil";
+
 import ObserverManager from "../observer/ObserverManager";
 
 export default class NoteForm {
-  constructor(formUtil, taskService, noteService, notePropertiesUtil) {
+  constructor(taskService, noteService) {
     this.taskService = taskService;
     this.noteService = noteService;
-    this.formUtil = formUtil;
-    this.notePropertiesUtil = notePropertiesUtil;
 
     this.events = new ObserverManager("create", "update");
 
@@ -28,7 +29,7 @@ export default class NoteForm {
 
   createOrUpdateTask(e) {
     e.preventDefault();
-    const task = this.formUtil.extractData(DOMElements.noteForm);
+    const task = FormUtil.extractData(DOMElements.noteForm);
     if (!task.description) return;
 
     if (task.id) {
@@ -36,23 +37,20 @@ export default class NoteForm {
     } else {
       this.setTaskProperties(task);
       this.events.notify("create", task);
-      this.formUtil.resetForm(DOMElements.noteForm);
+      FormUtil.resetForm(DOMElements.noteForm);
     }
   }
 
   populateForm(note) {
-    const task = this.notePropertiesUtil.getTaskFromNote(note);
-    this.formUtil.populateData(DOMElements.noteForm, task);
+    const task = NotePropertiesUtil.getTaskFromNote(note);
+    FormUtil.populateData(DOMElements.noteForm, task);
   }
 
   setTaskProperties(task) {
     task.id = task.id || this.taskService.getNextAvailableIndex();
-    task.pinColor = this.notePropertiesUtil.getRandomGradient();
-    task.rotation = this.notePropertiesUtil.getRandomRotation();
-    const {
-      xPosition,
-      yPosition,
-    } = this.notePropertiesUtil.getRandomPosition();
+    task.pinColor = NotePropertiesUtil.getRandomGradient();
+    task.rotation = NotePropertiesUtil.getRandomRotation();
+    const { xPosition, yPosition } = NotePropertiesUtil.getRandomPosition();
     task.xPosition = xPosition;
     task.yPosition = yPosition;
     task.status = Status.ACTIVE;

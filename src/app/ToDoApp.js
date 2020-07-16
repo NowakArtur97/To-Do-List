@@ -1,7 +1,3 @@
-import FormUtil from "./js/util/FormUtil";
-import RandomUtil from "./js/util/RandomUtil";
-import NotePropertiesUtil from "./js/util/NotePropertiesUtil";
-
 import TaskService from "./js/service/TaskService";
 import NoteService from "./js/service/NoteService";
 import LocalStorageService from "./js/service/LocalStorageService";
@@ -15,13 +11,9 @@ import NoteSearch from "./js/model/NoteSearch";
 import Loader from "./js/model/Loader";
 
 export default function main() {
-  const formUtil = new FormUtil();
-  const randomUtil = new RandomUtil();
-  const notePropertiesUtil = new NotePropertiesUtil(randomUtil);
-
   const localStorageService = new LocalStorageService();
   const taskService = new TaskService(localStorageService);
-  const noteService = new NoteService(randomUtil);
+  const noteService = new NoteService();
   const noteFilterService = new NoteFilterService(taskService, noteService);
 
   const tasks = taskService.getAll();
@@ -29,13 +21,8 @@ export default function main() {
 
   const noteCleaner = new NoteCleaner();
   const noteSearch = new NoteSearch(noteFilterService);
-  const notePopUp = new NotePopUp(formUtil);
-  const noteForm = new NoteForm(
-    formUtil,
-    taskService,
-    noteService,
-    notePropertiesUtil
-  );
+  const notePopUp = new NotePopUp();
+  const noteForm = new NoteForm(taskService, noteService);
 
   const corkBoard = new CorkBoard(notePopUp, noteForm, noteFilterService);
 

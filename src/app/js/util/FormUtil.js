@@ -1,5 +1,5 @@
 export default class FormUtil {
-  extractData(form) {
+  static extractData(form) {
     return [...form.elements].reduce((data, element) => {
       if (
         (element.type === "radio" && element.checked) ||
@@ -11,7 +11,7 @@ export default class FormUtil {
     }, {});
   }
 
-  populateData(form, data) {
+  static populateData(form, data) {
     const elements = [...form.elements];
 
     const isRadioWithSameValue = (el, value) =>
@@ -37,7 +37,7 @@ export default class FormUtil {
     }
   }
 
-  resetForm(form) {
+  static resetForm(form) {
     form.reset();
     [...form.elements].forEach((element) => {
       if (element.type === "hidden") {

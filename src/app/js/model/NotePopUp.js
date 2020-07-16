@@ -1,10 +1,10 @@
 import DOMElements from "../dom/DOMElements";
 import DOMClasses from "../dom/DOMClasses";
 
-export default class NotePopUp {
-  constructor(formUtil) {
-    this.formUtil = formUtil;
+import FormUtil from "../util/FormUtil";
 
+export default class NotePopUp {
+  constructor() {
     this.addEventListeners();
   }
 
@@ -23,6 +23,6 @@ export default class NotePopUp {
 
   closePopUp() {
     DOMElements.noteFormPopUp.classList.remove(DOMClasses.noteFormPopUp.active);
-    this.formUtil.resetForm(DOMElements.noteForm);
+    FormUtil.resetForm(DOMElements.noteForm);
   }
 }
