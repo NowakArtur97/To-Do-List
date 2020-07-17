@@ -10,7 +10,7 @@ export default class DraggableElement {
     this.lastX = null;
     this.lastY = null;
     this.isDragged = false;
-    this.element.classList.add("draggable");
+    this.element.classList.add(DOMClasses.draggable.main);
 
     this.addEventListeners();
   }
@@ -20,11 +20,16 @@ export default class DraggableElement {
     this.element.addEventListener("mousemove", this.drag.bind(this));
     this.element.addEventListener("mouseup", this.drop.bind(this));
     this.element.addEventListener("mouseleave", this.drop.bind(this));
+
+    this.element.addEventListener("touchstart", this.startDragging.bind(this));
+    this.element.addEventListener("touchmove", this.drag.bind(this));
+    this.element.addEventListener("touchcancel", this.drop.bind(this));
+    this.element.addEventListener("touchend", this.drop.bind(this));
   }
 
   startDragging(e) {
     this.isDragged = true;
-    const { clientX: xPos, clientY: yPos } = e;
+    const { clientX: xPos, clientY: yPos } = e.clientX ? e : e.touches[0];
     this.offset.x = this.element.offsetLeft - xPos;
     this.offset.y = this.element.offsetTop - yPos;
   }
@@ -33,7 +38,7 @@ export default class DraggableElement {
     if (!this.isDragged) {
       return;
     }
-    const { clientX, clientY } = e;
+    const { clientX, clientY } = e.clientX ? e : e.touches[0];
     const xPos = clientX + this.offset.x;
     const yPos = clientY + this.offset.y;
     this.element.style.left = xPos + "px";

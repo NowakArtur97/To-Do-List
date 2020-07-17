@@ -46,4 +46,7 @@ export default {
     redItem: "loader__item--red",
     text: "loader__text",
   },
+  draggable: {
+    main: "draggable",
+  },
 };

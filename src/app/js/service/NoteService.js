@@ -168,7 +168,6 @@ export default class NoteService {
         changeStatusBtn.classList.remove(DOMClasses.note.deactivateStatusBtn);
         const inActiveNote = note.cloneNode(true);
         note.parentNode.replaceChild(inActiveNote, note);
-
         break;
       }
       case Status.INACTIVE: {
