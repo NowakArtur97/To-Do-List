@@ -5,7 +5,6 @@
 
   display: flex;
   justify-content: center;
-  align-items: center;
 
   width: 100vw;
   height: 100vh;
@@ -15,7 +14,7 @@
   transform: scale(0);
   transition: transform 0.3s linear;
 
-  z-index: 3;
+  z-index: 12;
 }
 
 .note_popup_container--active {
@@ -27,6 +26,7 @@
 
   width: 50vh;
   height: 50vh;
+  margin-top: 10%;
   border: 1px solid rgba(0, 0, 0, 0.25);
 
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
@@ -57,4 +57,18 @@
 .note_popup__close_btn:focus {
   outline: none;
   border: solid 1px black;
+}
+
+@media (min-width: 1024px) {
+  .note_popup_container {
+    align-items: center;
+  }
+
+  .note_popup {
+    margin-top: 0;
+  }
+
+  .note_popup__close_btn {
+    font-size: 8rem;
+  }
 }
