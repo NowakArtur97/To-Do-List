@@ -11,8 +11,7 @@
   flex-wrap: wrap;
 
   width: 100%;
-  height: 10%;
-  margin-bottom: 10px;
+  height: 20%;
 }
 
 .note_form__group-center {
@@ -29,7 +28,7 @@
 }
 
 .note_form__group--large {
-  height: 50%;
+  height: 40%;
 }
 
 .note_form__group--submit {
@@ -41,7 +40,9 @@
 }
 
 .note_form__btn {
-  padding: 13px;
+  height: 60%;
+
+  padding: 11px;
   border: 2px solid black;
   border-radius: 10px;
 
@@ -49,7 +50,7 @@
 }
 
 .note_form__btn:hover {
-  transform: scale(1.3);
+  transform: scale(1.1);
 }
 
 .note_form__textarea {
@@ -66,7 +67,7 @@
 .note_form__label {
   margin-left: 10px;
 
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .note_form__label--row {
@@ -75,4 +76,36 @@
 
 .note_form__color_input {
   margin-left: 8px;
+}
+
+@media (min-width: 768px) {
+  .note_form {
+    font-size: 2rem;
+  }
+
+  .note_form__group-center {
+    align-items: center;
+  }
+
+  .note_form__btn {
+    padding: 15px;
+
+    font-size: 2.5rem;
+  }
+
+  .note_form__label {
+    margin-left: 10px;
+
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .note_form__group-center {
+    align-items: center;
+  }
+
+  .note_form__btn {
+    font-size: 3rem;
+  }
 }
