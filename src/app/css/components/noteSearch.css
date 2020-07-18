@@ -12,6 +12,8 @@
   transform: translate(-50%, 70%);
 
   transition: transform 0.3s linear;
+
+  z-index: 10;
 }
 
 .note_search_container:hover {
@@ -20,8 +22,7 @@
 
 .note_search {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 
   height: 100%;
@@ -32,7 +33,11 @@
 }
 
 .note_search__heading {
+  justify-self: start;
+
   margin: 0;
+
+  font-size: 2.4rem;
 }
 
 .note_search__input {
@@ -42,11 +47,18 @@
   border: 1px solid black;
   background-color: transparent;
 
-  font-size: 1.5em;
+  font-size: 1.8rem;
+}
+
+.note_search__types {
+  display: flex;
+  justify-content: space-around;
+
+  width: 100%;
 }
 
 .note_search__icon {
-  font-size: 1.5em;
+  font-size: 2.3rem;
 }
 
 .note_search__icon:hover {
@@ -59,11 +71,12 @@
   right: 0%;
 
   border: none;
+  padding-bottom: 18%;
 
   height: 60px;
   background-color: transparent;
 
-  font-size: 2rem;
+  font-size: 4.2rem;
   color: rgb(175, 18, 18);
 
   transition: transform 0.3s linear;
@@ -72,4 +85,50 @@
 .note_search__cancel_btn:hover {
   transform: scale(1.25);
   cursor: pointer;
+}
+
+@media (min-width: 411px) {
+  .note_search_container {
+    width: 310px;
+    height: 180px;
+  }
+
+  .note_search__heading {
+    font-size: 2.8rem;
+  }
+
+  .note_search__input {
+    font-size: 2rem;
+  }
+
+  .note_search__icon {
+    font-size: 2.3rem;
+  }
+
+  .note_search__cancel_btn {
+    font-size: 4.9rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .note_search_container {
+    width: 340px;
+    height: 210px;
+  }
+
+  .note_search__heading {
+    font-size: 5rem;
+  }
+
+  .note_search__input {
+    font-size: 2rem;
+  }
+
+  .note_search__icon {
+    font-size: 2.3rem;
+  }
+
+  .note_search__cancel_btn {
+    font-size: 6.3rem;
+  }
 }
