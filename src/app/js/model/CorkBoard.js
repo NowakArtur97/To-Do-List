@@ -12,6 +12,8 @@ export default class CorkBoard {
 
     this.events = new ObserverManager("delete", "changeStatus");
 
+    this.isTapped = false;
+
     this.addEventListeners();
   }
 
@@ -19,6 +21,13 @@ export default class CorkBoard {
     DOMElements.board.addEventListener(
       "dblclick",
       this.showFormForUpdate.bind(this),
+      {
+        capture: true,
+      }
+    );
+    DOMElements.board.addEventListener(
+      "touchstart",
+      this.showFormForUpdateOnMobile.bind(this),
       {
         capture: true,
       }
@@ -34,6 +43,18 @@ export default class CorkBoard {
       this.notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
       this.noteForm.populateForm(noteEl);
+    }
+  }
+
+  showFormForUpdateOnMobile(e) {
+    if (!this.isTapped) {
+      this.isTapped = setTimeout(() => {
+        this.isTapped = null;
+      }, 200);
+    } else {
+      clearTimeout(this.isTapped);
+      this.isTapped = null;
+      this.showFormForUpdate(e);
     }
   }
 
