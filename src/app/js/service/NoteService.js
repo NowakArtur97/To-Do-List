@@ -106,7 +106,10 @@ export default class NoteService {
   }
 
   createTypeIcon({ type }) {
-    const typeEl = this.createIcon([`${DOMClasses.icon.detailed}${type}`]);
+    const typeEl = this.createIcon([
+      `${DOMClasses.icon.detailed}${type}`,
+      DOMClasses.note.type,
+    ]);
     typeEl.dataset.field = "type";
     typeEl.dataset.value = type;
 

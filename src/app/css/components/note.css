@@ -1,10 +1,9 @@
 .note {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 4fr;
   grid-template-areas:
     "i s p sb x"
-    "d d d d d"
     "d d d d d";
   justify-items: center;
   align-items: center;
@@ -19,6 +18,7 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   background-color: #cbfafa;
 
+  font-size: 1.3rem;
   overflow: hidden;
 
   transition: transform 0.3s linear;
@@ -55,7 +55,7 @@
 
   background-color: transparent;
 
-  font-size: 2rem;
+  font-size: 2.1rem;
 
   transition: transform 0.3s linear;
 }
@@ -67,6 +67,8 @@
 
 .note__change_status_btn {
   grid-area: sb;
+
+  font-size: 2rem;
 }
 
 .note__change_status_btn--activate {
@@ -107,10 +109,67 @@
   justify-self: start;
 
   margin-left: 10%;
+  padding-bottom: 60%;
 }
 
 .note__status {
   grid-area: s;
 
   margin-left: 5%;
+
+  font-size: 1rem;
+}
+
+.note__type {
+  padding-bottom: 40%;
+
+  font-size: 1rem;
+}
+
+@media (min-width: 411px) {
+  .note__description {
+    font-size: 2rem;
+  }
+
+  .note__btn {
+    font-size: 2.3rem;
+  }
+
+  .note__change_status_btn {
+    font-size: 3rem;
+  }
+
+  .note__status {
+    font-size: 1.2rem;
+  }
+
+  .note__type {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .note__description {
+    font-size: 2.4rem;
+  }
+
+  .note__btn {
+    font-size: 2.7rem;
+  }
+
+  .note__change_status_btn {
+    font-size: 3.3rem;
+  }
+
+  .note__status {
+    margin-left: 0;
+
+    font-size: 1.7rem;
+  }
+
+  .note__type {
+    padding-bottom: 20%;
+
+    font-size: 1.6rem;
+  }
 }

@@ -12,6 +12,7 @@ export default {
     pin: "note__pin",
     icon: "note__icon",
     status: "note__status",
+    type: "note__type",
   },
   noteOption: { main: "note_option" },
   noteFormPopUpTrigger: { main: "note_form_popup_trigger" },
