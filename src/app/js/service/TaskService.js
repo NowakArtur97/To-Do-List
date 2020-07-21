@@ -105,8 +105,8 @@ export default class TaskService {
       rotation: -7,
       status: "active",
       type: "book",
-      xPosition: document.body.scrollWidth * 0.1,
-      yPosition: document.body.scrollHeight * 0.4,
+      xPosition: document.body.scrollWidth * 0.5,
+      yPosition: document.body.scrollHeight * 0.45,
     };
 
     const exampleTask3 = {
@@ -117,8 +117,8 @@ export default class TaskService {
       rotation: -17,
       status: "inactive",
       type: "birthday-cake",
-      xPosition: document.body.scrollWidth * 0.6,
-      yPosition: document.body.scrollHeight * 0.45,
+      xPosition: document.body.scrollWidth * 0.1,
+      yPosition: document.body.scrollHeight * 0.4,
     };
 
     const exampleTask4 = {
@@ -130,8 +130,8 @@ export default class TaskService {
       rotation: 15,
       status: "active",
       type: "shopping-cart",
-      xPosition: document.body.scrollWidth * 0.45,
-      yPosition: document.body.scrollHeight * 0.6,
+      xPosition: document.body.scrollWidth * 0.35,
+      yPosition: document.body.scrollHeight * 0.65,
     };
 
     this.tasks.push(exampleTask1, exampleTask2, exampleTask3, exampleTask4);
