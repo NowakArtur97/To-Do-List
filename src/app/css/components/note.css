@@ -131,7 +131,7 @@
 
   margin-left: 5%;
 
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .note__type {
@@ -154,7 +154,7 @@
   }
 
   .note__status {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .note__type {
@@ -163,8 +163,14 @@
 }
 
 @media (min-width: 768px) {
+  .note {
+    width: 20vh;
+    min-height: 20vh;
+    max-height: 20vh;
+  }
+
   .note__description {
-    font-size: 1.9rem;
+    font-size: 2.1rem;
   }
 
   .note__btn {

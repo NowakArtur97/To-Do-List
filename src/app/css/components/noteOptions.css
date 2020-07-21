@@ -46,3 +46,11 @@
   color: white;
   background-color: crimson;
 }
+
+@media (min-width: 768px) {
+  .note_option {
+    width: 10vh;
+    min-height: 10vh;
+    max-height: 10vh;
+  }
+}
