@@ -76,4 +76,65 @@ export default class TaskService {
       task[property].match(new RegExp(value, "gi"))
     );
   }
+
+  saveDummyData() {
+    if (this.localStorageService.get("tasks")) {
+      return;
+    }
+
+    const exampleTask1 = {
+      description: "double click to update note",
+      id: 1,
+      noteColor: "#5f80e3",
+      pinColor: "radial-gradient(#aa8a59 50%, black 50%)",
+      rotation: 12,
+      status: "active",
+      type: "handshake",
+      xPosition: document.body.scrollWidth * 0.1,
+      yPosition: document.body.scrollHeight * 0.1,
+    };
+
+    const exampleTask2 = {
+      description: "click X to mark the task as inactive",
+      id: 2,
+      noteColor: "#2fd82c",
+      pinColor: "radial-gradient(#724992 50%, black 50%)",
+      rotation: -7,
+      status: "active",
+      type: "book",
+      xPosition: document.body.scrollWidth * 0.1,
+      yPosition: document.body.scrollHeight * 0.4,
+    };
+
+    const exampleTask3 = {
+      description: "click ✓ to mark the task as active",
+      id: 3,
+      noteColor: "#ec93bb",
+      pinColor: "radial-gradient(#31854e 50%, black 50%)",
+      rotation: -17,
+      status: "inactive",
+      type: "birthday-cake",
+      xPosition: document.body.scrollWidth * 0.6,
+      yPosition: document.body.scrollHeight * 0.45,
+    };
+
+    const exampleTask4 = {
+      description:
+        "click the icon in the upper left corner to display only the notes with the same icon",
+      id: 4,
+      noteColor: "#e5e048",
+      pinColor: "radial-gradient(#6060b9 50%, black 50%)",
+      rotation: 15,
+      status: "active",
+      type: "shopping-cart",
+      xPosition: document.body.scrollWidth * 0.45,
+      yPosition: document.body.scrollHeight * 0.6,
+    };
+
+    this.tasks.push(exampleTask1);
+    this.tasks.push(exampleTask2);
+    this.tasks.push(exampleTask3);
+    this.tasks.push(exampleTask4);
+    this.localStorageService.save("tasks", this.tasks);
+  }
 }

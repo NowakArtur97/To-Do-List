@@ -16,6 +16,7 @@ export default function main() {
   const noteService = new NoteService();
   const noteFilterService = new NoteFilterService(taskService, noteService);
 
+  taskService.saveDummyData();
   const tasks = taskService.getAll();
   noteService.createAll(tasks);
 
@@ -41,6 +42,6 @@ export default function main() {
   noteCleaner.events.subscribe("deleteAll", noteService);
   noteCleaner.events.subscribe("deleteAll", taskService);
 
-  const loader = new Loader();
-  loader.init();
+  // const loader = new Loader();
+  // loader.init();
 }

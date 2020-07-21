@@ -16,7 +16,7 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   background-color: #cbfafa;
 
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   overflow: hidden;
 
   transition: transform 0.3s linear;
@@ -130,7 +130,7 @@
 
 @media (min-width: 411px) {
   .note__description {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .note__btn {
@@ -152,7 +152,7 @@
 
 @media (min-width: 768px) {
   .note__description {
-    font-size: 2.1rem;
+    font-size: 1.9rem;
   }
 
   .note__btn {
