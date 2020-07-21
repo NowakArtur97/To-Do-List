@@ -52,9 +52,12 @@ export default class TaskService {
 
   delete({ dataset }) {
     const id = dataset.id;
-    const taskToDelete = this.tasks.filter((task) => task.id === id);
-    const taskToDeleteIndex = this.tasks.indexOf(taskToDelete);
-    this.tasks.splice(taskToDeleteIndex, 1);
+    const taskToDelete = this.tasks.find((task) => task.id == id);
+
+    if (taskToDelete) {
+      const taskToDeleteIndex = this.tasks.indexOf(taskToDelete);
+      this.tasks.splice(taskToDeleteIndex, 1);
+    }
 
     this.localStorageService.save("tasks", this.tasks);
   }
@@ -131,10 +134,7 @@ export default class TaskService {
       yPosition: document.body.scrollHeight * 0.6,
     };
 
-    this.tasks.push(exampleTask1);
-    this.tasks.push(exampleTask2);
-    this.tasks.push(exampleTask3);
-    this.tasks.push(exampleTask4);
+    this.tasks.push(exampleTask1, exampleTask2, exampleTask3, exampleTask4);
     this.localStorageService.save("tasks", this.tasks);
   }
 }
