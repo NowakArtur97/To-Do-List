@@ -14,7 +14,7 @@
 
   z-index: 10;
 
-  animation: fade 0.3s 4.3s linear both;
+  animation: fade 0.3s 3s linear both;
 }
 
 .loader {
@@ -45,32 +45,28 @@
   left: 0;
   background: #1b91f7;
 
-  animation: item_blue_move 1.9s cubic-bezier(0.6, 0.01, 0.4, 1) 2 both,
-    item_blue_fly 0.5s 3.8s linear 1 both;
+  animation: item_blue_animation 3s cubic-bezier(0.6, 0.01, 0.4, 1) 1 both;
 }
 
 .loader__item--purple {
   top: 0;
   left: 50%;
   background-color: #7a45e5;
-  animation: item_purple_move 1.9s cubic-bezier(0.6, 0.01, 0.4, 1) 2 both,
-    item_purple_fly 0.5s 3.8s linear 1 both;
+  animation: item_purple_animation 3s cubic-bezier(0.6, 0.01, 0.4, 1) 1 both;
 }
 
 .loader__item--yellow {
   top: 50%;
   left: 0;
   background-color: #fac24c;
-  animation: item_yellow_move 1.9s cubic-bezier(0.6, 0.01, 0.4, 1) 2 both,
-    item_yellow_fly 0.5s 3.8s linear 1 both;
+  animation: item_yellow_animation 3s cubic-bezier(0.6, 0.01, 0.4, 1) 1 both;
 }
 
 .loader__item--red {
   top: 50%;
   left: 50%;
   background-color: #fa5667;
-  animation: item_red_move 1.9s cubic-bezier(0.6, 0.01, 0.4, 1) 2 both,
-    item_red_fly 0.5s 3.8s linear 1 both;
+  animation: item_red_animation 3s cubic-bezier(0.6, 0.01, 0.4, 1) 1 both;
 }
 
 .loader__text {
@@ -89,89 +85,73 @@
   }
 }
 
-@keyframes item_blue_move {
-  0%,
-  100% {
+@keyframes item_blue_animation {
+  0% {
     transform: translate(0, 0);
   }
-  25% {
+  20% {
     transform: translate(0, 100%);
   }
-  50% {
+  40% {
     transform: translate(100%, 100%);
   }
-  75% {
+  60% {
     transform: translate(100%, 0);
   }
-}
-
-@keyframes item_blue_fly {
   100% {
     transform: translate(-200%, -200%) scale(0) rotate(720deg);
   }
 }
 
-@keyframes item_purple_move {
-  0%,
-  100% {
+@keyframes item_purple_animation {
+  0% {
     transform: translate(0, 0);
   }
-  25% {
+  20% {
     transform: translate(-100%, 0);
   }
-  50% {
+  40% {
     transform: translate(-100%, 100%);
   }
-  75% {
+  60% {
     transform: translate(0, 100%);
   }
-}
-
-@keyframes item_purple_fly {
   100% {
     transform: translate(200%, -200%) scale(0) rotate(720deg);
   }
 }
 
-@keyframes item_yellow_move {
-  0%,
-  100% {
+@keyframes item_yellow_animation {
+  0% {
     transform: translate(0, 0);
   }
-  25% {
+  20% {
     transform: translate(100%, 0);
   }
-  50% {
+  40% {
     transform: translate(100%, -100%);
   }
-  75% {
+  60% {
     transform: translate(0, -100%);
   }
-}
-
-@keyframes item_yellow_fly {
   100% {
     transform: translate(-200%, 200%) scale(0) rotate(720deg);
   }
 }
 
-@keyframes item_red_move {
-  0%,
-  100% {
+@keyframes item_red_animation {
+  0% {
     transform: translate(0, 0);
   }
-  25% {
+  20% {
     transform: translate(0, -100%);
   }
-  50% {
+  40% {
     transform: translate(-100%, -100%);
   }
-  75% {
+  60% {
     transform: translate(-100%, 0);
   }
-}
-
-@keyframes item_red_fly {
   100% {
     transform: translate(200%, 200%) scale(0) rotate(720deg);
   }

@@ -9,7 +9,8 @@
     "build": "webpack --config webpack.prod.js"
   },
   "browserslist": [
-    "> 1%"
+    "> 1%",
+    "last 2 versions"
   ],
   "repository": {
     "type": "git",

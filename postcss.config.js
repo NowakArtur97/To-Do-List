@@ -4,8 +4,7 @@ module.exports = {
   plugins: [
     require("postcss-import"),
     autoprefixer({
-      flexbox: true,
-      grid: true,
+      grid: "autoplace",
     }),
   ],
 };

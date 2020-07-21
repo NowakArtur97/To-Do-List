@@ -2,7 +2,7 @@ import DOMClasses from "../dom/DOMClasses";
 
 export default class Loader {
   constructor() {
-    this.LOADER_ANIMATION_DURATION = 4600;
+    this.LOADER_ANIMATION_DURATION = 3300;
   }
 
   init() {

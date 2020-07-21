@@ -5,8 +5,6 @@
   grid-template-areas:
     "i s p sb x"
     "d d d d d";
-  justify-items: center;
-  align-items: center;
 
   position: absolute;
 
@@ -22,6 +20,10 @@
   overflow: hidden;
 
   transition: transform 0.3s linear;
+}
+
+.note > * {
+  place-self: center;
 }
 
 .note:hover {
@@ -106,7 +108,7 @@
 .note__icon {
   grid-area: i;
 
-  justify-self: start;
+  justify-self: flex-start;
 
   margin-left: 10%;
   padding-bottom: 60%;
@@ -150,7 +152,7 @@
 
 @media (min-width: 768px) {
   .note__description {
-    font-size: 2.4rem;
+    font-size: 2.1rem;
   }
 
   .note__btn {
