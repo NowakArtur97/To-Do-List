@@ -44,10 +44,11 @@
   width: 100%;
 
   margin-bottom: 10px;
+  padding: 5%;
   border: 1px solid black;
   background-color: transparent;
 
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 .note_search__types {
@@ -89,35 +90,35 @@
 
 @media (min-width: 411px) {
   .note_search_container {
-    width: 310px;
-    height: 180px;
+    width: 240px;
+    height: 120px;
   }
 
   .note_search__heading {
-    font-size: 2.8rem;
-  }
-
-  .note_search__input {
-    font-size: 2rem;
-  }
-
-  .note_search__icon {
     font-size: 2.3rem;
   }
 
+  .note_search__input {
+    font-size: 1.6rem;
+  }
+
+  .note_search__icon {
+    font-size: 2.1rem;
+  }
+
   .note_search__cancel_btn {
-    font-size: 4.9rem;
+    font-size: 4.5rem;
   }
 }
 
 @media (min-width: 768px) {
   .note_search_container {
-    width: 340px;
-    height: 210px;
+    width: 320px;
+    height: 160px;
   }
 
   .note_search__heading {
-    font-size: 5rem;
+    font-size: 3.7rem;
   }
 
   .note_search__input {
@@ -129,6 +130,6 @@
   }
 
   .note_search__cancel_btn {
-    font-size: 6.3rem;
+    font-size: 5.6rem;
   }
 }
