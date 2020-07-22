@@ -15,6 +15,7 @@ export default class CorkBoard {
     this.isTapped = false;
 
     this.addEventListeners();
+    this.setCorkBoardSize();
   }
 
   addEventListeners() {
@@ -34,6 +35,12 @@ export default class CorkBoard {
     );
     DOMElements.board.addEventListener("click", this.triggerAction.bind(this));
     DOMElements.board.addEventListener("click", this.filterByType.bind(this));
+    window.addEventListener("resize", this.setCorkBoardSize.bind(this));
+  }
+
+  setCorkBoardSize() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
   showFormForUpdate(e) {
