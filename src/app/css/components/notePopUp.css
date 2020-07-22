@@ -5,13 +5,14 @@
 
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 
   width: 100vw;
   height: 100vh;
 
   background-color: rgba(0, 0, 0, 0.65);
 
-  transform: scale(0);
+  /* transform: scale(0); */
   transition: transform 0.3s linear;
 
   z-index: 12;
@@ -59,22 +60,35 @@
   border: solid 1px black;
 }
 
-@media (min-width: 360px) {
+@media screen and (orientation: landscape) and (max-width: 823px) {
   .note_popup {
-    height: 40vh;
-    width: 40vh;
+    width: 40vw;
+    height: 40vw;
   }
 }
 
-@media (min-width: 1024px) {
-  .note_popup_container {
-    align-items: center;
+@media screen and (orientation: portrait) {
+  .note_popup {
+    width: 40vh;
+    height: 40vh;
   }
+}
 
+@media (min-width: 768px) {
   .note_popup {
     margin-top: 0;
   }
 
+  .note_popup_container {
+    align-items: center;
+  }
+
+  .note_popup__close_btn {
+    font-size: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
   .note_popup__close_btn {
     font-size: 8rem;
   }
