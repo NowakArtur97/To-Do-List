@@ -36,8 +36,22 @@
   justify-content: center;
   align-items: center;
 
-  width: 15vh;
-  height: 15vh;
+  width: 50%;
+  height: 50%;
+}
+
+@media screen and (orientation: landscape) {
+  .loader {
+    width: 30vw;
+    height: 30vw;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .loader {
+    width: 30vh;
+    height: 30vh;
+  }
 }
 
 .loader__item--blue {
@@ -82,6 +96,12 @@
 @media (min-width: 768px) {
   .loader__text {
     font-size: 2.3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .loader__text {
+    font-size: 3.2rem;
   }
 }
 
