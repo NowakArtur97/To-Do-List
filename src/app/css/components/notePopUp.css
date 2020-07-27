@@ -12,7 +12,7 @@
 
   background-color: rgba(0, 0, 0, 0.65);
 
-  transform: scale(0);
+  /* transform: scale(0); */
   transition: transform 0.3s linear;
 
   z-index: 12;
@@ -71,6 +71,19 @@
   .note_popup {
     width: 40vh;
     height: 40vh;
+  }
+}
+
+@media (max-height: 400px) {
+  .note_popup {
+    height: 72vh;
+    width: 72vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .note_popup__close_btn {
+    font-size: 8rem;
   }
 }
 
