@@ -12,7 +12,7 @@
 
   background-color: rgba(0, 0, 0, 0.65);
 
-  /* transform: scale(0); */
+  transform: scale(0);
   transition: transform 0.3s linear;
 
   z-index: 12;
@@ -96,7 +96,7 @@
 
 @media screen and (orientation: landscape) and (max-height: 400px) {
   .note_popup {
-    height: 72vh;
+    height: 75vh;
     width: 72vh;
 
     margin-top: 1%;
@@ -107,15 +107,9 @@
   }
 }
 
-@media screen and (orientation: landscape) and (max-height: 200px) {
+@media screen and (orientation: landscape) and (max-height: 150px) {
   .note_popup {
-    height: 72vh;
-    width: 72vw;
-
-    margin-top: 1%;
-  }
-
-  .note_popup_container {
-    align-items: flex-start;
+    height: 36vw;
+    width: 36vw;
   }
 }

@@ -114,24 +114,41 @@
   }
 
   .note_form__btn {
-    padding: 15px;
-
-    font-size: 2.5rem;
+    font-size: 2.1rem;
   }
 
   .note_form__label {
-    margin-left: 10px;
+    margin-left: 8px;
 
-    font-size: 2.6rem;
+    font-size: 1.7rem;
+  }
+
+  .note_form__label--big {
+    font-size: 1.8rem;
+  }
+
+  .note_form__label--row {
+    width: 100%;
+    font-size: 1.8rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .note_form__group-center {
-    align-items: center;
+  .note_form__btn {
+    font-size: 3.1rem;
   }
 
-  .note_form__btn {
+  .note_form__label {
+    margin-left: 8px;
+
     font-size: 3rem;
+  }
+
+  .note_form__label--big {
+    font-size: 3.1rem;
+  }
+
+  .note_form__label--row {
+    font-size: 3.1rem;
   }
 }
