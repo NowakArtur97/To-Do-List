@@ -1,8 +1,8 @@
 .note_form {
   height: 100%;
-  padding: 5%;
+  padding: 3%;
 
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .note_form__group {
@@ -34,13 +34,15 @@
 .note_form__group--submit {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   height: 30%;
+
+  font-size: 1.7rem;
 }
 
 .note_form__btn {
-  height: 60%;
+  height: 50%;
 
   padding: 11px;
   border: 2px solid black;
@@ -62,20 +64,44 @@
   border: none;
   resize: none;
   overflow: auto;
+
+  font-size: 2rem;
 }
 
 .note_form__label {
-  margin-left: 10px;
+  margin-left: 6px;
 
-  font-size: 1.7rem;
+  font-size: 1.4rem;
+}
+
+.note_form__label--big {
+  font-size: 1.8rem;
 }
 
 .note_form__label--row {
   width: 100%;
+  font-size: 1.8rem;
 }
 
 .note_form__color_input {
   margin-left: 8px;
+}
+
+@media (min-width: 375px) {
+  .note_form__label {
+    margin-left: 8px;
+
+    font-size: 1.7rem;
+  }
+
+  .note_form__label--big {
+    font-size: 1.8rem;
+  }
+
+  .note_form__label--row {
+    width: 100%;
+    font-size: 1.8rem;
+  }
 }
 
 @media (min-width: 768px) {
