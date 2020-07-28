@@ -35,7 +35,7 @@
   }
 }
 
-.note_option .note__description {
+.note_option__description {
   padding: 0;
 }
 
@@ -50,9 +50,12 @@
 
 @media (min-width: 768px) {
   .note_option {
-    width: 10vh;
-    min-height: 10vh;
-    max-height: 10vh;
+    width: 8vh;
+    min-height: 8vh;
+    max-height: 8vh;
+  }
+  .note_option__description {
+    font-size: 1.5rem;
   }
 }
 
@@ -61,5 +64,56 @@
     width: 10vw;
     min-height: 10vw;
     max-height: 10vw;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 1024px) {
+  .note_option__description {
+    font-size: 1.7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .note_option {
+    width: 8vh;
+    min-height: 8vh;
+    max-height: 8vh;
+  }
+  .note_option__description {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 768px) {
+  .note_option {
+    width: 10vh;
+    min-height: 10vh;
+    max-height: 10vh;
+  }
+  .note_option__description {
+    font-size: 1.9rem;
+  }
+}
+
+@media (min-width: 1366px) and (min-height: 1024px) {
+  .note_option__description {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 1366px) {
+  .note_option__description {
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 1024px) and (orientation: portrait) {
+  .note_option {
+    width: 6vh;
+    min-height: 6vh;
+    max-height: 6vh;
+  }
+  .note_option__description {
+    font-size: 1.7rem;
   }
 }
