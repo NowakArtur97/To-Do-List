@@ -1,8 +1,6 @@
 .note_form {
   height: 100%;
   padding: 3%;
-
-  font-size: 1.5rem;
 }
 
 .note_form__group {
@@ -37,16 +35,17 @@
   align-items: flex-start;
 
   height: 30%;
-
-  font-size: 1.7rem;
 }
 
 .note_form__btn {
   height: 50%;
 
-  padding: 11px;
+  margin-top: 3%;
+  padding: 10px 13px;
   border: 2px solid black;
   border-radius: 10px;
+
+  font-size: 1.8rem;
 
   transition: transform 0.3s linear;
 }
@@ -65,13 +64,13 @@
   resize: none;
   overflow: auto;
 
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .note_form__label {
   margin-left: 6px;
 
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .note_form__label--big {
@@ -88,67 +87,162 @@
 }
 
 @media (min-width: 375px) {
-  .note_form__label {
-    margin-left: 8px;
-
-    font-size: 1.7rem;
-  }
-
-  .note_form__label--big {
-    font-size: 1.8rem;
-  }
-
-  .note_form__label--row {
-    width: 100%;
-    font-size: 1.8rem;
-  }
-}
-
-@media (min-width: 768px) {
   .note_form {
-    font-size: 2rem;
-  }
-
-  .note_form__group-center {
-    align-items: center;
+    padding: 4%;
   }
 
   .note_form__btn {
-    font-size: 2.1rem;
+    margin-top: 4%;
+    font-size: 1.9rem;
+  }
+
+  .note_form__textarea {
+    font-size: 1.7rem;
   }
 
   .note_form__label {
-    margin-left: 8px;
-
     font-size: 1.7rem;
   }
 
   .note_form__label--big {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
   }
 
   .note_form__label--row {
-    width: 100%;
-    font-size: 1.8rem;
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-height: 280px) {
+  .note_form {
+    padding: 4%;
+  }
+
+  .note_form__btn {
+    margin-top: 4%;
+    font-size: 1.4rem;
+  }
+
+  .note_form__textarea {
+    font-size: 1.2rem;
+  }
+
+  .note_form__label {
+    font-size: 1.2rem;
+  }
+
+  .note_form__label--big {
+    font-size: 1.4rem;
+  }
+
+  .note_form__label--row {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 768px) and (min-height: 414px) {
+  .note_form {
+    padding: 5%;
+  }
+
+  .note_form__btn {
+    margin-top: 4%;
+    font-size: 2.7rem;
+  }
+
+  .note_form__textarea {
+    font-size: 2.3rem;
+  }
+
+  .note_form__label {
+    font-size: 2.3rem;
+  }
+
+  .note_form__label--big {
+    font-size: 2.7rem;
+  }
+
+  .note_form__label--row {
+    font-size: 2.7rem;
   }
 }
 
 @media (min-width: 1024px) {
+  .note_form {
+    padding: 5%;
+  }
+
   .note_form__btn {
-    font-size: 3.1rem;
+    margin-top: 4%;
+    font-size: 2.8rem;
+  }
+
+  .note_form__textarea {
+    font-size: 2.4rem;
   }
 
   .note_form__label {
-    margin-left: 8px;
-
-    font-size: 3rem;
+    font-size: 2.4rem;
   }
 
   .note_form__label--big {
-    font-size: 3.1rem;
+    font-size: 2.4rem;
   }
 
   .note_form__label--row {
-    font-size: 3.1rem;
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width: 1024px) and (orientation: portrait) {
+  .note_form {
+    padding: 5%;
+  }
+
+  .note_form__btn {
+    margin-top: 4%;
+    font-size: 3.2rem;
+  }
+
+  .note_form__textarea {
+    font-size: 2.8rem;
+  }
+
+  .note_form__label {
+    font-size: 2.8rem;
+  }
+
+  .note_form__label--big {
+    font-size: 2.8rem;
+  }
+
+  .note_form__label--row {
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1366px) {
+  .note_form {
+    padding: 5%;
+  }
+
+  .note_form__btn {
+    font-size: 3rem;
+  }
+
+  .note_form__textarea {
+    font-size: 2.8rem;
+  }
+
+  .note_form__label {
+    font-size: 2.8rem;
+  }
+
+  .note_form__label--big {
+    font-size: 2.8rem;
+  }
+
+  .note_form__label--row {
+    font-size: 3rem;
   }
 }
