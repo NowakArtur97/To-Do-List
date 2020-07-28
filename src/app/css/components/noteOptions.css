@@ -48,6 +48,12 @@
   background-color: crimson;
 }
 
+@media (max-height: 414px) {
+  .note_option__description {
+    font-size: 1rem;
+  }
+}
+
 @media (min-width: 768px) {
   .note_option {
     width: 8vh;

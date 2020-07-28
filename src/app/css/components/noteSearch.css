@@ -7,10 +7,9 @@
   flex-direction: row;
 
   width: 280px;
-  height: 150px;
+  height: 120px;
 
-  transform: translate(-50%, 70%);
-
+  transform: translate(-50%, 72%);
   transition: transform 0.3s linear;
 
   z-index: 10;
@@ -37,18 +36,18 @@
 
   margin: 0;
 
-  font-size: 2.4rem;
+  font-size: 2.2rem;
 }
 
 .note_search__input {
   width: 100%;
 
   margin-bottom: 10px;
-  padding: 5%;
+  padding: 1%;
   border: 1px solid black;
   background-color: transparent;
 
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 .note_search__types {
@@ -59,7 +58,7 @@
 }
 
 .note_search__icon {
-  font-size: 2.3rem;
+  font-size: 1.8rem;
 }
 
 .note_search__icon:hover {
@@ -77,7 +76,7 @@
   height: 60px;
   background-color: transparent;
 
-  font-size: 4.2rem;
+  font-size: 4rem;
   color: rgb(175, 18, 18);
 
   transition: transform 0.3s linear;
@@ -88,14 +87,9 @@
   cursor: pointer;
 }
 
-@media (min-width: 411px) {
-  .note_search_container {
-    width: 240px;
-    height: 120px;
-  }
-
+@media (min-width: 375px) {
   .note_search__heading {
-    font-size: 2.3rem;
+    font-size: 1.9rem;
   }
 
   .note_search__input {
@@ -103,11 +97,30 @@
   }
 
   .note_search__icon {
+    font-size: 1.6rem;
+  }
+}
+
+@media (min-width: 411px) {
+  .note_search_container {
+    width: 240px;
+    height: 120px;
+  }
+
+  .note_search__heading {
     font-size: 2.1rem;
   }
 
+  .note_search__input {
+    font-size: 1.5rem;
+  }
+
+  .note_search__icon {
+    font-size: 1.5rem;
+  }
+
   .note_search__cancel_btn {
-    font-size: 4.5rem;
+    font-size: 4rem;
   }
 }
 
@@ -118,11 +131,37 @@
   }
 
   .note_search__heading {
-    font-size: 3.7rem;
+    font-size: 2.6rem;
   }
 
   .note_search__input {
-    font-size: 2rem;
+    font-size: 2.2rem;
+  }
+
+  .note_search__icon {
+    font-size: 2.2rem;
+  }
+
+  .note_search__cancel_btn {
+    padding-bottom: 18%;
+
+    height: 60px;
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .note_search_container {
+    width: 320px;
+    height: 160px;
+  }
+
+  .note_search__heading {
+    font-size: 2.8rem;
+  }
+
+  .note_search__input {
+    font-size: 2.3rem;
   }
 
   .note_search__icon {
@@ -130,6 +169,29 @@
   }
 
   .note_search__cancel_btn {
-    font-size: 5.6rem;
+    font-size: 4.3rem;
+  }
+}
+
+@media (min-width: 1366px) {
+  .note_search_container {
+    width: 320px;
+    height: 160px;
+  }
+
+  .note_search__heading {
+    font-size: 3rem;
+  }
+
+  .note_search__input {
+    font-size: 2.7rem;
+  }
+
+  .note_search__icon {
+    font-size: 2.7rem;
+  }
+
+  .note_search__cancel_btn {
+    font-size: 4.5rem;
   }
 }
