@@ -141,6 +141,14 @@
   font-size: 1.2rem;
 }
 
+@media (max-height: 370px) and (max-width: 430px) {
+  .note {
+    width: 35vw;
+    min-height: 35vw;
+    max-height: 35vw;
+  }
+}
+
 @media (min-width: 411px) {
   .note__description {
     font-size: 1.45rem;
