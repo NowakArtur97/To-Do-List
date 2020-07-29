@@ -5,12 +5,9 @@ export default class NoteFilterService {
   }
 
   filterTasks(value, property) {
-    let tasks = [];
-    if (value) {
-      tasks = this.taskService.filter(value, property);
-    } else {
-      tasks = this.taskService.getAll();
-    }
+    let tasks = value
+      ? this.taskService.filter(value, property)
+      : this.taskService.getAll();
     this.noteService.deleteAll();
     this.noteService.createAll(tasks);
   }

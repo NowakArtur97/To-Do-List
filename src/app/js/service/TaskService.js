@@ -93,7 +93,7 @@ export default class TaskService {
       rotation: 12,
       status: "active",
       type: "handshake",
-      xPosition: document.body.scrollWidth * 0.1,
+      xPosition: document.body.scrollWidth * 0.11,
       yPosition: document.body.scrollHeight * 0.1,
     };
 
@@ -117,8 +117,8 @@ export default class TaskService {
       rotation: -17,
       status: "inactive",
       type: "birthday-cake",
-      xPosition: document.body.scrollWidth * 0.1,
-      yPosition: document.body.scrollHeight * 0.4,
+      xPosition: document.body.scrollWidth * 0.14,
+      yPosition: document.body.scrollHeight * 0.3,
     };
 
     const exampleTask4 = {
@@ -130,11 +130,30 @@ export default class TaskService {
       rotation: 15,
       status: "active",
       type: "shopping-cart",
-      xPosition: document.body.scrollWidth * 0.35,
-      yPosition: document.body.scrollHeight * 0.65,
+      xPosition: document.body.scrollWidth * 0.17,
+      yPosition: document.body.scrollHeight * 0.6,
     };
 
-    this.tasks.push(exampleTask1, exampleTask2, exampleTask3, exampleTask4);
+    const exampleTask5 = {
+      description:
+        "click on the red cross in the search form to cancel filtering",
+      id: 5,
+      noteColor: "#ed94ff",
+      pinColor: "radial-gradient(#6060b9 50%, black 50%)",
+      rotation: 15,
+      status: "active",
+      type: "shopping-cart",
+      xPosition: document.body.scrollWidth * 0.45,
+      yPosition: document.body.scrollHeight * 0.75,
+    };
+
+    this.tasks.push(
+      exampleTask1,
+      exampleTask2,
+      exampleTask3,
+      exampleTask4,
+      exampleTask5
+    );
     this.localStorageService.save("tasks", this.tasks);
   }
 }
