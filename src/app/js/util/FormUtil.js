@@ -1,10 +1,10 @@
 export default class FormUtil {
   static extractData(form) {
     return [...form.elements].reduce((data, element) => {
-      if (
-        (element.type === "radio" && element.checked) ||
-        (element.name && element.value && element.type !== "radio")
-      ) {
+      const isCheckedRadioBTn = element.type === "radio" && element.checked;
+      const isElementWithValue =
+        element.name && element.value && element.type !== "radio";
+      if (isCheckedRadioBTn || isElementWithValue) {
         data[element.name] = element.value;
       }
       return data;

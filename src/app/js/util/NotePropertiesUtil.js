@@ -8,11 +8,11 @@ export default class NotePropertiesUtil {
   static get MAX_NOTE_ROTATION() {
     return 15;
   }
-  static get RADIAL_MIN_SIZE() {
+  static get RADIAL_GRADIENT_MIN_SIZE() {
     return 50;
   }
 
-  static get RADIAL_MAX_SIZE() {
+  static get RADIAL_GRADIENT_MAX_SIZE() {
     return 70;
   }
 
@@ -22,8 +22,8 @@ export default class NotePropertiesUtil {
         RandomUtil.getRandomNumber(0, ColorsForGradients.length - 1)
       ]
     } ${RandomUtil.getRandomNumber(
-      NotePropertiesUtil.RADIAL_MIN_SIZE,
-      NotePropertiesUtil.RADIAL_MAX_SIZE
+      NotePropertiesUtil.RADIAL_GRADIENT_MIN_SIZE,
+      NotePropertiesUtil.RADIAL_GRADIENT_MAX_SIZE
     )}%, black 50%)`;
   }
 
