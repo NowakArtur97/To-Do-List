@@ -1,7 +1,6 @@
 import DOMClasses from "../dom/DOMClasses";
 import DOMElements from "../dom/DOMElements";
 import Status from "../state/Status";
-
 import ObserverManager from "../observer/ObserverManager";
 
 export default class CorkBoard {
@@ -9,9 +8,7 @@ export default class CorkBoard {
     this.notePopUp = notePopUp;
     this.noteForm = noteForm;
     this.noteFilterService = noteFilterService;
-
     this.events = new ObserverManager("delete", "changeStatus");
-
     this.isTapped = false;
 
     this.addEventListeners();

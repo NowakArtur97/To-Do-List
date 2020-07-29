@@ -1,6 +1,5 @@
 import DOMElements from "../dom/DOMElements";
 import DOMClasses from "../dom/DOMClasses";
-
 import FormUtil from "../util/FormUtil";
 
 export default class NotePopUp {

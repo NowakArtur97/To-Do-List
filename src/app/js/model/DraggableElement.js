@@ -1,12 +1,10 @@
 import DOMClasses from "../dom/DOMClasses";
-
-import Offset from "./Offset";
 import TaskService from "../service/TaskService";
 
 export default class DraggableElement {
   constructor(element) {
     this.element = element;
-    this.offset = new Offset(0, 0);
+    this.offset = {};
     this.lastX = null;
     this.lastY = null;
     this.isDragged = false;
@@ -29,9 +27,11 @@ export default class DraggableElement {
 
   startDragging(e) {
     this.isDragged = true;
-    const { clientX: xPos, clientY: yPos } = e.clientX ? e : e.touches[0];
-    this.offset.x = this.element.offsetLeft - xPos;
-    this.offset.y = this.element.offsetTop - yPos;
+    const { clientX: xPosition, clientY: yPosition } = e.clientX
+      ? e
+      : e.touches[0];
+    this.offset.x = this.element.offsetLeft - xPosition;
+    this.offset.y = this.element.offsetTop - yPosition;
   }
 
   drag(e) {
@@ -39,19 +39,19 @@ export default class DraggableElement {
       return;
     }
     const { clientX, clientY } = e.clientX ? e : e.touches[0];
-    const xPos = clientX + this.offset.x;
-    const yPos = clientY + this.offset.y;
-    this.element.style.left = xPos + "px";
-    this.element.style.top = yPos + "px";
-
-    this.lastX = xPos;
-    this.lastY = yPos;
+    const xPosition = clientX + this.offset.x;
+    const yPosition = clientY + this.offset.y;
+    this.element.style.left = `${xPosition}px`;
+    this.element.style.top = `${yPosition}px`;
+    this.lastX = xPosition;
+    this.lastY = yPosition;
   }
 
   drop() {
     this.isDragged = false;
+    const isNote = this.element.classList.contains(DOMClasses.note.main);
 
-    if (this.element.classList.contains(DOMClasses.note.main)) {
+    if (isNote) {
       const task = {
         id: this.element.dataset.id,
         xPosition: this.lastX,

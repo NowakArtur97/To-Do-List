@@ -13,20 +13,22 @@ export default class Loader {
     loader.classList.add(DOMClasses.loader.main);
 
     const blueItem = document.createElement("div");
-    blueItem.classList.add(DOMClasses.loader.item);
-    blueItem.classList.add(DOMClasses.loader.blueItem);
+    blueItem.classList.add(DOMClasses.loader.item, DOMClasses.loader.blueItem);
 
     const yellowItem = document.createElement("div");
-    yellowItem.classList.add(DOMClasses.loader.item);
-    yellowItem.classList.add(DOMClasses.loader.yellowItem);
+    yellowItem.classList.add(
+      DOMClasses.loader.item,
+      DOMClasses.loader.yellowItem
+    );
 
     const redItem = document.createElement("div");
-    redItem.classList.add(DOMClasses.loader.item);
-    redItem.classList.add(DOMClasses.loader.redItem);
+    redItem.classList.add(DOMClasses.loader.item, DOMClasses.loader.redItem);
 
     const purpleItem = document.createElement("div");
-    purpleItem.classList.add(DOMClasses.loader.item);
-    purpleItem.classList.add(DOMClasses.loader.purpleItem);
+    purpleItem.classList.add(
+      DOMClasses.loader.item,
+      DOMClasses.loader.purpleItem
+    );
 
     const loadingText = document.createElement("p");
     loadingText.classList.add(DOMClasses.loader.text);

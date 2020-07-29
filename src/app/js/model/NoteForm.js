@@ -1,16 +1,13 @@
 import DOMElements from "../dom/DOMElements";
 import Status from "../state/Status";
-
 import FormUtil from "../util/FormUtil";
 import NotePropertiesUtil from "../util/NotePropertiesUtil";
-
 import ObserverManager from "../observer/ObserverManager";
 
 export default class NoteForm {
   constructor(taskService, noteService) {
     this.taskService = taskService;
     this.noteService = noteService;
-
     this.events = new ObserverManager("create", "update");
 
     this.addEventListeners();

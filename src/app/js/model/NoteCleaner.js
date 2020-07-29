@@ -1,12 +1,11 @@
 import DOMElements from "../dom/DOMElements";
-
 import ObserverManager from "../observer/ObserverManager";
 
 export default class NoteCleaner {
   constructor() {
-    this.addEventListeners();
-
     this.events = new ObserverManager("deleteAll");
+
+    this.addEventListeners();
   }
 
   addEventListeners() {
