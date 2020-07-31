@@ -77,8 +77,7 @@ export default class NoteService {
 
   createBtn(additionalClasses = [], text = "") {
     const btnEl = document.createElement("button");
-    const classList = [DOMClasses.note.btn, ...additionalClasses];
-    classList.forEach((className) => btnEl.classList.add(className));
+    btnEl.classList.add(DOMClasses.note.btn, ...additionalClasses);
 
     btnEl.innerText = text;
 
@@ -95,12 +94,11 @@ export default class NoteService {
 
   createIcon(additionalClasses = []) {
     const iconEl = document.createElement("i");
-    const classList = [
+    iconEl.classList.add(
       DOMClasses.icon.main,
       DOMClasses.note.icon,
-      ...additionalClasses,
-    ];
-    classList.forEach((className) => iconEl.classList.add(className));
+      ...additionalClasses
+    );
 
     return iconEl;
   }
@@ -143,11 +141,12 @@ export default class NoteService {
       const property = element.dataset?.field;
       if (property === "type") {
         element.className = "";
-        element.classList.add(DOMClasses.icon.main);
         element.classList.add(
-          `${DOMClasses.icon.detailed}${updatedTask[property]}`
+          DOMClasses.icon.main,
+          `${DOMClasses.icon.detailed}${updatedTask[property]}`,
+          DOMClasses.note.icon,
+          DOMClasses.note.type
         );
-        element.classList.add(DOMClasses.note.icon);
         element.dataset.value = updatedTask[property];
       } else if (property) {
         element.innerText = updatedTask[property];
