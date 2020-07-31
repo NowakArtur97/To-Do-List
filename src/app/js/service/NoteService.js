@@ -22,12 +22,12 @@ export default class NoteService {
     const descriptionEl = this.createDescription(task);
     const deleteBtnEl = this.createBtn([DOMClasses.note.deleteBtn]);
     const deleteBtnIconEl = this.createIcon([DOMClasses.icon.delete]);
-    const taskStatusBtnClasses =
+    const taskStatusBtnClass =
       task.status === Status.ACTIVE
         ? DOMClasses.note.deactivateStatusBtn
         : DOMClasses.note.activateStatusBtn;
     const changeStatusBtnEl = this.createBtn(
-      [DOMClasses.note.changeStatusBtn, taskStatusBtnClasses],
+      [DOMClasses.note.changeStatusBtn, taskStatusBtnClass],
       task.status === Status.ACTIVE ? "X" : "✓"
     );
     const pinEl = this.createPin(task);
@@ -155,38 +155,42 @@ export default class NoteService {
   }
 
   changeStatus(note) {
-    switch (note.dataset.status) {
-      case Status.ACTIVE: {
-        note.dataset.status = Status.INACTIVE;
-        note.style.backgroundColor = "#999999";
-        note.style.transform = "";
-        note.querySelector(`.${DOMClasses.note.status}`).innerText =
-          Status.INACTIVE;
-        const changeStatusBtn = note.querySelector(
-          `.${DOMClasses.note.changeStatusBtn}`
-        );
-        changeStatusBtn.innerText = "✓";
-        changeStatusBtn.classList.add(DOMClasses.note.activateStatusBtn);
-        changeStatusBtn.classList.remove(DOMClasses.note.deactivateStatusBtn);
-        const inActiveNote = note.cloneNode(true);
-        note.parentNode.replaceChild(inActiveNote, note);
-        break;
-      }
-      case Status.INACTIVE: {
-        note.dataset.status = Status.ACTIVE;
-        note.style.backgroundColor = note.dataset.noteColor;
-        note.querySelector(`.${DOMClasses.note.status}`).innerText =
-          Status.ACTIVE;
-        const changeStatusBtn = note.querySelector(
-          `.${DOMClasses.note.changeStatusBtn}`
-        );
-        changeStatusBtn.innerText = "X";
-        changeStatusBtn.classList.add(DOMClasses.note.deactivateStatusBtn);
-        changeStatusBtn.classList.remove(DOMClasses.note.activateStatusBtn);
-        this.addNoteEventListeners(note, note.dataset.rotation);
-        new DraggableElement(note);
-        break;
-      }
+    const status = note.dataset.status;
+    if (status === Status.ACTIVE) {
+      this.setNoteStatus(note, Status.INACTIVE, [
+        DOMClasses.note.changeStatusBtn,
+        DOMClasses.note.activateStatusBtn,
+      ]);
+    } else if (status === Status.INACTIVE) {
+      this.setNoteStatus(note, Status.ACTIVE, [
+        DOMClasses.note.changeStatusBtn,
+        DOMClasses.note.deactivateStatusBtn,
+      ]);
+    }
+  }
+
+  setNoteStatus(note, status, classes = []) {
+    note.dataset.status = status;
+    note.querySelector(`.${DOMClasses.note.status}`).innerText = status;
+
+    const changeStatusBtn = note.querySelector(
+      `.${DOMClasses.note.changeStatusBtn}`
+    );
+    changeStatusBtn.classList = "";
+    changeStatusBtn.classList.add(...classes);
+
+    if (status === Status.INACTIVE) {
+      const grayColor = "#999999";
+      note.style.backgroundColor = grayColor;
+      note.style.transform = "";
+      changeStatusBtn.innerText = "✓";
+      const inactiveNote = note.cloneNode(true);
+      note.parentNode.replaceChild(inactiveNote, note);
+    } else if (status === Status.ACTIVE) {
+      note.style.backgroundColor = note.dataset.noteColor;
+      changeStatusBtn.innerText = "X";
+      this.addNoteEventListeners(note, note.dataset.rotation);
+      new DraggableElement(note);
     }
   }
 

@@ -82,6 +82,8 @@
 
 .note__change_status_btn {
   grid-area: sb;
+  background-color: transparent;
+  border: none;
 }
 
 .note__change_status_btn--activate {
