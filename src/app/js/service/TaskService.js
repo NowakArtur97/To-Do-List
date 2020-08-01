@@ -141,7 +141,7 @@ export default class TaskService {
       id: 5,
       noteColor: "#ed94ff",
       pinColor: "radial-gradient(#6060b9 50%, black 50%)",
-      rotation: 15,
+      rotation: 5,
       status: "active",
       type: "shopping-cart",
       xPosition: document.body.scrollWidth * 0.45,
