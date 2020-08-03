@@ -12,7 +12,7 @@ export default class CorkBoard {
     this.isTapped = false;
 
     this.addEventListeners();
-    this.setCorkBoardSize();
+    this.setCorkBoardViewportUnits();
   }
 
   addEventListeners() {
@@ -32,18 +32,22 @@ export default class CorkBoard {
     );
     DOMElements.board.addEventListener("click", this.triggerAction.bind(this));
     DOMElements.board.addEventListener("click", this.filterByType.bind(this));
-    window.addEventListener("resize", this.setCorkBoardSize.bind(this));
+    window.addEventListener(
+      "resize",
+      this.setCorkBoardViewportUnits.bind(this)
+    );
   }
 
-  setCorkBoardSize() {
+  setCorkBoardViewportUnits() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
   showFormForUpdate(e) {
     const noteEl = e.target.closest(`.${DOMClasses.note.main}`);
+    const isActiveNote = noteEl && noteEl.dataset.status === Status.ACTIVE;
 
-    if (noteEl && noteEl.dataset.status === Status.ACTIVE) {
+    if (isActiveNote) {
       this.notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
       this.noteForm.populateForm(noteEl);
@@ -81,12 +85,13 @@ export default class CorkBoard {
 
   filterByType(e) {
     const statusIconEl = e.target;
-    const iconClassList = statusIconEl.classList;
-    if (
+    const iconClassList = e.target.classList;
+    const isTypeIcon =
       iconClassList.contains(DOMClasses.note.icon) ||
-      iconClassList.contains(DOMClasses.noteSearch.icon)
-    ) {
-      const type = e.target.dataset.value;
+      iconClassList.contains(DOMClasses.noteSearch.icon);
+
+    if (isTypeIcon) {
+      const type = statusIconEl.dataset.value;
       this.noteFilterService.filterTasks(type, "type");
     }
   }
