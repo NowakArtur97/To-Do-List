@@ -129,6 +129,7 @@ export default class NoteService {
     noteToUpdate.dataset.id = updatedTask.id;
 
     for (const property in noteToUpdate.dataset) {
+      if (property === "rotation" || property === "status") continue;
       noteToUpdate.dataset[property] = updatedTask[property];
       if (property === "noteColor") {
         noteToUpdate.style.backgroundColor = updatedTask[property];
