@@ -1,6 +1,4 @@
 export default class LocalStorageService {
-  constructor() {}
-
   save(name, item) {
     if (name && item) {
       localStorage.setItem(name, JSON.stringify(item));

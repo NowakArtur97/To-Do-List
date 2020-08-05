@@ -3,8 +3,6 @@ import DOMElements from "../dom/DOMElements";
 import RandomUtil from "./RandomUtil";
 
 export default class NotePropertiesUtil {
-  constructor() {}
-
   static get MAX_NOTE_ROTATION() {
     return 15;
   }
