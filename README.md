@@ -17,7 +17,7 @@ Todo list app built in HTML, CSS and JavaScript. It has been designed in such a 
 
 ## Demo
 
-The application is available on Github Pages at: https://nowakartur97.github.io/ToDo-List/
+The application is available on Github Pages: https://nowakartur97.github.io/ToDo-List/
 
 ## Built With
 
