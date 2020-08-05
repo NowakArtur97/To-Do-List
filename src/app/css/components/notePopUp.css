@@ -60,7 +60,7 @@
   border: solid 1px black;
 }
 
-@media screen and (orientation: portrait) {
+@media (orientation: portrait) {
   .note_popup {
     width: 40vh;
     height: 40vh;
@@ -99,14 +99,14 @@
   }
 }
 
-@media screen and (max-height: 400px) and (orientation: portrait) {
+@media (max-height: 400px) and (orientation: portrait) {
   .note_popup {
     height: 72vh;
     width: 72vh;
   }
 }
 
-@media screen and (max-height: 400px) and (orientation: landscape) {
+@media (max-height: 400px) and (orientation: landscape) {
   .note_popup {
     height: 75vh;
     width: 72vh;
@@ -119,7 +119,7 @@
   }
 }
 
-@media screen and (orientation: landscape) and (max-height: 150px) {
+@media (orientation: landscape) and (max-height: 150px) {
   .note_popup {
     height: 36vw;
     width: 36vw;

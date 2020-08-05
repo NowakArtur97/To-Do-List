@@ -19,7 +19,7 @@
   z-index: 2;
 }
 
-@media screen and (orientation: landscape) {
+@media (orientation: landscape) {
   .note_option {
     width: 10vw;
     height: 10vw;
@@ -27,7 +27,7 @@
   }
 }
 
-@media screen and (orientation: portrait) {
+@media (orientation: portrait) {
   .note_option {
     width: 10vh;
     height: 10vh;

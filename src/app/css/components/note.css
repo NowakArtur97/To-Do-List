@@ -18,7 +18,7 @@
   transition: transform 0.3s linear;
 }
 
-@media screen and (orientation: landscape) {
+@media (orientation: landscape) {
   .note {
     width: 20vw;
     min-height: 20vw;
@@ -26,7 +26,7 @@
   }
 }
 
-@media screen and (orientation: portrait) {
+@media (orientation: portrait) {
   .note {
     width: 20vh;
     min-height: 20vh;

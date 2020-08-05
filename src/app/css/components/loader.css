@@ -42,14 +42,14 @@
   height: 50%;
 }
 
-@media screen and (orientation: landscape) {
+@media (orientation: landscape) {
   .loader {
     width: 30vw;
     height: 30vw;
   }
 }
 
-@media screen and (orientation: portrait) {
+@media (orientation: portrait) {
   .loader {
     width: 30vh;
     height: 30vh;
