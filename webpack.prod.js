@@ -29,7 +29,7 @@ module.exports = merge(common, {
       cleanOnceBeforeBuildPatterns: ["**/*", "!.git/**"],
     }),
     new HtmlWebpackPlugin({
-      template: "./src/app/html/index.html",
+      template: "./src/main/app/html/index.html",
       minify: {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
