@@ -26,6 +26,7 @@ Stack:
 - HTML
 - CSS
 - Vanilla JS ES6+
+- Jest
 - Webpack
 - Design patterns: Observer, Singleton
 
