@@ -1,13 +1,23 @@
-const puppeteer = require("puppeteer");
+import Page from "../testUtil/Page";
 
-test("should open browser", async () => {
-  const browser = await puppeteer.launch({
-    headless: false,
-    slowMo: 80,
-    args: ["--window-size=1920,1080"],
-  });
-  const page = await browser.newPage();
-  await page.goto("https://news.ycombinator.com", {
-    waitUntil: "networkidle2",
-  });
+const page = new Page();
+const uri = "http://localhost:8081/";
+
+beforeEach(async () => {
+  await page.openBrowser(uri);
 }, 10000);
+
+afterEach(async () => {
+  await page.closeBrowser();
+}, 10000);
+
+test("should create note", async () => {
+  const noteDescriptionExpected = "note description";
+
+  await page.waitForLoader();
+  await page.createNoteWithDescription(noteDescriptionExpected);
+
+  let notesDescriptions = await page.getAllNotesDescriptions();
+
+  expect(notesDescriptions).toContain(noteDescriptionExpected);
+}, 60000);
