@@ -29,7 +29,6 @@ Stack:
 - Jest
 - Puppeteer
 - Webpack
-- Design patterns: Observer, Singleton
 
 ## Features
 

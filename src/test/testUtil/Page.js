@@ -1,32 +1,43 @@
-import PuppeteerUtil from "./PuppeteerUtil";
+const puppeteer = require("puppeteer");
 
 export default class Page {
   constructor() {
-    this.puppeteerUtil = new PuppeteerUtil();
+    this.browser = null;
+    this.page = null;
   }
 
   async openBrowser(uri) {
-    await this.puppeteerUtil.openBrowser();
-    await this.puppeteerUtil.openNewPage();
-    await this.puppeteerUtil.goTo(uri);
+    this.browser = await puppeteer.launch({
+      headless: false,
+      slowMo: 80,
+      args: ["--start-maximized"],
+    });
+    this.page = await this.browser.newPage();
+    await this.page.setViewport({ width: 1920, height: 1080 });
+    this.page.goto(uri);
   }
 
   async closeBrowser() {
-    await this.puppeteerUtil.closeBrowser();
+    await this.browser.close();
   }
 
   async waitForLoader() {
-    await this.puppeteerUtil.waitFor(10000);
+    await this.page.waitFor(10000);
   }
 
   async createNoteWithDescription(description) {
-    await this.puppeteerUtil.clickElement(".note_form_popup_trigger");
-    await this.puppeteerUtil.clickElement("textarea#description");
-    await this.puppeteerUtil.typeText("textarea#description", description);
-    await this.puppeteerUtil.clickElement(".note_form__btn");
+    await this.page.click(".note_form_popup_trigger");
+    await this.page.click("textarea#description");
+    await this.page.type("textarea#description", description);
+    await this.page.click(".note_form__btn");
   }
 
   async getAllNotesDescriptions() {
-    return await this.puppeteerUtil.getAllNotesDescriptions();
+    return await this.page.evaluate(() => {
+      let data = [];
+      let elements = document.querySelectorAll(".note .note__description");
+      for (var element of elements) data.push(element["textContent"]);
+      return data;
+    });
   }
 }

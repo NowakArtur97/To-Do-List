@@ -5,11 +5,11 @@ const uri = "http://localhost:8081/";
 
 beforeEach(async () => {
   await page.openBrowser(uri);
-}, 10000);
+}, 15000);
 
 afterEach(async () => {
   await page.closeBrowser();
-}, 10000);
+}, 15000);
 
 test("should create note", async () => {
   const noteDescriptionExpected = "note description";
@@ -20,4 +20,4 @@ test("should create note", async () => {
   let notesDescriptions = await page.getAllNotesDescriptions();
 
   expect(notesDescriptions).toContain(noteDescriptionExpected);
-}, 60000);
+}, 15000);
