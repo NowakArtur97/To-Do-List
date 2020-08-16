@@ -32,6 +32,25 @@ export default class Page {
     await this.page.waitFor(10000);
   }
 
+  async getAllElements(selector) {
+    return await this.page.evaluate((selector) => {
+      return document.querySelectorAll(selector);
+    }, selector);
+  }
+
+  async getAllElementsProperty(selector, property) {
+    return await this.page.evaluate(
+      (selector, property) => {
+        let data = [];
+        let elements = document.querySelectorAll(selector);
+        for (var element of elements) data.push(element[property]);
+        return data;
+      },
+      selector,
+      property
+    );
+  }
+
   async createNoteWithDescription(description) {
     await this.page.click(".note_form_popup_trigger");
     await this.page.click("textarea#description");
@@ -40,17 +59,13 @@ export default class Page {
   }
 
   async getAllNotesElements() {
-    return await this.page.evaluate(() => {
-      return document.querySelectorAll(".note");
-    });
+    return await this.getAllElements(".note");
   }
 
   async getAllNotesDescriptions() {
-    return await this.page.evaluate(() => {
-      let data = [];
-      let elements = document.querySelectorAll(".note .note__description");
-      for (var element of elements) data.push(element["textContent"]);
-      return data;
-    });
+    return await this.getAllElementsProperty(
+      ".note .note__description",
+      "textContent"
+    );
   }
 }
