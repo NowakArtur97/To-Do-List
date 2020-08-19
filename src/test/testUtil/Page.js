@@ -85,6 +85,14 @@ export default class Page {
     await this.page.click(".note_form__btn");
   }
 
+  async deleteNoteById(id) {
+    await this.page.click(`[data-id='${id}'] > .note__delete_btn`);
+  }
+
+  async deleteAllNotes() {
+    await this.page.click(".note_delete_trigger");
+  }
+
   async getLastCreatedNoteProperty(property) {
     return await this.page.evaluate((property) => {
       const notes = document.querySelectorAll("[data-id]");

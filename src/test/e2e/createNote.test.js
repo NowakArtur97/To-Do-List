@@ -22,10 +22,10 @@ afterAll(async () => {
 test("should create note", async () => {
   await page.waitForLoader();
 
-  const noteIdExpected = +(await page.getAllNotesElements()).length + 1;
+  const noteIdExpected = (await page.getAllNotesElements()).length + 1;
   const noteDescriptionExpected = "to do";
   const noteStatusExpected = "active";
-  const noteColorExpected = "#cbfafa";
+  const noteColorExpected = "#1444e1";
   const noteTypeExpected = "dumbbell";
 
   await page.createNote(
@@ -61,9 +61,10 @@ test("should create note with only description", async () => {
 }, 15000);
 
 test("should not create note with empty description", async () => {
+  await page.waitForLoader();
+
   const notesAmountExpected = await page.getAllNotesElements().length;
 
-  await page.waitForLoader();
   await page.createNoteWithDescription("");
 
   const notesAmountActual = await page.getAllNotesElements().length;
@@ -72,9 +73,10 @@ test("should not create note with empty description", async () => {
 }, 15000);
 
 test("should not create note with blank description", async () => {
+  await page.waitForLoader();
+
   const notesAmountExpected = await page.getAllNotesElements().length;
 
-  await page.waitForLoader();
   await page.createNoteWithDescription("     ");
 
   const notesAmountActual = await page.getAllNotesElements().length;
