@@ -19,6 +19,36 @@ afterAll(async () => {
   await page.closeBrowser();
 }, 30000);
 
+test("should create note", async () => {
+  await page.waitForLoader();
+
+  const noteIdExpected = +(await page.getAllNotesElements()).length + 1;
+  const noteDescriptionExpected = "to do";
+  const noteStatusExpected = "active";
+  const noteColorExpected = "#cbfafa";
+  const noteTypeExpected = "dumbbell";
+
+  await page.createNote(
+    noteDescriptionExpected,
+    noteColorExpected,
+    noteTypeExpected
+  );
+
+  const noteIdActual = +(await page.getLastCreatedNoteData("id"));
+  const notesDescriptions = await page.getLastCreatedNoteProperty(
+    "textContent"
+  );
+  const noteStatusActual = await page.getLastCreatedNoteData("status");
+  const noteColorActual = await page.getLastCreatedNoteData("noteColor");
+  const noteRotationActual = await page.getLastCreatedNoteData("rotation");
+
+  expect(noteIdActual).toBe(noteIdExpected);
+  expect(notesDescriptions).toContain(noteDescriptionExpected);
+  expect(noteColorActual).toBe(noteColorExpected);
+  expect(noteStatusActual).toBe(noteStatusExpected);
+  expect(noteRotationActual).not.toBeNaN();
+}, 25000);
+
 test("should create note with only description", async () => {
   const noteDescriptionExpected = "note description";
 

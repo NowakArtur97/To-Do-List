@@ -32,9 +32,23 @@ export default class Page {
     await this.page.waitFor(10000);
   }
 
+  async setElementProperty(selector, property, value) {
+    await this.page.evaluate(
+      (selector, property, value) => {
+        document.querySelector(selector)[property] = value;
+      },
+      selector,
+      property,
+      value
+    );
+  }
+
   async getAllElements(selector) {
     return await this.page.evaluate((selector) => {
-      return document.querySelectorAll(selector);
+      let data = [];
+      let elements = document.querySelectorAll(selector);
+      for (var element of elements) data.push(element);
+      return data;
     }, selector);
   }
 
@@ -51,15 +65,46 @@ export default class Page {
     );
   }
 
+  async createNote(description, color, type) {
+    await this.page.click(".note_form_popup_trigger");
+    await this.page.click("textarea#description");
+    await this.page.type("textarea#description", description);
+
+    await this.setElementProperty("input#noteColor", "value", color);
+
+    await this.page.click(`#${type}`);
+
+    await this.page.click(".note_form__btn");
+  }
+
   async createNoteWithDescription(description) {
     await this.page.click(".note_form_popup_trigger");
     await this.page.click("textarea#description");
     await this.page.type("textarea#description", description);
+
     await this.page.click(".note_form__btn");
   }
 
+  async getLastCreatedNoteProperty(property) {
+    return await this.page.evaluate((property) => {
+      const notes = document.querySelectorAll("[data-id]");
+      return [...notes].reduce((note, note2) =>
+        note.dataset.id > note2.dataset.id ? note : note2
+      )[property];
+    }, property);
+  }
+
+  async getLastCreatedNoteData(data) {
+    return await this.page.evaluate((data) => {
+      const notes = document.querySelectorAll("[data-id]");
+      return [...notes].reduce((note, note2) =>
+        note.dataset.id > note2.dataset.id ? note : note2
+      ).dataset[data];
+    }, data);
+  }
+
   async getAllNotesElements() {
-    return await this.getAllElements(".note");
+    return await this.getAllElements("[data-id]");
   }
 
   async getAllNotesDescriptions() {
