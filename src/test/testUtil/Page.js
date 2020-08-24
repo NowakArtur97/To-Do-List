@@ -21,7 +21,7 @@ export default class Page {
   }
 
   async closePage() {
-    this.page.close();
+    await this.page.close();
   }
 
   async closeBrowser() {
