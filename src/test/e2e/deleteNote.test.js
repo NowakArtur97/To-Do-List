@@ -1,4 +1,4 @@
-import Page from "../testUtil/Page";
+import Page from '../testUtil/Page';
 
 const page = new Page();
 const uri = "http://localhost:8081/";

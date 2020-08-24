@@ -143,7 +143,7 @@ export default class TaskService {
       pinColor: "radial-gradient(#6060b9 50%, black 50%)",
       rotation: 5,
       status: "active",
-      type: "shopping-cart",
+      type: "dumbbell",
       xPosition: document.body.scrollWidth * 0.45,
       yPosition: document.body.scrollHeight * 0.75,
     };

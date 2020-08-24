@@ -20,12 +20,12 @@ export default class Page {
     this.page.goto(uri);
   }
 
-  async closeBrowser() {
-    await this.browser.close();
-  }
-
   async closePage() {
     this.page.close();
+  }
+
+  async closeBrowser() {
+    await this.browser.close();
   }
 
   async waitForLoader() {
@@ -85,12 +85,24 @@ export default class Page {
     await this.page.click(".note_form__btn");
   }
 
+  async closeNotePopup() {
+    await this.page.click(".note_popup__close_btn");
+  }
+
   async deleteNoteById(id) {
     await this.page.click(`[data-id='${id}'] > .note__delete_btn`);
   }
 
   async deleteAllNotes() {
     await this.page.click(".note_delete_trigger");
+  }
+
+  async searchNoteByDescription(description) {
+    await this.page.type("input#search", description);
+  }
+
+  async searchNoteByType(type) {
+    await this.page.click(`.note_search__types .fa-${type}`);
   }
 
   async getLastCreatedNoteProperty(property) {
@@ -109,6 +121,24 @@ export default class Page {
         note.dataset.id > note2.dataset.id ? note : note2
       ).dataset[data];
     }, data);
+  }
+
+  async getAllNotesTypes() {
+    return await this.page.evaluate(() => {
+      const types = [];
+      const notes = document.querySelectorAll("[data-id]");
+      for (var note of notes) {
+        types.push(note.querySelector("[data-field]").dataset.value);
+      }
+      return types;
+    });
+  }
+
+  async getAllNotesDescriptions() {
+    return await page.getAllElementsProperty(
+      "[data-id] .note__description",
+      "textContent"
+    );
   }
 
   async getAllNotesElements() {
