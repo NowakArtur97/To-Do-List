@@ -21,23 +21,11 @@ afterAll(async () => {
   await page.closeBrowser();
 }, 30000);
 
-test("should find note by description", async () => {
-  const noteDescriptionExpected = "note description";
-
-  await page.waitForLoader();
-  await page.createNoteWithDescription(noteDescriptionExpected);
-  await page.closeNotePopup();
-  await page.searchNoteByDescription(noteDescriptionExpected);
-
-  const notesDescriptions = await page.getAllNotesDescriptions();
-  const numberOfNotesActual = (await page.getAllNotesElements()).length;
-
-  expect(notesDescriptions).toContain(noteDescriptionExpected);
-  expect(numberOfNotesActual).toBe(1);
-}, 25000);
-
-each(["dumbbell", "handshake", "birthday-cake", "book", "shopping-cart"]).test(
-  "should find note by type (with %s type)",
+each([
+  "dumbbell",
+  // "handshake", "birthday-cake", "book", "shopping-cart"
+]).test(
+  "should find note by type: %s",
   async (noteTypeExpected) => {
     const notesExpectedAmount = 2;
 
@@ -55,3 +43,18 @@ each(["dumbbell", "handshake", "birthday-cake", "book", "shopping-cart"]).test(
   },
   125000
 );
+
+test("should find note by description", async () => {
+  const noteDescriptionExpected = "note description";
+
+  await page.waitForLoader();
+  await page.createNoteWithDescription(noteDescriptionExpected);
+  await page.closeNotePopup();
+  await page.searchNoteByDescription(noteDescriptionExpected);
+
+  const numberOfNotesActual = (await page.getAllNotesElements()).length;
+  const notesDescriptions = await page.getAllNotesDescriptions();
+
+  expect(numberOfNotesActual).toBe(1);
+  expect(notesDescriptions).toContain(noteDescriptionExpected);
+}, 25000);
