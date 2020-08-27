@@ -1,3 +1,5 @@
+import each from 'jest-each';
+
 import Page from '../testUtil/Page';
 
 const page = new Page();
@@ -52,3 +54,48 @@ test("should create and update note", async () => {
   expect(noteStatusActual).toBe(updatedNoteStatusExpected);
   expect(noteRotationActual).not.toBeNaN();
 }, 25000);
+
+each(["", "     "]).test(
+  "should not update note without description",
+  async (invalidNoteDescription) => {
+    await page.waitForLoader();
+
+    const noteIdExpected = (await page.getAllNotesElements()).length + 1;
+
+    const noteDescriptionExpected = "task";
+    const noteStatusExpected = "active";
+    const noteColorExpected = "#132114";
+    const noteTypeExpected = "handshake";
+
+    const updatedNoteColor = "#0215f6";
+    const updatedNoteType = "book";
+
+    await page.createNote(
+      noteDescriptionExpected,
+      noteColorExpected,
+      noteTypeExpected
+    );
+
+    await page.updateNote(
+      noteIdExpected,
+      invalidNoteDescription,
+      updatedNoteColor,
+      updatedNoteType
+    );
+
+    const noteIdActual = +(await page.getLastCreatedNoteData("id"));
+    const notesDescriptionActual = await page.getLastCreatedNoteProperty(
+      "textContent"
+    );
+    const noteStatusActual = await page.getLastCreatedNoteData("status");
+    const noteColorActual = await page.getLastCreatedNoteData("noteColor");
+    const noteRotationActual = await page.getLastCreatedNoteData("rotation");
+
+    expect(noteIdActual).toBe(noteIdExpected);
+    expect(notesDescriptionActual).toContain(noteDescriptionExpected);
+    expect(noteColorActual).toBe(noteColorExpected);
+    expect(noteStatusActual).toBe(noteStatusExpected);
+    expect(noteRotationActual).not.toBeNaN();
+  },
+  25000
+);

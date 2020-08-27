@@ -1,8 +1,8 @@
-import DOMElements from "../dom/DOMElements";
-import Status from "../state/Status";
-import FormUtil from "../util/FormUtil";
-import NotePropertiesUtil from "../util/NotePropertiesUtil";
-import ObserverManager from "../observer/ObserverManager";
+import DOMElements from '../dom/DOMElements';
+import ObserverManager from '../observer/ObserverManager';
+import Status from '../state/Status';
+import FormUtil from '../util/FormUtil';
+import NotePropertiesUtil from '../util/NotePropertiesUtil';
 
 export default class NoteForm {
   constructor(taskService, noteService) {
