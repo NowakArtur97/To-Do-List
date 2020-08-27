@@ -21,17 +21,13 @@ afterAll(async () => {
   await page.closeBrowser();
 }, 30000);
 
-each([
-  "dumbbell",
-  // "handshake", "birthday-cake", "book", "shopping-cart"
-]).test(
+each(["dumbbell", "handshake", "birthday-cake", "book", "shopping-cart"]).test(
   "should find note by type: %s",
   async (noteTypeExpected) => {
     const notesExpectedAmount = 2;
 
     await page.waitForLoader();
     await page.createNote("to do", "#1444e1", noteTypeExpected);
-    await page.closeNotePopup();
     await page.searchNoteByType(noteTypeExpected);
     await page.waitForLoader();
 
@@ -49,7 +45,6 @@ test("should find note by description", async () => {
 
   await page.waitForLoader();
   await page.createNoteWithDescription(noteDescriptionExpected);
-  await page.closeNotePopup();
   await page.searchNoteByDescription(noteDescriptionExpected);
 
   const numberOfNotesActual = (await page.getAllNotesElements()).length;

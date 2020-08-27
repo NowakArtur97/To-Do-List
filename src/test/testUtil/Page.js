@@ -65,28 +65,31 @@ export default class Page {
     );
   }
 
-  async createNote(description, color, type) {
-    await this.page.click(".note_form_popup_trigger");
+  async fillNoteForm(description, color, type) {
     await this.page.click("textarea#description");
-    await this.page.type("textarea#description", description);
+    await this.setElementProperty("textarea#description", "value", description);
 
-    await this.setElementProperty("input#noteColor", "value", color);
+    if (color) await this.setElementProperty("input#noteColor", "value", color);
 
-    await this.page.click(`#${type}`);
+    if (type) await this.page.click(`#${type}`);
 
     await this.page.click(".note_form__btn");
+    await this.page.click(".note_popup__close_btn");
+  }
+
+  async createNote(description, color, type) {
+    await this.page.click(".note_form_popup_trigger");
+    await this.fillNoteForm(description, color, type);
+  }
+
+  async updateNote(id, description, color, type) {
+    await this.page.click(`[data-id='${id}']`, { clickCount: 2 });
+    await this.fillNoteForm(description, color, type);
   }
 
   async createNoteWithDescription(description) {
     await this.page.click(".note_form_popup_trigger");
-    await this.page.click("textarea#description");
-    await this.page.type("textarea#description", description);
-
-    await this.page.click(".note_form__btn");
-  }
-
-  async closeNotePopup() {
-    await this.page.click(".note_popup__close_btn");
+    await this.fillNoteForm(description);
   }
 
   async deleteNoteById(id) {
