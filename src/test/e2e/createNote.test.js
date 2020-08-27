@@ -1,4 +1,6 @@
-import Page from "../testUtil/Page";
+import each from 'jest-each';
+
+import Page from '../testUtil/Page';
 
 const page = new Page();
 const uri = "http://localhost:8081/";
@@ -60,26 +62,18 @@ test("should create note with only description", async () => {
   expect(notesDescriptions).toContain(noteDescriptionExpected);
 }, 15000);
 
-test("should not create note with empty description", async () => {
-  await page.waitForLoader();
+each(["", "     "]).test(
+  "should not create note without description",
+  async (invalidNoteDescription) => {
+    await page.waitForLoader();
 
-  const notesAmountExpected = await page.getAllNotesElements().length;
+    const notesAmountExpected = await page.getAllNotesElements().length;
 
-  await page.createNoteWithDescription("");
+    await page.createNoteWithDescription(invalidNoteDescription);
 
-  const notesAmountActual = await page.getAllNotesElements().length;
+    const notesAmountActual = await page.getAllNotesElements().length;
 
-  expect(notesAmountActual).toBe(notesAmountExpected);
-}, 15000);
-
-test("should not create note with blank description", async () => {
-  await page.waitForLoader();
-
-  const notesAmountExpected = await page.getAllNotesElements().length;
-
-  await page.createNoteWithDescription("     ");
-
-  const notesAmountActual = await page.getAllNotesElements().length;
-
-  expect(notesAmountActual).toBe(notesAmountExpected);
-}, 15000);
+    expect(notesAmountActual).toBe(notesAmountExpected);
+  },
+  15000
+);
