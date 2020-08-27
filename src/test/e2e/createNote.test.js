@@ -75,5 +75,5 @@ each(["", "     "]).test(
 
     expect(notesAmountActual).toBe(notesAmountExpected);
   },
-  15000
+  30000
 );
