@@ -92,6 +92,10 @@ export default class Page {
     await this.fillNoteForm(description);
   }
 
+  async changeNoteStatus(id) {
+    await this.page.click(`[data-id='${id}'] .note__change_status_btn`);
+  }
+
   async deleteNoteById(id) {
     await this.page.click(`[data-id='${id}'] > .note__delete_btn`);
   }
