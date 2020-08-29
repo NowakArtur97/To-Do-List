@@ -53,3 +53,30 @@ test("should find note by description", async () => {
   expect(numberOfNotesActual).toBe(1);
   expect(notesDescriptions).toContain(noteDescriptionExpected);
 }, 25000);
+
+test("should show all notes after canceling searching", async () => {
+  const noteDescriptionExpected = "note description";
+
+  await page.waitForLoader();
+  await page.createNoteWithDescription(noteDescriptionExpected);
+
+  const numberOfNotesExpected = (await page.getAllNotesElements()).length;
+
+  await page.searchNoteByDescription(noteDescriptionExpected);
+  await page.cancelSearching();
+
+  const numberOfNotesActual = (await page.getAllNotesElements()).length;
+
+  expect(numberOfNotesActual).toBe(numberOfNotesExpected);
+}, 25000);
+
+test("should not show any notes if none were found", async () => {
+  const noteDescriptionExpected = "contents of the not found note";
+
+  await page.waitForLoader();
+  await page.searchNoteByDescription(noteDescriptionExpected);
+
+  const numberOfNotesActual = (await page.getAllNotesElements()).length;
+
+  expect(numberOfNotesActual).toBe(0);
+}, 25000);

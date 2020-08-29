@@ -112,6 +112,10 @@ export default class Page {
     await this.page.click(`.note_search__types .fa-${type}`);
   }
 
+  async cancelSearching() {
+    await this.page.click(`.note_search__cancel_btn`);
+  }
+
   async getLastCreatedNoteProperty(property) {
     return await this.page.evaluate((property) => {
       const notes = document.querySelectorAll("[data-id]");
