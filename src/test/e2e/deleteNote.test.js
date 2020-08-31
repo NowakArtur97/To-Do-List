@@ -22,12 +22,13 @@ afterAll(async () => {
 test("should delete one note", async () => {
   await page.waitForLoader();
 
-  const numberOfNotesExpected = (await page.getAllNotesElements()).length - 1;
+  const numberOfNotesExpected =
+    (await page.countNumberOfElements("[data-id]")) - 1;
   const noteToDeleteIdExpected = 1;
 
   await page.deleteNoteById(noteToDeleteIdExpected);
 
-  const numberOfNotesActual = (await page.getAllNotesElements()).length;
+  const numberOfNotesActual = await page.countNumberOfElements("[data-id]");
 
   expect(numberOfNotesActual).toBe(numberOfNotesExpected);
 }, 25000);

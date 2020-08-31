@@ -1,4 +1,4 @@
-import Page from "../testUtil/Page";
+import Page from '../testUtil/Page';
 
 const page = new Page();
 const uri = "http://localhost:8081/";
@@ -24,7 +24,7 @@ test("should delete all notes", async () => {
 
   await page.deleteAllNotes();
 
-  const numberOfNotesActual = (await page.getAllNotesElements()).length;
+  const numberOfNotesActual = await page.countNumberOfElements("[data-id]");
 
   expect(numberOfNotesActual).toBe(0);
 }, 25000);

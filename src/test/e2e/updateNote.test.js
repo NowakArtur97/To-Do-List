@@ -24,7 +24,7 @@ afterAll(async () => {
 test("should create and update note", async () => {
   await page.waitForLoader();
 
-  const noteIdExpected = (await page.getAllNotesElements()).length + 1;
+  const noteIdExpected = (await page.countNumberOfElements("[data-id]")) + 1;
 
   const updatedNoteDescriptionExpected = "updated task";
   const updatedNoteStatusExpected = "active";
@@ -60,7 +60,7 @@ each(["", "     "]).test(
   async (invalidNoteDescription) => {
     await page.waitForLoader();
 
-    const noteIdExpected = (await page.getAllNotesElements()).length + 1;
+    const noteIdExpected = (await page.countNumberOfElements("[data-id]")) + 1;
 
     const noteDescriptionExpected = "task";
     const noteStatusExpected = "active";

@@ -24,7 +24,7 @@ afterAll(async () => {
 test("should create note", async () => {
   await page.waitForLoader();
 
-  const noteIdExpected = (await page.getAllNotesElements()).length + 1;
+  const noteIdExpected = (await page.countNumberOfElements("[data-id]")) + 1;
   const noteDescriptionExpected = "to do";
   const noteStatusExpected = "active";
   const noteColorExpected = "#1444e1";
@@ -67,11 +67,11 @@ each(["", "     "]).test(
   async (invalidNoteDescription) => {
     await page.waitForLoader();
 
-    const notesAmountExpected = await page.getAllNotesElements().length;
+    const notesAmountExpected = await page.countNumberOfElements("[data-id]");
 
     await page.createNoteWithDescription(invalidNoteDescription);
 
-    const notesAmountActual = await page.getAllNotesElements().length;
+    const notesAmountActual = await page.countNumberOfElements("[data-id]");
 
     expect(notesAmountActual).toBe(notesAmountExpected);
   },

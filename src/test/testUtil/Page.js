@@ -52,6 +52,13 @@ export default class Page {
     }, selector);
   }
 
+  async countNumberOfElements(selector) {
+    return await this.page.evaluate((selector) => {
+      const numberOfElements = document.querySelectorAll(selector).length;
+      return numberOfElements;
+    }, selector);
+  }
+
   async getAllElementsProperty(selector, property) {
     return await this.page.evaluate(
       (selector, property) => {
@@ -110,6 +117,13 @@ export default class Page {
 
   async searchNoteByType(type) {
     await this.page.click(`.note_search__types .fa-${type}`);
+  }
+
+  async searchNoteByTypeUsingNote(type) {
+    const lastCreatedNoteId = +(await this.getLastCreatedNoteData("id"));
+    await this.page.click(
+      `[data-id='${lastCreatedNoteId}'] .note__icon.fa-${type}`
+    );
   }
 
   async cancelSearching() {

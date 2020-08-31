@@ -22,7 +22,7 @@ afterAll(async () => {
 test("should create and change note status", async () => {
   await page.waitForLoader();
 
-  const noteIdExpected = (await page.getAllNotesElements()).length + 1;
+  const noteIdExpected = (await page.countNumberOfElements("[data-id]")) + 1;
   const noteDescriptionExpected = "to do";
   const noteStatusExpected = "inactive";
   const noteColorExpected = "#1444e1";
@@ -54,7 +54,7 @@ test("should create and change note status", async () => {
 test("should create and change note status from incative to active", async () => {
   await page.waitForLoader();
 
-  const noteIdExpected = (await page.getAllNotesElements()).length + 1;
+  const noteIdExpected = (await page.countNumberOfElements("[data-id]")) + 1;
   const noteDescriptionExpected = "to do";
   const noteStatusExpected = "active";
   const noteColorExpected = "#1444e1";
