@@ -120,7 +120,7 @@ export default class Page {
     return await this.page.evaluate((property) => {
       const notes = document.querySelectorAll("[data-id]");
       return [...notes].reduce((note, note2) =>
-        note.dataset.id > note2.dataset.id ? note : note2
+        +note.dataset.id > +note2.dataset.id ? note : note2
       )[property];
     }, property);
   }
@@ -129,7 +129,7 @@ export default class Page {
     return await this.page.evaluate((data) => {
       const notes = document.querySelectorAll("[data-id]");
       return [...notes].reduce((note, note2) =>
-        note.dataset.id > note2.dataset.id ? note : note2
+        +note.dataset.id > +note2.dataset.id ? note : note2
       ).dataset[data];
     }, data);
   }
