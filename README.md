@@ -43,6 +43,7 @@ Stack:
 ## To Do
 
 - Refactoring
+- Testing
 
 ## Getting Started
 
@@ -73,6 +74,26 @@ npm run build
 ```
 
 Then go to the dist folder and open the index.html file in your browser.
+
+5. Run all tests:
+
+```
+npm test
+```
+
+You can also run only unit tests using:
+
+```
+npm test unit
+```
+
+or only e2e tests:
+
+```
+npm test e2e
+```
+
+In order to run e2e tests it is necessary to run the application.
 
 ## Status
 

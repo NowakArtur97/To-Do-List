@@ -6,7 +6,9 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --open",
-    "test": "jest",
+    "test": "jest ",
+    "test unit": "jest unit ",
+    "test e2e": "jest e2e ",
     "build": "webpack --config webpack.prod.js"
   },
   "browserslist": [
