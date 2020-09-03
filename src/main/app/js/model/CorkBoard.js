@@ -1,7 +1,7 @@
-import DOMClasses from "../dom/DOMClasses";
-import DOMElements from "../dom/DOMElements";
-import Status from "../state/Status";
-import ObserverManager from "../observer/ObserverManager";
+import DOMClasses from '../dom/DOMClasses';
+import DOMElements from '../dom/DOMElements';
+import ObserverManager from '../observer/ObserverManager';
+import Status from '../state/Status';
 
 export default class CorkBoard {
   constructor(notePopUp, noteForm, noteFilterService) {
@@ -11,39 +11,39 @@ export default class CorkBoard {
     this.events = new ObserverManager("delete", "changeStatus");
     this.isTapped = false;
 
-    this.addEventListeners();
-    this.setCorkBoardViewportUnits();
+    this.#addEventListeners();
+    this.#setCorkBoardViewportUnits();
   }
 
-  addEventListeners() {
+  #addEventListeners() {
     DOMElements.board.addEventListener(
       "dblclick",
-      this.showFormForUpdate.bind(this),
+      this.#showFormForUpdate.bind(this),
       {
         capture: true,
       }
     );
     DOMElements.board.addEventListener(
       "touchstart",
-      this.showFormForUpdateOnMobile.bind(this),
+      this.#showFormForUpdateOnMobile.bind(this),
       {
         capture: true,
       }
     );
-    DOMElements.board.addEventListener("click", this.triggerAction.bind(this));
-    DOMElements.board.addEventListener("click", this.filterByType.bind(this));
+    DOMElements.board.addEventListener("click", this.#triggerAction.bind(this));
+    DOMElements.board.addEventListener("click", this.#filterByType.bind(this));
     window.addEventListener(
       "resize",
-      this.setCorkBoardViewportUnits.bind(this)
+      this.#setCorkBoardViewportUnits.bind(this)
     );
   }
 
-  setCorkBoardViewportUnits() {
+  #setCorkBoardViewportUnits() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   }
 
-  showFormForUpdate(e) {
+  #showFormForUpdate(e) {
     const noteEl = e.target.closest(`.${DOMClasses.note.main}`);
     const isActiveNote = noteEl && noteEl.dataset.status === Status.ACTIVE;
 
@@ -54,7 +54,7 @@ export default class CorkBoard {
     }
   }
 
-  showFormForUpdateOnMobile(e) {
+  #showFormForUpdateOnMobile(e) {
     if (!this.isTapped) {
       this.isTapped = setTimeout(() => {
         this.isTapped = null;
@@ -62,11 +62,11 @@ export default class CorkBoard {
     } else {
       clearTimeout(this.isTapped);
       this.isTapped = null;
-      this.showFormForUpdate(e);
+      this.#showFormForUpdate(e);
     }
   }
 
-  triggerAction(e) {
+  #triggerAction(e) {
     const targetClassList = e.target.classList;
     const parentTargetClassList = e.target.parentElement.classList;
     const isChangeStatusBtn = targetClassList.contains(
@@ -83,7 +83,7 @@ export default class CorkBoard {
     }
   }
 
-  filterByType(e) {
+  #filterByType(e) {
     const statusIconEl = e.target;
     const iconClassList = e.target.classList;
     const isTypeIcon =
