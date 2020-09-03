@@ -1,14 +1,13 @@
-import TaskService from "./js/service/TaskService";
-import NoteService from "./js/service/NoteService";
-import LocalStorageService from "./js/service/LocalStorageService";
-import NoteFilterService from "./js/service/NoteFilterService";
-
-import CorkBoard from "./js/model/CorkBoard";
-import NotePopUp from "./js/model/NotePopUp";
-import NoteForm from "./js/model/NoteForm";
-import NoteCleaner from "./js/model/NoteCleaner";
-import NoteSearch from "./js/model/NoteSearch";
-import Loader from "./js/model/Loader";
+import CorkBoard from './js/model/CorkBoard';
+import Loader from './js/model/Loader';
+import NoteCleaner from './js/model/NoteCleaner';
+import NoteForm from './js/model/NoteForm';
+import NotePopUp from './js/model/NotePopUp';
+import NoteSearch from './js/model/NoteSearch';
+import LocalStorageService from './js/service/LocalStorageService';
+import NoteFilterService from './js/service/NoteFilterService';
+import NoteService from './js/service/NoteService';
+import TaskService from './js/service/TaskService';
 
 export default function main() {
   const localStorageService = new LocalStorageService();

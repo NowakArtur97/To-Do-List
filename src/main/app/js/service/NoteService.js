@@ -1,7 +1,7 @@
-import DraggableElement from "../model/DraggableElement";
-import DOMClasses from "../dom/DOMClasses";
-import DOMElements from "../dom/DOMElements";
-import Status from "../state/Status";
+import DOMClasses from '../dom/DOMClasses';
+import DOMElements from '../dom/DOMElements';
+import DraggableElement from '../model/DraggableElement';
+import Status from '../state/Status';
 
 export default class NoteService {
   constructor() {
@@ -10,32 +10,32 @@ export default class NoteService {
   }
 
   create(task) {
-    const noteEl = this.createNote(task);
+    const noteEl = this.#createNote(task);
 
     if (noteEl.dataset.status === Status.ACTIVE) {
       new DraggableElement(noteEl);
-      this.addNoteEventListeners(noteEl, task.rotation);
+      this.#addNoteEventListeners(noteEl, task.rotation);
     } else {
       noteEl.style.backgroundColor = "#999999";
     }
 
-    const descriptionEl = this.createDescription(task);
-    const deleteBtnEl = this.createBtn([DOMClasses.note.deleteBtn]);
-    const deleteBtnIconEl = this.createIcon([DOMClasses.icon.delete]);
+    const descriptionEl = this.#createDescription(task);
+    const deleteBtnEl = this.#createBtn([DOMClasses.note.deleteBtn]);
+    const deleteBtnIconEl = this.#createIcon([DOMClasses.icon.delete]);
     const taskStatusBtnClass =
       task.status === Status.ACTIVE
         ? DOMClasses.note.deactivateStatusBtn
         : DOMClasses.note.activateStatusBtn;
-    const changeStatusBtnEl = this.createBtn(
+    const changeStatusBtnEl = this.#createBtn(
       [DOMClasses.note.changeStatusBtn, taskStatusBtnClass],
       task.status === Status.ACTIVE ? "X" : "✓"
     );
-    const pinEl = this.createPin(task);
+    const pinEl = this.#createPin(task);
     let typeEl;
     if (task.type) {
-      typeEl = this.createTypeIcon(task);
+      typeEl = this.#createTypeIcon(task);
     }
-    const statusEl = this.createStatusEl(task);
+    const statusEl = this.#createStatusEl(task);
 
     noteEl.appendChild(pinEl);
     if (typeEl) {
@@ -50,7 +50,7 @@ export default class NoteService {
     DOMElements.board.appendChild(noteEl);
   }
 
-  createNote({ id, status, noteColor, yPosition, xPosition, rotation }) {
+  #createNote({ id, status, noteColor, yPosition, xPosition, rotation }) {
     const noteEl = document.createElement("div");
     noteEl.classList.add(DOMClasses.note.main);
     noteEl.dataset.id = id;
@@ -66,7 +66,7 @@ export default class NoteService {
     return noteEl;
   }
 
-  createDescription({ description }) {
+  #createDescription({ description }) {
     const descriptionEl = document.createElement("p");
     descriptionEl.classList.add(DOMClasses.note.description);
     descriptionEl.innerText = description;
@@ -75,7 +75,7 @@ export default class NoteService {
     return descriptionEl;
   }
 
-  createBtn(additionalClasses = [], text = "") {
+  #createBtn(additionalClasses = [], text = "") {
     const btnEl = document.createElement("button");
     btnEl.classList.add(DOMClasses.note.btn, ...additionalClasses);
 
@@ -84,7 +84,7 @@ export default class NoteService {
     return btnEl;
   }
 
-  createPin({ pinColor }) {
+  #createPin({ pinColor }) {
     const pinEl = document.createElement("div");
     pinEl.classList.add(DOMClasses.note.pin);
     pinEl.style.backgroundImage = `${pinColor}`;
@@ -92,7 +92,7 @@ export default class NoteService {
     return pinEl;
   }
 
-  createIcon(additionalClasses = []) {
+  #createIcon(additionalClasses = []) {
     const iconEl = document.createElement("i");
     iconEl.classList.add(
       DOMClasses.icon.main,
@@ -103,8 +103,8 @@ export default class NoteService {
     return iconEl;
   }
 
-  createTypeIcon({ type }) {
-    const typeEl = this.createIcon([
+  #createTypeIcon({ type }) {
+    const typeEl = this.#createIcon([
       `${DOMClasses.icon.detailed}${type}`,
       DOMClasses.note.type,
     ]);
@@ -114,7 +114,7 @@ export default class NoteService {
     return typeEl;
   }
 
-  createStatusEl({ status }) {
+  #createStatusEl({ status }) {
     const statusEl = document.createElement("p");
     statusEl.classList.add(DOMClasses.note.status);
     statusEl.innerText = status;
@@ -158,19 +158,19 @@ export default class NoteService {
   changeStatus(note) {
     const status = note.dataset.status;
     if (status === Status.ACTIVE) {
-      this.setNoteStatus(note, Status.INACTIVE, [
+      this.#setNoteStatus(note, Status.INACTIVE, [
         DOMClasses.note.changeStatusBtn,
         DOMClasses.note.activateStatusBtn,
       ]);
     } else if (status === Status.INACTIVE) {
-      this.setNoteStatus(note, Status.ACTIVE, [
+      this.#setNoteStatus(note, Status.ACTIVE, [
         DOMClasses.note.changeStatusBtn,
         DOMClasses.note.deactivateStatusBtn,
       ]);
     }
   }
 
-  setNoteStatus(note, status, classes = []) {
+  #setNoteStatus(note, status, classes = []) {
     note.dataset.status = status;
     note.querySelector(`.${DOMClasses.note.status}`).innerText = status;
 
@@ -190,7 +190,7 @@ export default class NoteService {
     } else if (status === Status.ACTIVE) {
       note.style.backgroundColor = note.dataset.noteColor;
       changeStatusBtn.innerText = "X";
-      this.addNoteEventListeners(note, note.dataset.rotation);
+      this.#addNoteEventListeners(note, note.dataset.rotation);
       new DraggableElement(note);
     }
   }
@@ -209,16 +209,16 @@ export default class NoteService {
       .forEach((task) => this.delete(task));
   }
 
-  addNoteEventListeners(noteEl, randomRotation) {
+  #addNoteEventListeners(noteEl, randomRotation) {
     noteEl.addEventListener("mouseover", () =>
-      this.setNoteTransform(noteEl, this.NOTE_HOVER_SCALE)
+      this.#setNoteTransform(noteEl, this.NOTE_HOVER_SCALE)
     );
     noteEl.addEventListener("mouseleave", () =>
-      this.setNoteTransform(noteEl, `rotate(${randomRotation}deg)`)
+      this.#setNoteTransform(noteEl, `rotate(${randomRotation}deg)`)
     );
   }
 
-  setNoteTransform(noteEl, transform) {
+  #setNoteTransform(noteEl, transform) {
     noteEl.style.transform = transform;
   }
 }
