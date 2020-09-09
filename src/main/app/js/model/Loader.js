@@ -1,11 +1,9 @@
-import DOMClasses from "../dom/DOMClasses";
+import DOMClasses from '../dom/DOMClasses';
 
 export default class Loader {
-  constructor() {
-    this.LOADER_ANIMATION_DURATION = 3300;
-  }
-
   init() {
+    const loaderAnimationDuration = 3300;
+
     const loaderContainer = document.createElement("div");
     loaderContainer.classList.add(DOMClasses.loader.container);
 
@@ -47,6 +45,6 @@ export default class Loader {
     loaderContainer.appendChild(loader);
     document.body.appendChild(loaderContainer);
 
-    setTimeout(() => loaderContainer.remove(), this.LOADER_ANIMATION_DURATION);
+    setTimeout(() => loaderContainer.remove(), loaderAnimationDuration);
   }
 }
