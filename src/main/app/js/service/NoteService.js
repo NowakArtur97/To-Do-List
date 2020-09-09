@@ -4,9 +4,10 @@ import DraggableElement from '../model/DraggableElement';
 import Status from '../state/Status';
 
 export default class NoteService {
+  #NOTE_HOVER_SCALE;
   constructor() {
     const NOTE_HOVER_SCALE_VALUE = 1.3;
-    this.NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
+    this.#NOTE_HOVER_SCALE = `scale(${NOTE_HOVER_SCALE_VALUE})`;
   }
 
   create(task) {
@@ -211,7 +212,7 @@ export default class NoteService {
 
   #addNoteEventListeners(noteEl, randomRotation) {
     noteEl.addEventListener("mouseover", () =>
-      this.#setNoteTransform(noteEl, this.NOTE_HOVER_SCALE)
+      this.#setNoteTransform(noteEl, this.#NOTE_HOVER_SCALE)
     );
     noteEl.addEventListener("mouseleave", () =>
       this.#setNoteTransform(noteEl, `rotate(${randomRotation}deg)`)
