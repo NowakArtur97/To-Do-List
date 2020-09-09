@@ -22,7 +22,7 @@ export default function main() {
   const noteCleaner = new NoteCleaner();
   const noteSearch = new NoteSearch(noteFilterService);
   const notePopUp = new NotePopUp();
-  const noteForm = new NoteForm(taskService, noteService);
+  const noteForm = new NoteForm(taskService);
 
   const corkBoard = new CorkBoard(notePopUp, noteForm, noteFilterService);
 

@@ -5,26 +5,26 @@ import FormUtil from '../util/FormUtil';
 import NotePropertiesUtil from '../util/NotePropertiesUtil';
 
 export default class NoteForm {
-  constructor(taskService, noteService) {
-    this.taskService = taskService;
-    this.noteService = noteService;
+  #taskService;
+  constructor(taskService) {
+    this.#taskService = taskService;
     this.events = new ObserverManager("create", "update");
 
-    this.addEventListeners();
+    this.#addEventListeners();
   }
 
-  addEventListeners() {
+  #addEventListeners() {
     DOMElements.noteForm.addEventListener(
       "submit",
-      this.createOrUpdateTask.bind(this)
+      this.#createOrUpdateTask.bind(this)
     );
     DOMElements.noteFormColorPicker.addEventListener(
       "input",
-      this.changeFormColor.bind(this)
+      this.#changeFormColor.bind(this)
     );
   }
 
-  createOrUpdateTask(e) {
+  #createOrUpdateTask(e) {
     e.preventDefault();
     const task = FormUtil.extractData(DOMElements.noteForm);
     const isTaskDescriptionBlank =
@@ -37,7 +37,7 @@ export default class NoteForm {
     if (task.id) {
       this.events.notify("update", task);
     } else {
-      this.setTaskProperties(task);
+      this.#setTaskProperties(task);
       this.events.notify("create", task);
       FormUtil.resetForm(DOMElements.noteForm);
     }
@@ -48,8 +48,8 @@ export default class NoteForm {
     FormUtil.populateData(DOMElements.noteForm, task);
   }
 
-  setTaskProperties(task) {
-    task.id = task.id || this.taskService.getNextAvailableIndex();
+  #setTaskProperties(task) {
+    task.id = task.id || this.#taskService.getNextAvailableIndex();
     task.pinColor = NotePropertiesUtil.getRandomGradient();
     task.rotation = NotePropertiesUtil.getRandomRotation();
     const { xPosition, yPosition } = NotePropertiesUtil.getRandomPosition();
@@ -58,7 +58,7 @@ export default class NoteForm {
     task.status = Status.ACTIVE;
   }
 
-  changeFormColor() {
+  #changeFormColor() {
     DOMElements.noteForm.style.backgroundColor =
       DOMElements.noteFormColorPicker.value;
   }
