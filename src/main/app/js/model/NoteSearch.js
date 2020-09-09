@@ -1,34 +1,35 @@
-import DOMElements from "../dom/DOMElements";
+import DOMElements from '../dom/DOMElements';
 
 export default class NoteForm {
+  #noteFilterService;
   constructor(noteFilterService) {
-    this.noteFilterService = noteFilterService;
+    this.#noteFilterService = noteFilterService;
 
-    this.addEventListeners();
+    this.#addEventListeners();
   }
 
-  addEventListeners() {
+  #addEventListeners() {
     DOMElements.noteSearchInput.addEventListener(
       "keyup",
-      this.filterTasks.bind(this)
+      this.#filterTasks.bind(this)
     );
     DOMElements.noteSearchInput.addEventListener(
       "change",
-      this.filterTasks.bind(this)
+      this.#filterTasks.bind(this)
     );
     DOMElements.noteSearchCancelBtn.addEventListener(
       "click",
-      this.cancelFilteringTask.bind(this)
+      this.#cancelFilteringTask.bind(this)
     );
   }
 
-  filterTasks(e) {
-    this.noteFilterService.filterTasks(e.target.value, "description");
+  #filterTasks(e) {
+    this.#noteFilterService.filterTasks(e.target.value, "description");
   }
 
-  cancelFilteringTask(e) {
+  #cancelFilteringTask(e) {
     e.preventDefault();
-    this.noteFilterService.filterTasks();
+    this.#noteFilterService.filterTasks();
     DOMElements.noteSearchInput.value = "";
   }
 }
