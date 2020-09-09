@@ -4,12 +4,17 @@ import ObserverManager from '../observer/ObserverManager';
 import Status from '../state/Status';
 
 export default class CorkBoard {
+  #notePopUp;
+  #noteForm;
+  #noteFilterService;
+  #isTapped;
   constructor(notePopUp, noteForm, noteFilterService) {
-    this.notePopUp = notePopUp;
-    this.noteForm = noteForm;
-    this.noteFilterService = noteFilterService;
+    this.#notePopUp = notePopUp;
+    this.#noteForm = noteForm;
+    this.#noteFilterService = noteFilterService;
+    this.#isTapped = false;
+
     this.events = new ObserverManager("delete", "changeStatus");
-    this.isTapped = false;
 
     this.#addEventListeners();
     this.#setCorkBoardViewportUnits();
@@ -48,20 +53,20 @@ export default class CorkBoard {
     const isActiveNote = noteEl && noteEl.dataset.status === Status.ACTIVE;
 
     if (isActiveNote) {
-      this.notePopUp.showPopUp();
+      this.#notePopUp.showPopUp();
       DOMElements.noteFormSubmitBtn.innerText = "Update note";
-      this.noteForm.populateForm(noteEl);
+      this.#noteForm.populateForm(noteEl);
     }
   }
 
   #showFormForUpdateOnMobile(e) {
-    if (!this.isTapped) {
-      this.isTapped = setTimeout(() => {
-        this.isTapped = null;
+    if (!this.#isTapped) {
+      this.#isTapped = setTimeout(() => {
+        this.#isTapped = null;
       }, 200);
     } else {
-      clearTimeout(this.isTapped);
-      this.isTapped = null;
+      clearTimeout(this.#isTapped);
+      this.#isTapped = null;
       this.#showFormForUpdate(e);
     }
   }
@@ -92,7 +97,7 @@ export default class CorkBoard {
 
     if (isTypeIcon) {
       const type = statusIconEl.dataset.value;
-      this.noteFilterService.filterTasks(type, "type");
+      this.#noteFilterService.filterTasks(type, "type");
     }
   }
 }
