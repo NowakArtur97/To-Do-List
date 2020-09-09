@@ -1,14 +1,16 @@
-import Status from "../state/Status";
+import Status from '../state/Status';
 
 export default class TaskService {
+  #localStorageService;
+  #tasks;
   constructor(localStorageService) {
     if (TaskService.instance instanceof TaskService) {
       return TaskService.instance;
     }
 
-    this.localStorageService = localStorageService;
+    this.#localStorageService = localStorageService;
 
-    this.tasks = localStorageService.get("tasks") || [];
+    this.#tasks = this.#localStorageService.get("tasks") || [];
 
     Object.freeze(this);
 
@@ -21,22 +23,22 @@ export default class TaskService {
 
   create(task) {
     task.status = Status.ACTIVE;
-    this.tasks.push(task);
-    this.localStorageService.save("tasks", this.tasks);
+    this.#tasks.push(task);
+    this.#localStorageService.save("tasks", this.#tasks);
 
     return task;
   }
 
   update(updatedTask) {
-    let taskToUpdate = this.tasks.find((task) => task.id == updatedTask.id);
+    let taskToUpdate = this.#tasks.find((task) => task.id == updatedTask.id);
     for (let property in updatedTask) {
       taskToUpdate[property] = updatedTask[property];
     }
-    this.localStorageService.save("tasks", this.tasks);
+    this.#localStorageService.save("tasks", this.#tasks);
   }
 
   changeStatus(note) {
-    let task = this.tasks.find((task) => task.id == note.dataset.id);
+    let task = this.#tasks.find((task) => task.id == note.dataset.id);
 
     switch (task.status) {
       case Status.ACTIVE:
@@ -47,42 +49,42 @@ export default class TaskService {
         task.status = Status.ACTIVE;
         break;
     }
-    this.localStorageService.save("tasks", this.tasks);
+    this.#localStorageService.save("tasks", this.#tasks);
   }
 
   delete({ dataset }) {
     const id = dataset.id;
-    const taskToDelete = this.tasks.find((task) => task.id == id);
+    const taskToDelete = this.#tasks.find((task) => task.id == id);
 
     if (taskToDelete) {
-      const taskToDeleteIndex = this.tasks.indexOf(taskToDelete);
-      this.tasks.splice(taskToDeleteIndex, 1);
+      const taskToDeleteIndex = this.#tasks.indexOf(taskToDelete);
+      this.#tasks.splice(taskToDeleteIndex, 1);
     }
 
-    this.localStorageService.save("tasks", this.tasks);
+    this.#localStorageService.save("tasks", this.#tasks);
   }
 
   getAll() {
-    return this.localStorageService.get("tasks") || [];
+    return this.#localStorageService.get("tasks") || [];
   }
 
   deleteAll() {
-    this.localStorageService.remove("tasks");
-    this.tasks.length = 0;
+    this.#localStorageService.remove("tasks");
+    this.#tasks.length = 0;
   }
 
   getNextAvailableIndex() {
-    return this.tasks.length > 0 ? this.tasks.length + 1 : 1;
+    return this.#tasks.length > 0 ? this.#tasks.length + 1 : 1;
   }
 
   filter(value, property) {
-    return this.tasks.filter((task) =>
+    return this.#tasks.filter((task) =>
       task[property].match(new RegExp(value, "gi"))
     );
   }
 
   saveDummyData() {
-    if (this.localStorageService.get("tasks")) {
+    if (this.#localStorageService.get("tasks")) {
       return;
     }
 
@@ -148,13 +150,13 @@ export default class TaskService {
       yPosition: document.body.scrollHeight * 0.75,
     };
 
-    this.tasks.push(
+    this.#tasks.push(
       exampleTask1,
       exampleTask2,
       exampleTask3,
       exampleTask4,
       exampleTask5
     );
-    this.localStorageService.save("tasks", this.tasks);
+    this.#localStorageService.save("tasks", this.#tasks);
   }
 }
