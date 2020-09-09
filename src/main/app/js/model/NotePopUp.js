@@ -1,17 +1,17 @@
-import DOMElements from "../dom/DOMElements";
-import DOMClasses from "../dom/DOMClasses";
-import FormUtil from "../util/FormUtil";
+import DOMClasses from '../dom/DOMClasses';
+import DOMElements from '../dom/DOMElements';
+import FormUtil from '../util/FormUtil';
 
 export default class NotePopUp {
   constructor() {
-    this.addEventListeners();
+    this.#addEventListeners();
   }
 
-  addEventListeners() {
+  #addEventListeners() {
     DOMElements.noteFormPopUpTrigger.addEventListener("click", this.showPopUp);
     DOMElements.noteFormPopUpCloseBtn.addEventListener(
       "click",
-      this.closePopUp.bind(this)
+      this.#closePopUp.bind(this)
     );
   }
 
@@ -20,7 +20,7 @@ export default class NotePopUp {
     DOMElements.noteFormPopUp.classList.add(DOMClasses.noteFormPopUp.active);
   }
 
-  closePopUp() {
+  #closePopUp() {
     DOMElements.noteFormPopUp.classList.remove(DOMClasses.noteFormPopUp.active);
     FormUtil.resetForm(DOMElements.noteForm);
   }
