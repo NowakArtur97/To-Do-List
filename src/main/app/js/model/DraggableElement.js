@@ -1,5 +1,5 @@
-import DOMClasses from "../dom/DOMClasses";
-import TaskService from "../service/TaskService";
+import DOMClasses from '../dom/DOMClasses';
+import TaskService from '../service/TaskService';
 
 export default class DraggableElement {
   constructor(element) {
@@ -10,22 +10,22 @@ export default class DraggableElement {
     this.isDragged = false;
     this.element.classList.add(DOMClasses.draggable.main);
 
-    this.addEventListeners();
+    this.#addEventListeners();
   }
 
-  addEventListeners() {
-    this.element.addEventListener("mousedown", this.startDragging.bind(this));
-    this.element.addEventListener("mousemove", this.drag.bind(this));
-    this.element.addEventListener("mouseup", this.drop.bind(this));
-    this.element.addEventListener("mouseleave", this.drop.bind(this));
+  #addEventListeners() {
+    this.element.addEventListener("mousedown", this.#startDragging.bind(this));
+    this.element.addEventListener("mousemove", this.#drag.bind(this));
+    this.element.addEventListener("mouseup", this.#drop.bind(this));
+    this.element.addEventListener("mouseleave", this.#drop.bind(this));
 
-    this.element.addEventListener("touchstart", this.startDragging.bind(this));
-    this.element.addEventListener("touchmove", this.drag.bind(this));
-    this.element.addEventListener("touchcancel", this.drop.bind(this));
-    this.element.addEventListener("touchend", this.drop.bind(this));
+    this.element.addEventListener("touchstart", this.#startDragging.bind(this));
+    this.element.addEventListener("touchmove", this.#drag.bind(this));
+    this.element.addEventListener("touchcancel", this.#drop.bind(this));
+    this.element.addEventListener("touchend", this.#drop.bind(this));
   }
 
-  startDragging(e) {
+  #startDragging(e) {
     this.isDragged = true;
     const { clientX: xPosition, clientY: yPosition } = e.clientX
       ? e
@@ -34,7 +34,7 @@ export default class DraggableElement {
     this.offset.y = this.element.offsetTop - yPosition;
   }
 
-  drag(e) {
+  #drag(e) {
     if (!this.isDragged) {
       return;
     }
@@ -47,7 +47,7 @@ export default class DraggableElement {
     this.lastY = yPosition;
   }
 
-  drop() {
+  #drop() {
     this.isDragged = false;
     const isNote = this.element.classList.contains(DOMClasses.note.main);
 
