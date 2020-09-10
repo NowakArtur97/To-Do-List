@@ -53,8 +53,7 @@ export default class CorkBoard {
     const isActiveNote = noteEl && noteEl.dataset.status === Status.ACTIVE;
 
     if (isActiveNote) {
-      this.#notePopUp.showPopUp();
-      DOMElements.noteFormSubmitBtn.innerText = "Update note";
+      this.#notePopUp.showPopUp("Update note");
       this.#noteForm.populateForm(noteEl);
     }
   }

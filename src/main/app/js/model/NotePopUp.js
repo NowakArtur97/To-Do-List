@@ -8,15 +8,17 @@ export default class NotePopUp {
   }
 
   #addEventListeners() {
-    DOMElements.noteFormPopUpTrigger.addEventListener("click", this.showPopUp);
+    DOMElements.noteFormPopUpTrigger.addEventListener("click", () =>
+      this.showPopUp()
+    );
     DOMElements.noteFormPopUpCloseBtn.addEventListener(
       "click",
       this.#closePopUp.bind(this)
     );
   }
 
-  showPopUp() {
-    DOMElements.noteFormSubmitBtn.innerText = "Create note";
+  showPopUp(message = "Create note") {
+    DOMElements.noteFormSubmitBtn.innerText = message;
     DOMElements.noteFormPopUp.classList.add(DOMClasses.noteFormPopUp.active);
   }
 
